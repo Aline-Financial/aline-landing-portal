@@ -1,6 +1,6 @@
 import React from "react";
 import {NotFound} from "./NotFound";
-import {renderWithRouter} from "../../utils/test.utils";
+import {renderWithRouter} from "@test-utils";
 
 describe("NotFound Component", () => {
 

@@ -1,6 +1,6 @@
 import React from "react";
 import {AppNavDropdown} from "./AppNavDropdown";
-import {renderWithRouter} from "../../../utils/test.utils";
+import {renderWithRouter} from "@test-utils";
 import {AppNavRoute} from "./app-nav-route";
 
 describe("AppNavDropdown", () => {
