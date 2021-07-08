@@ -8,27 +8,27 @@ export class AppNavDrawer extends React.Component<any, any> {
     render() {
         return (
             <div id="app-nav-drawer"
-                 className="offcanvas offcanvas-start bg-dark text-light px-4"
+                 className="offcanvas offcanvas-start bg-dark text-light"
                  tabIndex={-1}>
                 <div className="offcanvas-header">
                     <button type="button" className="btn-close btn-close-white ms-auto" data-bs-dismiss="offcanvas" aria-label="Close"/>
                 </div>
                 <div className="offcanvas-body m-0 m-0">
                     <div className="app-nav-drawer-list my-3">
-                        <Link to="/" className="drawer-item drawer-item-link ps-0 fw-bold" data-bs-dismiss="offcanvas">Home</Link>
+                        <Link to="/" className="drawer-item drawer-item-link fw-bold p-3" data-bs-dismiss="offcanvas">Home <FontAwesomeIcon icon={["fas", "home"]} className="ms-2"/></Link>
                     {
                         AppNavDropdowns.map(dropdown => (
                             <div>
                                 <a href={`#drawerDropdown${dropdown.label.replace(" ", "")}`}
                                    data-bs-toggle="collapse"
-                                   className="drawer-item drawer-header d-flex justify-content-between">
+                                   className="drawer-item drawer-header d-flex justify-content-between p-3">
                                     {dropdown.label}
                                     <FontAwesomeIcon icon={["fas", "chevron-down"]} className="mx-2"/>
                                 </a>
                                 <div className="collapse" id={`drawerDropdown${dropdown.label.replace(" ", "")}`}>
                                     {
                                         dropdown.routes.map(route => (
-                                            <Link to={route.route} className="drawer-item drawer-item-link" data-bs-dismiss="offcanvas">{route.label}</Link>
+                                            <Link to={route.route} className="drawer-item drawer-item-link ps-4 p-3" data-bs-dismiss="offcanvas">{route.label}</Link>
                                         ))
                                     }
                                 </div>
