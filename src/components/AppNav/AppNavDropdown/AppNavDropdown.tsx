@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {AppNavDropdownProps} from "./app-nav-dropdown.props";
 
 export class AppNavDropdown extends React.Component<AppNavDropdownProps, any> {
@@ -26,7 +27,7 @@ export class AppNavDropdown extends React.Component<AppNavDropdownProps, any> {
                     {
                         this.dropdown.routes.map((route) => (
                             <li key={`dropdownItem${this.dropdown.label}${route.label}`}>
-                                <a className="dropdown-item" href={route.route}>{route.label}</a>
+                                <Link className="dropdown-item" to={route.route}>{route.label}</Link>
                             </li>
                         ))
                     }

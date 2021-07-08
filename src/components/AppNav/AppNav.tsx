@@ -20,9 +20,9 @@ export class AppNav extends React.Component<any, any> {
                             </a>
                         </li>
                         <li key="signup" className="nav-item mx-2">
-                            <a href={`/signup`}>
+                            <Link to={`/signup`}>
                                 <button className="btn btn-primary rounded-pill">Sign Up</button>
-                            </a>
+                            </Link>
                         </li>
                     </ul>
                 </div>
