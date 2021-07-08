@@ -2,23 +2,40 @@ import {AppNavDropdownProps} from "./AppNavDropdown/AppNavDropdown.props";
 
 export const AppNavDropdowns: AppNavDropdownProps[] = [
     {
-        label: 'Accounts',
+        label: "Accounts",
         routes: [
             {
-                label: 'Checking',
-                route: '/accounts#checking'
+                label: "Checking",
+                route: "/accounts#checking"
             },
             {
-                label: 'Savings',
-                route: '/accounts#savings'
+                label: "Savings",
+                route: "/accounts#savings"
             },
             {
-                label: 'Credit Card',
-                route: '/accounts#credit-card'
+                label: "Credit Card",
+                route: "/accounts#credit-card"
             },
             {
-                label: 'Loan',
-                route: '/accounts#loan'
+                label: "Loan",
+                route: "/accounts#loan"
+            }
+        ]
+    },
+    {
+        label: "About Us",
+        routes: [
+            {
+                label: "This Project",
+                route: "/about#project"
+            },
+            {
+                label: "Team Aline",
+                route: "/about#team"
+            },
+            {
+                label: "Github",
+                route: "/about#github"
             }
         ]
     }

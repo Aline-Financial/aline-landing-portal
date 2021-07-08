@@ -15,14 +15,14 @@ export class AppNavDropdown extends React.Component<AppNavDropdownProps, any> {
             <li className="nav-item dropdown">
                 <a
                     href="#"
-                    className="nav-link dropdown-toggle"
+                    className="nav-link dropdown-toggle mx-2"
                     id={`dropdownLink${this.dropdown.label}`}
                     data-bs-toggle="dropdown"
                     role="button"
                     aria-expanded="false">
                     {this.dropdown.label}
                 </a>
-                <ul className="dropdown-menu dropdown-menu-dark">
+                <ul className="dropdown-menu dropdown-menu-start dropdown-menu-dark animate__animated animate__zoomIn animate___fastest">
                     {
                         this.dropdown.routes.map((route) => (
                             <li>
