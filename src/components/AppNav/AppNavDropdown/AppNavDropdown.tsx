@@ -1,5 +1,5 @@
 import React from "react";
-import {AppNavDropdownProps} from "./AppNavDropdown.props";
+import {AppNavDropdownProps} from "./app-nav-dropdown.props";
 
 export class AppNavDropdown extends React.Component<AppNavDropdownProps, any> {
 
