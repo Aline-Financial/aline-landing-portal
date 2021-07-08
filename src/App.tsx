@@ -1,4 +1,4 @@
-import "animate.css/animate.min.css"
+import "animate.css/animate.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import "./App.scss";
 import {library} from "@fortawesome/fontawesome-svg-core";

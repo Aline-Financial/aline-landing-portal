@@ -43,7 +43,7 @@ export class AppNavDrawer extends React.Component<any, any> {
                             </a>
                         </div>
                         <div className="col">
-                            <Link to={`/signup`}>
+                            <Link to={"/signup"}>
                                 <button className="btn btn-primary w-100" data-bs-dismiss="offcanvas">Sign Up</button>
                             </Link>
                         </div>
