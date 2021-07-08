@@ -1,8 +1,8 @@
 import React from "react";
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
-import {Landing} from "./components/Landing/Landing";
-import {AppNav} from "./components/AppNav/AppNav";
-import {NotFound} from "./components/NotFound/NotFound";
+import {Landing} from "./components/landing/Landing";
+import {AppNav} from "./components/app-nav/AppNav";
+import {NotFound} from "./components/not-found/NotFound";
 
 export class AppRouter extends React.Component<any, any> {
 
