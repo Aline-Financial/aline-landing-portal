@@ -22,7 +22,7 @@ export class AppNavDropdown extends React.Component<AppNavDropdownProps, any> {
                     aria-expanded="false">
                     {this.dropdown.label}
                 </a>
-                <ul className="dropdown-menu dropdown-menu-start dropdown-menu-dark animate__animated animate__zoomIn animate___fastest shadow">
+                <ul className="dropdown-menu dropdown-menu-start dropdown-menu-dark animate__animated animate__zoomIn animate__fastest shadow">
                     {
                         this.dropdown.routes.map((route) => (
                             <li key={`dropdownItem${this.dropdown.label}${route.label}`}>

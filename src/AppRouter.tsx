@@ -9,8 +9,10 @@ export class AppRouter extends React.Component<any, any> {
         return (
             <Router>
                 <AppNav/>
-                <Route path="/" exact component={Landing}/>
-                <Route path="/*" component={NotFound}/>
+                <div className="container-fluid margin-past-nav">
+                    <Route path="/" exact component={Landing}/>
+                    <Route path="/*" component={NotFound}/>
+                </div>
             </Router>
         );
     }
