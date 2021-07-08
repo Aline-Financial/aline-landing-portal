@@ -17,7 +17,7 @@ export class AppNavDropdown extends React.Component<AppNavDropdownProps, any> {
                 <a
                     href="/"
                     className="nav-link dropdown-toggle"
-                    id={`dropdownLink${this.dropdown.label}`}
+                    id={`dropdownLink${this.dropdown.label.replace(" ", "")}`}
                     data-bs-toggle="dropdown"
                     role="button"
                     aria-expanded="false">
@@ -26,7 +26,7 @@ export class AppNavDropdown extends React.Component<AppNavDropdownProps, any> {
                 <ul className="dropdown-menu dropdown-menu-start dropdown-menu-dark animate__animated animate__zoomIn animate__fastest shadow">
                     {
                         this.dropdown.routes.map((route) => (
-                            <li key={`dropdownItem${this.dropdown.label}${route.label}`}>
+                            <li key={`dropdownItem${this.dropdown.label.replace(" ", "")}${route.label}`}>
                                 <Link className="dropdown-item" to={route.route}>{route.label}</Link>
                             </li>
                         ))

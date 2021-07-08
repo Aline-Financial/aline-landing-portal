@@ -1,0 +1,39 @@
+@import "~bootstrap/scss/functions"
+@import "~bootstrap/scss/variables"
+
+.app-nav-drawer-list
+  color: $light
+  background-color: $dark
+
+.drawer-item
+  padding-top: 1.2rem
+  padding-bottom: 1.2rem
+
+.drawer-header
+  display: block
+  color: $light
+  text-decoration: none
+  font-weight: $font-weight-bold
+  border-bottom: 1px solid $secondary
+  &:hover
+    color: $light
+    background-color: lighten($dark, 5)
+
+  &:active
+    color: darken($light, 25)
+    background-color: lighten($dark, 2)
+
+.drawer-item-link
+  display: block
+  padding-left: 15px
+  border-bottom: 1px solid darken($secondary, 15)
+  color: $light
+  text-decoration: none
+
+  &:hover
+    color: $light
+    background-color: lighten($dark, 5)
+
+  &:active
+    color: darken($light, 25)
+    background-color: lighten($dark, 2)

@@ -10,7 +10,7 @@ export class AppRouter extends React.Component<any, any> {
         return (
             <Router>
                 <AppNav/>
-                <div className="container-fluid min-vh-100 padding-past-nav">
+                <div className="min-vh-100 padding-past-nav">
                     <Switch>
                         <Route exact path="/" component={Landing}/>
                         <Route component={NotFound}/>
