@@ -18,7 +18,7 @@ export class AppNavDrawer extends React.Component<any, any> {
                         <Link to="/" className="drawer-item drawer-item-link fw-bold p-3" data-bs-dismiss="offcanvas">Home <FontAwesomeIcon icon={["fas", "home"]} className="ms-2"/></Link>
                     {
                         AppNavDropdowns.map(dropdown => (
-                            <div>
+                            <div key={`drawerDropdown${dropdown.label.replace(" ", "")}`}>
                                 <a href={`#drawerDropdown${dropdown.label.replace(" ", "")}`}
                                    data-bs-toggle="collapse"
                                    className="drawer-item drawer-header d-flex justify-content-between p-3">
@@ -28,7 +28,7 @@ export class AppNavDrawer extends React.Component<any, any> {
                                 <div className="collapse" id={`drawerDropdown${dropdown.label.replace(" ", "")}`}>
                                     {
                                         dropdown.routes.map(route => (
-                                            <Link to={route.route} className="drawer-item drawer-item-link ps-4 p-3" data-bs-dismiss="offcanvas">{route.label}</Link>
+                                            <Link key={`drawerLink${route.label.replace(" ", "")}`} to={route.route} className="drawer-item drawer-item-link ps-4 p-3" data-bs-dismiss="offcanvas">{route.label}</Link>
                                         ))
                                     }
                                 </div>
