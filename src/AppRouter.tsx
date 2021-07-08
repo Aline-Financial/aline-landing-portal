@@ -5,11 +5,12 @@ import {AppNav} from "./components/AppNav/AppNav";
 import {NotFound} from "./components/NotFound/NotFound";
 
 export class AppRouter extends React.Component<any, any> {
+
     render() {
         return (
             <Router>
                 <AppNav/>
-                <div className="container-fluid margin-past-nav">
+                <div className="container-fluid min-vh-100 padding-past-nav">
                     <Switch>
                         <Route exact path="/" component={Landing}/>
                         <Route component={NotFound}/>
