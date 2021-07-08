@@ -7,7 +7,7 @@ export class AppNav extends React.Component<any, any> {
 
     render() {
         return (
-            <div className="navbar navbar-expand-lg navbar-dark bg-dark py-3">
+            <div className="navbar navbar-expand-lg navbar-dark bg-dark py-3 fixed-top">
                 <div className="container">
                     <Link to="/" className="navbar-brand">Aline Financial</Link>
                     <ul className="navbar-nav ms-auto">

@@ -15,7 +15,7 @@ export class App extends React.Component<any, any> {
 
     render() {
         return (
-            <div className={"container-fluid p-0"}>
+            <div className={"container-fluid p-0 m-0"}>
                 <AppRouter/>
             </div>
         );
