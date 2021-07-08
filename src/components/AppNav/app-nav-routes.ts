@@ -1,6 +1,6 @@
 import {AppNavDropdownProps} from "./AppNavDropdown/app-nav-dropdown.props";
 
-export const AppNavDropdowns: AppNavDropdownProps[] = [
+export const AppNavRoutes: AppNavDropdownProps[] = [
     {
         label: "Accounts",
         routes: [

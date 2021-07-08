@@ -1,7 +1,7 @@
 import React from "react";
 import "./AppNavDrawer.sass";
 import {Link} from "react-router-dom";
-import {AppNavDropdowns} from "../app-nav.dropdowns";
+import {AppNavRoutes} from "../app-nav-routes";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 export class AppNavDrawer extends React.Component<any, any> {
@@ -17,7 +17,7 @@ export class AppNavDrawer extends React.Component<any, any> {
                     <div className="app-nav-drawer-list my-3">
                         <Link to="/" className="drawer-item drawer-item-link fw-bold p-3" data-bs-dismiss="offcanvas">Home <FontAwesomeIcon icon={["fas", "home"]} className="ms-2"/></Link>
                     {
-                        AppNavDropdowns.map(dropdown => (
+                        AppNavRoutes.map(dropdown => (
                             <div key={`drawerDropdown${dropdown.label.replace(" ", "")}`}>
                                 <a href={`#drawerDropdown${dropdown.label.replace(" ", "")}`}
                                    data-bs-toggle="collapse"

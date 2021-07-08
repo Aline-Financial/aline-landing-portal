@@ -1,6 +1,6 @@
 import React from "react";
 import "./AppNav.scss";
-import {AppNavDropdowns} from "./app-nav.dropdowns";
+import {AppNavRoutes} from "./app-nav-routes";
 import {AppNavDropdown} from "./AppNavDropdown/AppNavDropdown";
 import {Link} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
@@ -25,7 +25,7 @@ export class AppNav extends React.Component<any, any> {
                             <img draggable={false} src={logo} className="mb-1" alt="$"/>
                             Financial</Link>
                         <ul className="navbar-nav ms-auto d-none d-lg-inline-flex">
-                            {AppNavDropdowns.map((dropdown) => (
+                            {AppNavRoutes.map((dropdown) => (
                                 <AppNavDropdown key={`dropdownMenu${dropdown.label.replace(" ", "")}`} label={dropdown.label} routes={dropdown.routes}/>
                             ))}
                             <li key="login" className="nav-item mx-2">
