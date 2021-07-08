@@ -31,7 +31,7 @@
   "scripts": {
     "start": "craco start",
     "build": "craco build",
-    "test": "craco test",
+    "test": "jest",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -58,5 +58,16 @@
     "craco-alias": "^3.0.1",
     "eslint": "^7.30.0",
     "eslint-plugin-react": "^7.24.0"
+  },
+  "jest": {
+    "modulePaths": ["src"],
+    "moduleDirectories": ["node_modules","src"],
+    "moduleFileExtensions": ["js", "json", "jsx", "ts", "tsx"],
+    "moduleNameMapper": {
+      "@test-utils": "<rootDir>/src/utils/test.utils"
+    },
+    "setupFilesAfterEnv": [
+      "<rootDir>/src/setupTests.ts"
+    ]
   }
 }
