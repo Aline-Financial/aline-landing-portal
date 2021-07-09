@@ -3,8 +3,30 @@ import "./AppNavDrawer.sass";
 import {Link} from "react-router-dom";
 import {AppNavRoutes} from "../appNavRoutes";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {AppNavDropdownProps} from "@interfaces/AppNavDropdownProps";
 
 export class AppNavDrawer extends React.Component<any, any> {
+
+    generateDrawerDropdowns(routes: AppNavDropdownProps[]) {
+        return routes.map(dropdown => (
+            <div key={`drawerDropdown${dropdown.label.replace(" ", "")}`}>
+                <a href={`#drawerDropdown${dropdown.label.replace(" ", "")}`}
+                   data-bs-toggle="collapse"
+                   className="drawer-item drawer-header d-flex justify-content-between p-3">
+                    {dropdown.label}
+                    <FontAwesomeIcon icon={["fas", "chevron-down"]} className="mx-2"/>
+                </a>
+                <div className="collapse" id={`drawerDropdown${dropdown.label.replace(" ", "")}`}>
+                    {
+                        dropdown.routes.map(route => (
+                            <Link key={`drawerLink${route.label.replace(" ", "")}`} to={route.route} className="drawer-item drawer-item-link ps-4 p-3" data-bs-dismiss="offcanvas">{route.label}</Link>
+                        ))
+                    }
+                </div>
+            </div>
+        ));
+    }
+
     render() {
         return (
             <div id="app-nav-drawer"
@@ -17,23 +39,7 @@ export class AppNavDrawer extends React.Component<any, any> {
                     <div className="app-nav-drawer-list my-3">
                         <Link to="/" className="drawer-item drawer-item-link fw-bold p-3" data-bs-dismiss="offcanvas">Home <FontAwesomeIcon icon={["fas", "home"]} className="ms-2"/></Link>
                     {
-                        AppNavRoutes.map(dropdown => (
-                            <div key={`drawerDropdown${dropdown.label.replace(" ", "")}`}>
-                                <a href={`#drawerDropdown${dropdown.label.replace(" ", "")}`}
-                                   data-bs-toggle="collapse"
-                                   className="drawer-item drawer-header d-flex justify-content-between p-3">
-                                    {dropdown.label}
-                                    <FontAwesomeIcon icon={["fas", "chevron-down"]} className="mx-2"/>
-                                </a>
-                                <div className="collapse" id={`drawerDropdown${dropdown.label.replace(" ", "")}`}>
-                                    {
-                                        dropdown.routes.map(route => (
-                                            <Link key={`drawerLink${route.label.replace(" ", "")}`} to={route.route} className="drawer-item drawer-item-link ps-4 p-3" data-bs-dismiss="offcanvas">{route.label}</Link>
-                                        ))
-                                    }
-                                </div>
-                            </div>
-                        ))
+                        this.generateDrawerDropdowns(AppNavRoutes)
                     }
                     </div>
                     <div className="row row-cols-2 pb-5">

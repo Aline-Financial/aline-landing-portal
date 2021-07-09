@@ -59,11 +59,8 @@
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.28.2",
     "@typescript-eslint/parser": "^4.28.2",
-    "babel-jest": "^27.0.6",
     "craco-alias": "^3.0.1",
     "eslint": "^7.30.0",
-    "eslint-plugin-react": "^7.24.0",
-    "identity-obj-proxy": "^3.0.0",
-    "jest-svg-transformer": "^1.0.0"
+    "eslint-plugin-react": "^7.24.0"
   }
 }
