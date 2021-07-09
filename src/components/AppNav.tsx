@@ -1,11 +1,10 @@
 import React from "react";
-import "./AppNav.scss";
-import {AppNavRoutes} from "./appNavRoutes";
-import {AppNavDropdown} from "./app-nav-dropdown/AppNavDropdown";
+import AppNavRoutes from "@src/appNavRoutes";
 import {Link} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import logo from "@images/logo.svg";
-import {AppNavDrawer} from "./app-nav-drawer/AppNavDrawer";
+import {AppNavDrawer} from "@components/AppNavDrawer";
+import {AppNavDropdown} from "@components/AppNavDropdown";
 
 export class AppNav extends React.Component<any, any> {
 

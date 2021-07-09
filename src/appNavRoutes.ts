@@ -1,6 +1,6 @@
 import {AppNavDropdownProps} from "@interfaces/AppNavDropdownProps";
 
-export const AppNavRoutes: AppNavDropdownProps[] = [
+const AppNavRoutes: AppNavDropdownProps[] = [
     {
         label: "Accounts",
         routes: [
@@ -40,3 +40,5 @@ export const AppNavRoutes: AppNavDropdownProps[] = [
         ]
     }
 ];
+
+export default AppNavRoutes;
