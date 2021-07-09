@@ -21,7 +21,10 @@ const config: Config.InitialOptions = {
     moduleNameMapper: {
         "\\.(css|less|sass|scss)$": "<rootDir>/__mocks__/styleMock.js",
         "\\.(gif|ttf|eot|svg)$": "<rootDir>/__mocks__/fileMock.js",
-        "@test-utils": "<rootDir>/src/utils/test.utils"
+        "^@test-utils$": "<rootDir>/src/utils/test.utils",
+        "^@images(.*)$": "<rootDir>/src/assets/images$1",
+        "^@components(.*)$": "<rootDir>/src/components$1",
+        "^@config(.*)$": "<rootDir>/src/config$1"
     },
     setupFilesAfterEnv: [
         "<rootDir>/src/setupTests.ts"
