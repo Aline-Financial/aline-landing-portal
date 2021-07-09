@@ -1,11 +1,11 @@
-import React from "react";
+import React, {Component} from "react";
 import "./AppNavDrawer.sass";
 import {Link} from "react-router-dom";
 import AppNavRoutes from "@src/appNavRoutes";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {AppNavDropdownProps} from "@interfaces/AppNavDropdownProps";
 
-export class AppNavDrawer extends React.Component<any, any> {
+export class AppNavDrawer extends Component {
 
     generateDrawerDropdowns(routes: AppNavDropdownProps[]) {
         return routes.map(dropdown => (

@@ -1,12 +1,11 @@
 import "animate.css/animate.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
-import "./App.scss";
 import {library} from "@fortawesome/fontawesome-svg-core";
-import React from "react";
+import React, {Component} from "react";
 import {IconsConfig} from "@config/icons.config";
 import {AppRouter} from "./AppRouter";
 
-export class App extends React.Component<any, any> {
+export class App extends Component {
 
     constructor(props: any) {
         super(props);

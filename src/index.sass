@@ -1,6 +1,23 @@
-@import "src/styles/colors"
+/** Global Styles **/
+
+// Global Bootstrap Styles
+@import "~bootstrap/scss/functions"
+@import "~bootstrap/scss/variables"
+
+$primary: #2d70ca
+
 @import "~bootstrap/scss/bootstrap"
+
+// Global HTML Styles
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap')
 
 html, body
   font-family: "Noto Sans", sans-serif
+
+.animate__fastest
+  --animate-duration: 0.1s
+
+
+.padding-past-nav
+  padding-top: 100px
+
