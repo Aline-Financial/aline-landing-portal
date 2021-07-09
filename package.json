@@ -8,6 +8,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@fortawesome/react-fontawesome": "^0.1.14",
+    "@jest/types": "^27.0.6",
     "@popperjs/core": "^2.9.2",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
@@ -19,12 +20,15 @@
     "@types/react-router-dom": "^5.1.8",
     "animate.css": "^4.1.1",
     "bootstrap": "^5.0.2",
+    "jest-css-modules-transform": "^4.3.0",
     "node-sass": "^6.0.1",
+    "postcss": "^8.3.5",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
+    "ts-node": "^10.0.0",
     "typescript": "^4.3.5",
     "web-vitals": "^1.1.2"
   },
@@ -55,19 +59,11 @@
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.28.2",
     "@typescript-eslint/parser": "^4.28.2",
+    "babel-jest": "^27.0.6",
     "craco-alias": "^3.0.1",
     "eslint": "^7.30.0",
-    "eslint-plugin-react": "^7.24.0"
-  },
-  "jest": {
-    "modulePaths": ["src"],
-    "moduleDirectories": ["node_modules","src"],
-    "moduleFileExtensions": ["js", "json", "jsx", "ts", "tsx"],
-    "moduleNameMapper": {
-      "@test-utils": "<rootDir>/src/utils/test.utils"
-    },
-    "setupFilesAfterEnv": [
-      "<rootDir>/src/setupTests.ts"
-    ]
+    "eslint-plugin-react": "^7.24.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest-svg-transformer": "^1.0.0"
   }
 }
