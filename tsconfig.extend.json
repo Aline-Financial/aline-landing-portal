@@ -2,10 +2,21 @@
   "compilerOptions": {
     "baseUrl": "./src",
     "paths": {
-      "@test-utils": ["./utils/test.utils"],
-      "@components/*": ["./components/*"],
-      "@images/*": ["./assets/images/*"],
-      "@config/*": ["./config/*"]
+      "@components/*": [
+        "./components/*"
+      ],
+      "@config/*": [
+        "./config/*"
+      ],
+      "@images/*": [
+        "./assets/images/*"
+      ],
+      "@test-utils": [
+        "./utils/test.utils"
+      ],
+      "@interfaces/*": [
+        "./interfaces/*"
+      ]
     }
   }
 }

@@ -1,4 +1,4 @@
-import {AppNavRoute} from "./app-nav-route";
+import {AppNavRoute} from "./AppNavRoute";
 
 export interface AppNavDropdownProps {
     label: string;

@@ -1,4 +1,4 @@
-import {AppNavDropdownProps} from "./app-nav-dropdown/app-nav-dropdown.props";
+import {AppNavDropdownProps} from "@interfaces/AppNavDropdownProps";
 
 export const AppNavRoutes: AppNavDropdownProps[] = [
     {

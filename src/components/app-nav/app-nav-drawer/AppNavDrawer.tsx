@@ -1,7 +1,7 @@
 import React from "react";
 import "./AppNavDrawer.sass";
 import {Link} from "react-router-dom";
-import {AppNavRoutes} from "../app-nav-routes";
+import {AppNavRoutes} from "../appNavRoutes";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 export class AppNavDrawer extends React.Component<any, any> {

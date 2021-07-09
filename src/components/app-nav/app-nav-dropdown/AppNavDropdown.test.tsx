@@ -1,7 +1,7 @@
 import React from "react";
 import {AppNavDropdown} from "./AppNavDropdown";
 import {renderWithRouter} from "@test-utils";
-import {AppNavRoute} from "./app-nav-route";
+import {AppNavRoute} from "@interfaces/AppNavRoute";
 
 it("should create anchor element with href of '/'", () => {
     const {getByText} = renderWithRouter(<AppNavDropdown label={"Label"} routes={[]}/>);
