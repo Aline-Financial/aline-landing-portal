@@ -1,4 +1,4 @@
-const CracoAlias = require("craco-alias")
+const CracoAlias = require("craco-alias");
 
 module.exports = {
     reactScriptsVersion: "react-scripts",
@@ -11,5 +11,9 @@ module.exports = {
                 tsConfigPath: "./tsconfig.extend.json"
             }
         }
-    ]
+    ],
+    eslint: {
+        mode: "extends",
+        configure: () => require("./.eslintrc")
+    }
 }
