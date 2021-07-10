@@ -20,7 +20,7 @@ class AppNav extends Component<any, {scrolled: boolean}> {
     onScroll() {
         const scrollY = window.scrollY;
         this.setState({
-            scrolled: scrollY > 75
+            scrolled: scrollY >= 75
         });
     }
 

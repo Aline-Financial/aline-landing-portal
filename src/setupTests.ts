@@ -14,7 +14,7 @@ import {MemoryRouter} from "react-router";
 IconsConfig.icons.forEach(icon => library.add(icon));
 
 const { getComputedStyle } = window;
-window.getComputedStyle = (elt) => getComputedStyle(elt);
+window.getComputedStyle = (elt, pseudoElt) => getComputedStyle(elt, pseudoElt);
 
 export function renderWithRouter(ui: ReactElement) {
     return render(ui, { wrapper: MemoryRouter});

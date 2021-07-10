@@ -12,13 +12,26 @@ describe("AppNav", () => {
         expect(appNav).toBeInTheDocument();
     });
 
-    it("should have a drop shadow pseudo element with opacity of 0 when scrollTop is less than 75", () => {
-        fireEvent.scroll(window, {
-            scrollY: 75
+    it("should not have nav-shadow as class if window scroll is less than 75", () => {
+        Array.from(Array(74).keys()).forEach(scrollY => {
+            fireEvent.scroll(window, {
+                target: {
+                    scrollY
+                }
+            });
+            expect(appNav.classList.contains("nav-shadow")).toBe(false);
         });
-        const afterEl = window.getComputedStyle(appNav, ":after");
-        console.log(afterEl);
-        console.log(window.scrollY);
+    });
+
+    it("should have nav-shadow as class if window scroll is more than or equal to 75", () => {
+        Array.from(Array(100).keys()).map(i => i + 75).forEach(scrollY => {
+            fireEvent.scroll(window, {
+                target: {
+                    scrollY
+                }
+            });
+            expect(appNav.classList.contains("nav-shadow")).toBe(true);
+        });
     });
 
     describe("NavBrandLink", () => {
