@@ -3,7 +3,7 @@ import "./AppNavDrawer.sass";
 import {Link} from "react-router-dom";
 import AppNavRoutes from "@src/appNavRoutes";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {AppNavDropdownProps} from "@interfaces/AppNavDropdownProps";
+import {AppNavDropdownProps} from "@interfaces";
 
 export class AppNavDrawer extends Component {
 

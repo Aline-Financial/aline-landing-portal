@@ -1,4 +1,4 @@
-import {AppNavDropdownProps} from "@interfaces/AppNavDropdownProps";
+import {AppNavDropdownProps} from "@interfaces";
 
 const AppNavRoutes: AppNavDropdownProps[] = [
     {
