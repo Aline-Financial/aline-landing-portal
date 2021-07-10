@@ -9,7 +9,7 @@ const LandingCards = () => {
                 <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4">
                     {landingCardsData.map(
                         cardData => (
-                            <div className="col my-2" key={`landingCard${cardData.buttonRoute.replace("/", "")}`}>
+                            <div className="col my-2" key={`landingCard${cardData.buttonText.replace(/\s/g, "")}`}>
                                 <LandingCard cardData={cardData}/>
                             </div>
                         ))}

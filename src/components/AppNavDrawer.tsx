@@ -9,17 +9,17 @@ const AppNavDrawer = () => {
 
     const generateDrawerDropdowns = (routes: AppNavDropdownProps[]) => {
         return routes.map(dropdown => (
-            <div key={`drawerDropdown${dropdown.label.replace(" ", "")}`}>
-                <a href={`#drawerDropdown${dropdown.label.replace(" ", "")}`}
+            <div key={`drawerDropdown${dropdown.label.replace(/\s/g, "")}`}>
+                <a href={`#drawerDropdown${dropdown.label.replace(/\s/g, "")}`}
                    data-bs-toggle="collapse"
                    className="drawer-item drawer-header d-flex justify-content-between p-3">
                     {dropdown.label}
                     <FaIcon icon={["fas", "chevron-down"]} className="mx-2"/>
                 </a>
-                <div className="collapse drawer-dropdown" id={`drawerDropdown${dropdown.label.replace(" ", "")}`}>
+                <div className="collapse drawer-dropdown" id={`drawerDropdown${dropdown.label.replace(/\s/g, "")}`}>
                     {
                         dropdown.routes.map(route => (
-                            <Link key={`drawerLink${route.label.replace(" ", "")}`} to={route.route} className="drawer-item drawer-item-link ps-4 p-3" data-bs-dismiss="offcanvas">{route.label}</Link>
+                            <Link key={`drawerLink${route.label.replace(/\s/g, "")}`} to={route.route} className="drawer-item drawer-item-link ps-4 p-3" data-bs-dismiss="offcanvas">{route.label}</Link>
                         ))
                     }
                 </div>
