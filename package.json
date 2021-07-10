@@ -39,7 +39,8 @@
     "lint": "eslint src/",
     "lint:fix": "eslint src/ --fix",
     "test": "jest",
-    "eject": "react-scripts eject"
+    "test:lint": "eslint src/ && jest",
+    "test:coverage": "jest --coverage"
   },
   "eslintConfig": {
     "extends": [

@@ -16,7 +16,8 @@
             "jsx": true
         },
         "ecmaVersion": 12,
-        "sourceType": "module"
+        "sourceType": "module",
+        "project": "./tsconfig.json"
     },
     "plugins": [
         "react",
@@ -31,8 +32,15 @@
             "error",
             "always"
         ],
+        "camelcase": "warn",
+        "comma-spacing": "warn",
+        "arrow-spacing": "warn",
+        "no-unused-vars": "warn",
         "no-unexpected-multiline": "error",
         "@typescript-eslint/explicit-module-boundary-types": "off",
-        "@typescript-eslint/no-explicit-any": "off"
+        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/ban-tslint-comment": "error",
+        "@typescript-eslint/consistent-type-definitions": ["error", "type"],
+        "@typescript-eslint/no-unnecessary-condition": "warn"
     }
 }
