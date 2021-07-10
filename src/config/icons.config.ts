@@ -1,4 +1,14 @@
-import {faBars, faChevronDown, faHome, faPenAlt, faSignInAlt} from "@fortawesome/free-solid-svg-icons";
+import {
+    faBars,
+    faChevronDown,
+    faCogs,
+    faHome,
+    faLock,
+    faMapMarkedAlt,
+    faMoneyBillWave,
+    faPenAlt,
+    faSignInAlt
+} from "@fortawesome/free-solid-svg-icons";
 
 
 export const IconsConfig = {
@@ -8,6 +18,9 @@ export const IconsConfig = {
         faSignInAlt,
         faChevronDown,
         faHome,
-
+        faMapMarkedAlt,
+        faLock,
+        faMoneyBillWave,
+        faCogs
     ]
 };
