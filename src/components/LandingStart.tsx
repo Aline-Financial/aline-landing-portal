@@ -1,6 +1,5 @@
 import React from "react";
 
-import "./LandingStart.sass";
 import cardAndPhone from "@images/card_and_phone.png";
 import LandingStartForm from "@components/LandingStartForm";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
