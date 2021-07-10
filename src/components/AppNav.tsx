@@ -1,7 +1,7 @@
 import React from "react";
 import AppNavRoutes from "@src/app-nav-routes";
 import {Link} from "react-router-dom";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {FontAwesomeIcon as FaIcon} from "@fortawesome/react-fontawesome";
 import logo from "@images/logo.svg";
 import AppNavDrawer from "@components/AppNavDrawer";
 import AppNavDropdown from "@components/AppNavDropdown";
@@ -16,7 +16,7 @@ const AppNav = () => {
                         <button className="btn btn-outline-light"
                                 data-bs-toggle="offcanvas"
                                 data-bs-target="#app-nav-drawer">
-                            <FontAwesomeIcon icon={["fas", "bars"]}/>
+                            <FaIcon icon={["fas", "bars"]}/>
                         </button>
                     </div>
                     <Link to="/" className="navbar-brand align-items-center">Aline

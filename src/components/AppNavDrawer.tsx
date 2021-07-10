@@ -2,7 +2,7 @@ import React from "react";
 import "./AppNavDrawer.sass";
 import {Link} from "react-router-dom";
 import AppNavRoutes from "@src/app-nav-routes";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {FontAwesomeIcon as FaIcon} from "@fortawesome/react-fontawesome";
 import {AppNavDropdownProps} from "@interfaces";
 
 const AppNavDrawer = () => {
@@ -14,7 +14,7 @@ const AppNavDrawer = () => {
                    data-bs-toggle="collapse"
                    className="drawer-item drawer-header d-flex justify-content-between p-3">
                     {dropdown.label}
-                    <FontAwesomeIcon icon={["fas", "chevron-down"]} className="mx-2"/>
+                    <FaIcon icon={["fas", "chevron-down"]} className="mx-2"/>
                 </a>
                 <div className="collapse drawer-dropdown" id={`drawerDropdown${dropdown.label.replace(" ", "")}`}>
                     {
@@ -36,7 +36,7 @@ const AppNavDrawer = () => {
             </div>
             <div className="offcanvas-body m-0 m-0">
                 <div className="app-nav-drawer-list my-3">
-                    <Link to="/" className="drawer-item drawer-item-link fw-bold p-3" data-bs-dismiss="offcanvas">Home <FontAwesomeIcon icon={["fas", "home"]} className="ms-2"/></Link>
+                    <Link to="/" className="drawer-item drawer-item-link fw-bold p-3" data-bs-dismiss="offcanvas">Home <FaIcon icon={["fas", "home"]} className="ms-2"/></Link>
                 {
                     generateDrawerDropdowns(AppNavRoutes)
                 }
