@@ -1,6 +1,6 @@
 import React from "react";
 import {renderWithRouter} from "@test-utils";
-import {Landing} from "@pages/Landing";
+import Landing from "@pages/Landing";
 import {RenderResult} from "@testing-library/react";
 
 describe("Landing", () => {

@@ -1,5 +1,5 @@
 import React from "react";
-import {LandingStart} from "@components/LandingStart";
+import LandingStart from "@components/LandingStart";
 
 /**
  * <strong>Page - Landing</strong>
@@ -14,9 +14,11 @@ export const Landing = () => {
         <div className="container-fluid">
             <LandingStart learnMoreHref="#learn-more"/>
             <a id="learn-more"/>
-            <div className="d-flex justify-content-center align-items-center vh-100">
+            <div className="d-flex justify-content-center align-items-center vh-100 bg-light">
                 <h1 className="display-1">Hello, world!</h1>
             </div>
         </div>
     );
 };
+
+export default Landing;

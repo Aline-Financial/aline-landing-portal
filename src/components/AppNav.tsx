@@ -3,10 +3,10 @@ import AppNavRoutes from "@src/appNavRoutes";
 import {Link} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import logo from "@images/logo.svg";
-import {AppNavDrawer} from "@components/AppNavDrawer";
-import {AppNavDropdown} from "@components/AppNavDropdown";
+import AppNavDrawer from "@components/AppNavDrawer";
+import AppNavDropdown from "@components/AppNavDropdown";
 
-export const AppNav = () => {
+const AppNav = () => {
 
     return (
         <div className="fixed-top">
@@ -43,3 +43,5 @@ export const AppNav = () => {
         </div>
     );
 };
+
+export default AppNav;

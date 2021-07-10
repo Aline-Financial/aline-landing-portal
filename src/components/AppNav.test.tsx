@@ -1,6 +1,6 @@
 import React from "react";
 import {renderWithRouter} from "@test-utils";
-import {AppNav} from "./AppNav";
+import AppNav from "./AppNav";
 
 describe("AppNav", () => {
     describe("NavBrandLink", () => {

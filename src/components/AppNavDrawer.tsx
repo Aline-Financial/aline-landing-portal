@@ -5,7 +5,7 @@ import AppNavRoutes from "@src/appNavRoutes";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {AppNavDropdownProps} from "@interfaces";
 
-export const AppNavDrawer = () => {
+const AppNavDrawer = () => {
 
     const generateDrawerDropdowns = (routes: AppNavDropdownProps[]) => {
         return routes.map(dropdown => (
@@ -57,3 +57,5 @@ export const AppNavDrawer = () => {
         </div>
     );
 };
+
+export default AppNavDrawer;

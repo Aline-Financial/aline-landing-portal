@@ -6,7 +6,7 @@ import {Link} from "react-router-dom";
  * <p>Page to display a not found message.</p>
  * <p><em>This component uses a {@link Link}. Refer to it's documentation.</em></p>
  */
-export const NotFound = () => {
+const NotFound = () => {
     return (
         <div className="container">
             <div className="bg-light m-5 p-5 rounded">
@@ -19,3 +19,5 @@ export const NotFound = () => {
         </div>
     );
 };
+
+export default NotFound;

@@ -3,9 +3,9 @@ import "bootstrap/dist/js/bootstrap.bundle.min";
 import {library} from "@fortawesome/fontawesome-svg-core";
 import React from "react";
 import {IconsConfig} from "@config/icons.config";
-import {AppRouter} from "./AppRouter";
+import AppRouter from "./AppRouter";
 
-export const App = () => {
+const App = () => {
 
     IconsConfig.icons.forEach(icon => library.add(icon));
 
@@ -15,3 +15,5 @@ export const App = () => {
         </div>
     );
 };
+
+export default App;

@@ -1,7 +1,7 @@
 import React, {ChangeEvent, FormEvent, useState} from "react";
 import {useHistory} from "react-router";
 
-export const LandingStartForm = () => {
+const LandingStartForm = () => {
 
     const [email, setEmail] = useState("");
     const history = useHistory();
@@ -29,3 +29,5 @@ export const LandingStartForm = () => {
         </form>
     );
 };
+
+export default LandingStartForm;

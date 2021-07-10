@@ -2,7 +2,7 @@ import React from "react";
 import {Link} from "react-router-dom";
 import {AppNavDropdownProps} from "@interfaces";
 
-export const AppNavDropdown = (dropdown: AppNavDropdownProps) => {
+const AppNavDropdown = (dropdown: AppNavDropdownProps) => {
 
     return (
         <li className="nav-item dropdown mx-2">
@@ -28,3 +28,5 @@ export const AppNavDropdown = (dropdown: AppNavDropdownProps) => {
     );
 
 };
+
+export default AppNavDropdown;
