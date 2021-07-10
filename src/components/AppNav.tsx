@@ -1,5 +1,5 @@
 import React from "react";
-import AppNavRoutes from "@src/appNavRoutes";
+import AppNavRoutes from "@src/app-nav-routes";
 import {Link} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import logo from "@images/logo.svg";

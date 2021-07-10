@@ -1,7 +1,7 @@
 import React from "react";
 import "./AppNavDrawer.sass";
 import {Link} from "react-router-dom";
-import AppNavRoutes from "@src/appNavRoutes";
+import AppNavRoutes from "@src/app-nav-routes";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {AppNavDropdownProps} from "@interfaces";
 
