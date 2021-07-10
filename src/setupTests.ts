@@ -9,3 +9,6 @@ import {IconsConfig} from "@config/icons.config";
 import {library} from "@fortawesome/fontawesome-svg-core";
 
 IconsConfig.icons.forEach(icon => library.add(icon));
+
+const { getComputedStyle } = window;
+window.getComputedStyle = (elt) => getComputedStyle(elt);

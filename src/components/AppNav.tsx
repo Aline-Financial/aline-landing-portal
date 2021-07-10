@@ -31,7 +31,7 @@ class AppNav extends Component<any, {scrolled: boolean}> {
     render() {
         return (
             <div className="fixed-top">
-                <div className={`app-navbar navbar navbar-expand-lg navbar-dark bg-dark py-3 ${this.state.scrolled ? "nav-shadow" : ""}`}>
+                <div aria-label="navigation" className={`app-navbar navbar navbar-expand-lg navbar-dark bg-dark py-3 ${this.state.scrolled ? "nav-shadow" : ""}`}>
                     <div className="container">
                         <div className="navbar-nav d-inline-flex d-lg-none">
                             <button className="btn btn-outline-light"

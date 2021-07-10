@@ -1,10 +1,27 @@
 import React from "react";
 import {renderWithRouter} from "@test-utils";
 import AppNav from "./AppNav";
+import {fireEvent} from "@testing-library/react";
 
 describe("AppNav", () => {
+    const { getByText, getAllByText, getByLabelText } = renderWithRouter(<AppNav/>);
+
+    const appNav = getByLabelText(/navigation/i);
+
+    it("should be in the document", () => {
+        expect(appNav).toBeInTheDocument();
+    });
+
+    it("should have a drop shadow pseudo element with opacity of 0 when scrollTop is less than 75", () => {
+        fireEvent.scroll(window, {
+            scrollY: 75
+        });
+        const afterEl = window.getComputedStyle(appNav, ":after");
+        console.log(afterEl);
+        console.log(window.scrollY);
+    });
+
     describe("NavBrandLink", () => {
-        const { getByText } = renderWithRouter(<AppNav/>);
         const appLink = getByText((content) => {
             return content.includes("Aline") && content.includes("Financial");
         });
@@ -31,7 +48,6 @@ describe("AppNav", () => {
     });
 
     describe("Buttons", () => {
-        const {getAllByText} = renderWithRouter(<AppNav/>);
         const loginButtons = getAllByText(/Log In/i);
         const signUpButtons = getAllByText(/Sign Up/i);
 
