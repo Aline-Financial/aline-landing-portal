@@ -17,8 +17,8 @@
       "@test-utils": [
         "./utils/test.utils"
       ],
-      "@interfaces/*": [
-        "./interfaces/*"
+      "@interfaces": [
+        "./interfaces"
       ],
       "@pages/*": [
         "./pages/*"

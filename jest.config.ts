@@ -27,7 +27,7 @@ const config: Config.InitialOptions = {
         "^@images(.*)$": "<rootDir>/src/assets/images$1",
         "^@components(.*)$": "<rootDir>/src/components$1",
         "^@config(.*)$": "<rootDir>/src/config$1",
-        "^@interfaces(.*)$": "<rootDir>/src/interfaces$1",
+        "^@interfaces$": "<rootDir>/src/interfaces",
         "^@pages(.*)$": "<rootDir>/src/pages$1"
     },
     setupFilesAfterEnv: [

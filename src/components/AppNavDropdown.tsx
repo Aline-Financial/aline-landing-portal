@@ -1,6 +1,11 @@
 import React, {Component} from "react";
 import { Link } from "react-router-dom";
-import {AppNavDropdownProps} from "@interfaces/AppNavDropdownProps";
+import {AppNavRoute} from "@interfaces";
+
+interface AppNavDropdownProps {
+    label: string;
+    routes: AppNavRoute[];
+}
 
 export class AppNavDropdown extends Component<AppNavDropdownProps, any> {
 
