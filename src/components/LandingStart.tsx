@@ -15,7 +15,7 @@ const LandingStart = (props: {learnMoreHref: string}) => {
 
     const mainText = (
         <div>
-            <h1 className="h3 fw-bold">Keep Your <span className="text-primary">Money With You</span></h1>
+            <h1 className="h1 fw-bold">Keep Your <span className="text-primary">Money With You</span></h1>
             <p className="lead">Your money <span className="text-primary">belongs in your pocket</span>. Just like your bank. Apply for an account today!</p>
         </div>
     );
