@@ -1,12 +1,18 @@
-import React, {Component} from "react";
+import React from "react";
 import {LandingStart} from "@components/LandingStart";
 
-export class Landing extends Component {
-    render() {
-        return (
-            <div className="container-fluid">
-                <LandingStart/>
-            </div>
-        );
-    }
-}
+/**
+ * <strong>Page - Landing</strong>
+ * <p>Component that represents the home page.</p>
+ * <p>Using Components:</p>
+ * <ul>
+ *     <li>{@link LandingStart}</li>
+ * </ul>
+ */
+export const Landing = () => {
+    return (
+        <div className="container-fluid">
+            <LandingStart/>
+        </div>
+    );
+};

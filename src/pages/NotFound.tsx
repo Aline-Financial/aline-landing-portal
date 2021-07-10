@@ -1,6 +1,11 @@
 import React, {Component} from "react";
 import {Link} from "react-router-dom";
 
+/**
+ * <strong>Page - Not Found</strong>
+ * <p>Page to display a not found message.</p>
+ * <p><em>This component uses a {@link Link}. Refer to it's documentation.</em></p>
+ */
 export class NotFound extends Component {
     render() {
         return (
