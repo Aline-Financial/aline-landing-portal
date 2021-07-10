@@ -26,7 +26,7 @@ export const LandingStart = () => {
 
     return (
         <div className="container container-fullscreen position-relative">
-            <div className="row justify-content-center align-items-baseline col-">
+            <div className="row justify-content-center align-items-baseline">
                 <div className="col-lg-4 col-12 order-lg-0 order-1">
                     {mainText()}
                     <LandingStartForm/>

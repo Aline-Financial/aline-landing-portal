@@ -17,21 +17,14 @@ export const LandingStartForm = () => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <div className="row">
-                <div className="col-lg-7 col-12">
-                    <div className="form-floating">
-                        <input id="email-get-started"
-                               name="email"
-                               type="text"
-                               className="form-control"
-                               onChange={handleChange}
-                               placeholder="Enter Your Email"/>
-                        <label htmlFor="email-get-started">Enter Your Email</label>
-                    </div>
-                </div>
-                <div className="col-lg-5 col-12 my-auto">
-                    <button className="btn btn-primary btn-lg" type="submit">Get Started</button>
-                </div>
+            <div className="input-group">
+                <input id="email-get-started"
+                       name="email"
+                       type="text"
+                       className="form-control"
+                       onChange={handleChange}
+                       placeholder="Enter Your Email"/>
+                <button className="btn btn-primary" type="submit">Get Started</button>
             </div>
         </form>
     );
