@@ -16,6 +16,11 @@
       <option name="FORCE_SEMICOLON_STYLE" value="true" />
       <option name="FORCE_QUOTE_STYlE" value="true" />
     </TypeScriptCodeStyleSettings>
+    <codeStyleSettings language="HTML">
+      <indentOptions>
+        <option name="CONTINUATION_INDENT_SIZE" value="4" />
+      </indentOptions>
+    </codeStyleSettings>
     <codeStyleSettings language="kotlin">
       <option name="CALL_PARAMETERS_WRAP" value="5" />
       <option name="CALL_PARAMETERS_LPAREN_ON_NEXT_LINE" value="true" />
