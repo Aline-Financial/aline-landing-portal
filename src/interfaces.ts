@@ -1,8 +1,4 @@
-export interface AppNavRoute {
+export type AppNavRoute = {
     label: string;
     route: string;
-}
-
-export interface TestInterface {
-    num: number;
 }
