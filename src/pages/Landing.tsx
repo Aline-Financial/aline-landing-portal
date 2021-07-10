@@ -12,7 +12,11 @@ import {LandingStart} from "@components/LandingStart";
 export const Landing = () => {
     return (
         <div className="container-fluid">
-            <LandingStart/>
+            <LandingStart learnMoreHref="#learn-more"/>
+            <a id="learn-more"/>
+            <div className="d-flex justify-content-center align-items-center vh-100">
+                <h1 className="display-1">Hello, world!</h1>
+            </div>
         </div>
     );
 };

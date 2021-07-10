@@ -5,7 +5,7 @@ import cardAndPhone from "@images/card_and_phone.png";
 import {LandingStartForm} from "@components/LandingStartForm";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export const LandingStart = () => {
+export const LandingStart = (props: {learnMoreHref: string}) => {
 
     const mainGraphic = () => {
         return (
@@ -37,7 +37,7 @@ export const LandingStart = () => {
                 </div>
             </div>
             <div className="position-absolute bottom-0 text-center w-100 d-lg-block d-none">
-                    <a href="#"
+                    <a href={props.learnMoreHref}
                        className="d-inline-block link-primary text-decoration-none fs-5 my-3 animate__animated animate__shakeY animate__infinite animate__slowest">
                         Learn More
                         <br/>
