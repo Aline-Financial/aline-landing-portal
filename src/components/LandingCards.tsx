@@ -1,4 +1,5 @@
 import React from "react";
+import LandingCardsData from "@data/landing-cards.data";
 
 const LandingCards = () => {
     return (
