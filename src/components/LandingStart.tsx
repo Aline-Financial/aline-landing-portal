@@ -33,7 +33,7 @@ const LandingStart = (props: {learnMoreHref: string}) => {
 
     return (
         <div className="container container-fullscreen position-relative">
-            <div className="row justify-content-center align-items-baseline col-lg-10 col-sm-8 mx-auto">
+            <div className="row justify-content-center align-items-baseline col-lg-10 col-sm-8 mx-auto pt-5">
                 <div className="col-lg-4 col-12 order-lg-0 order-1">
                     {mainText}
                     <LandingStartForm/>

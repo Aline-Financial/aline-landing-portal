@@ -4,6 +4,7 @@ import LandingStart from "@components/LandingStart";
 import LandingCards from "@components/LandingCards";
 import LandingSection from "@components/LandingSection";
 import landingSectionsData from "@data/landing-sections.data";
+import Footer from "@components/Footer";
 
 /**
  * <strong>Page - Landing</strong>
@@ -29,7 +30,7 @@ export const Landing = () => {
     return (
         <div className="container-fluid">
             <LandingStart learnMoreHref="#learn-more"/>
-            <a id="learn-more"/>
+            <a id="learn-more" className="d-inline-block pt-5"/>
             <LandingCards/>
             <LandingSection image={creditCardData.image}
                             title={creditCardData.title}

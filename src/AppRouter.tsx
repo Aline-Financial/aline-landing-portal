@@ -4,6 +4,7 @@ import Landing from "@pages/Landing";
 import NotFound from "@pages/NotFound";
 import AppNav from "@components/AppNav";
 import SignUp from "@pages/SignUp";
+import Footer from "@components/Footer";
 
 const AppRouter = () => {
 
@@ -24,6 +25,7 @@ const AppRouter = () => {
                     <Route component={NotFound}/>
                 </Switch>
             </div>
+            <Footer/>
         </Router>
     );
 };
