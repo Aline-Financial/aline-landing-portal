@@ -1,16 +1,7 @@
 import React, {ReactFragment} from "react";
 import "./LandingSection.sass";
 import {Link} from "react-router-dom";
-
-type LandingSectionProps = {
-    image: string;
-    title: ReactFragment;
-    body: ReactFragment;
-    buttonText: string;
-    buttonRoute: string;
-    align: "start" | "end";
-    light?: boolean;
-};
+import {LandingSectionProps} from "@interfaces";
 
 const LandingSection = (props: LandingSectionProps) => {
     const {image, title, body, buttonText, buttonRoute, align, light} = props;

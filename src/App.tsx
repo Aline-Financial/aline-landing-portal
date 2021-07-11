@@ -1,4 +1,3 @@
-import "animate.css/animate.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import {library} from "@fortawesome/fontawesome-svg-core";
 import React from "react";

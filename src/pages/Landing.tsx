@@ -1,8 +1,9 @@
 import React from "react";
-import creditCard from "@images/credit_card.png";
+import smoothstackImg from "@images/smoothstack-black.png";
 import LandingStart from "@components/LandingStart";
 import LandingCards from "@components/LandingCards";
 import LandingSection from "@components/LandingSection";
+import landingSectionsData from "@data/landing-sections.data";
 
 /**
  * <strong>Page - Landing</strong>
@@ -10,31 +11,41 @@ import LandingSection from "@components/LandingSection";
  * <p>Using Components:</p>
  * <ul>
  *     <li>{@link LandingStart}</li>
+ *     <li>{@link LandingCards}</li>
+ *     <li>{@link LandingSection}</li>
  * </ul>
  */
 export const Landing = () => {
 
-    const platinumCardTitle = <>Get Approved for <span className="text-primary">Platinum</span></>;
-    const platinumCardBody = <>Apply for a checking account today and get approved for an <span className="text-primary fw-bold">Aline Financial Platinum</span> credit card with <span className="text-primary">APR as low as 3%.</span></>;
+    const [creditCardData, safePocketData] = landingSectionsData;
+    const smoothstackSection = <div className="container-fluid bg-light">
+        <div className="container d-flex flex-row justify-content-center align-items-center">
+            <div className="py-5 opacity-25">
+                <img draggable="false" src={smoothstackImg} alt="Smoothstack" className="img-fluid"/>
+            </div>
+        </div>
+    </div>;
 
     return (
         <div className="container-fluid">
             <LandingStart learnMoreHref="#learn-more"/>
             <a id="learn-more"/>
             <LandingCards/>
-            <LandingSection image={creditCard}
-                            title={platinumCardTitle}
-                            body={platinumCardBody}
-                            buttonText="Get Started"
-                            buttonRoute="/signup"
-                            align="start"/>
-            <LandingSection image={creditCard}
-                            title={platinumCardTitle}
-                            body={platinumCardBody}
-                            buttonText="Get Started"
-                            buttonRoute="/signup"
-                            align="end"
-                            light/>
+            <LandingSection image={creditCardData.image}
+                            title={creditCardData.title}
+                            body={creditCardData.body}
+                            buttonText={creditCardData.buttonText}
+                            buttonRoute={creditCardData.buttonRoute}
+                            align={creditCardData.align}
+                            key={creditCardData.buttonText.replace(/\s/g, "")}/>
+            {smoothstackSection}
+            <LandingSection image={safePocketData.image}
+                            title={safePocketData.title}
+                            body={safePocketData.body}
+                            buttonText={safePocketData.buttonText}
+                            buttonRoute={safePocketData.buttonRoute}
+                            align={safePocketData.align}
+                            key={safePocketData.buttonText.replace(/\s/g, "")}/>
         </div>
     );
 };
