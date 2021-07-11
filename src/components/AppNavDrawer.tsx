@@ -44,9 +44,9 @@ const AppNavDrawer = () => {
             </div>
             <div className="row row-cols-2 p-4">
                 <div className="col">
-                    <a href={`${process.env.REACT_APP_MEMBER_DASHBOARD_URL}/login`}>
+                    <Link to="/login">
                         <button className="btn btn-outline-light w-100">Log In</button>
-                    </a>
+                    </Link>
                 </div>
                 <div className="col">
                     <Link to={"/signup"}>

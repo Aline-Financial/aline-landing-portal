@@ -26,8 +26,8 @@ const landingCardsData: LandingCardData[] = [
         icon: ["fas", "cogs"],
         title: "Manage Your Accounts. Anywhere. Anytime.",
         description: "Deposit. Withdraw. Freeze. Manage your accounts from anywhere 24/7.",
-        buttonText: "Bank With Us",
-        buttonRoute: "/signup"
+        buttonText: "Dashboard",
+        buttonRoute: "/login"
     }
 ];
 

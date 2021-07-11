@@ -59,9 +59,9 @@ class AppNav extends Component<any, {scrolled: boolean}> {
                                 <AppNavDropdown key={`dropdownMenu${dropdown.label.replace(/\s/g, "")}`} label={dropdown.label} routes={dropdown.routes}/>
                             ))}
                             <li key="login" className="nav-item mx-2">
-                                <a href={`${process.env.REACT_APP_MEMBER_DASHBOARD_URL}/login`}>
+                                <Link to="/login">
                                     <button className="btn btn-outline-light rounded-pill">Log In</button>
-                                </a>
+                                </Link>
                             </li>
                             <li key="signup" className="nav-item mx-2">
                                 <Link to={"/signup"}>
