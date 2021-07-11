@@ -9,6 +9,7 @@ import {
     faPenAlt,
     faSignInAlt
 } from "@fortawesome/free-solid-svg-icons";
+import {faConfluence, faGithub, faJira} from "@fortawesome/free-brands-svg-icons";
 
 
 export const IconsConfig = {
@@ -21,6 +22,9 @@ export const IconsConfig = {
         faMapMarkedAlt,
         faLock,
         faMoneyBillWave,
-        faCogs
+        faCogs,
+        faGithub,
+        faConfluence,
+        faJira
     ]
 };
