@@ -27,8 +27,14 @@ export const Landing = () => {
                             body={platinumCardBody}
                             buttonText="Get Started"
                             buttonRoute="/signup"
-                            align="start"
-                            light={false}/>
+                            align="start"/>
+            <LandingSection image={creditCard}
+                            title={platinumCardTitle}
+                            body={platinumCardBody}
+                            buttonText="Get Started"
+                            buttonRoute="/signup"
+                            align="end"
+                            light/>
         </div>
     );
 };

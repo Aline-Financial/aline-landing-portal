@@ -9,7 +9,7 @@ type LandingSectionProps = {
     buttonText: string;
     buttonRoute: string;
     align: "start" | "end";
-    light: boolean;
+    light?: boolean;
 };
 
 const LandingSection = (props: LandingSectionProps) => {
@@ -18,7 +18,7 @@ const LandingSection = (props: LandingSectionProps) => {
         <div className={`container-fluid ${light ? "bg-light " : " "}py-section`}>
             <div className="container">
                 <div className="row row-cols-1 row-cols-md-2">
-                    <div className={`col ${align == "end" ? "order-md-1" : ""}`}>
+                    <div className={`col ${align == "end" ? "order-md-1" : ""} text-md-${align}`}>
                         <img draggable={false} src={image} className="img-fluid" alt={image}/>
                     </div>
                     <div className={`col ${align == "end" ? "order-md-0" : ""} text-md-${align == "end" ? "start" : "end"} text-start mt-5 mt-md-0`}>
