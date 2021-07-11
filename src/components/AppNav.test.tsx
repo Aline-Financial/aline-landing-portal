@@ -1,37 +1,15 @@
 import React from "react";
 import {renderWithRouter} from "@test-utils";
 import AppNav from "./AppNav";
-import {fireEvent} from "@testing-library/react";
+
+const {getByText, getAllByText, getByLabelText} = renderWithRouter(<AppNav/>);
 
 describe("AppNav", () => {
-    const { getByText, getAllByText, getByLabelText } = renderWithRouter(<AppNav/>);
 
     const appNav = getByLabelText(/navigation/i);
 
     it("should be in the document", () => {
         expect(appNav).toBeInTheDocument();
-    });
-
-    it("should not have nav-shadow as class if window scroll is less than 75", () => {
-        Array.from(Array(74).keys()).forEach(scrollY => {
-            fireEvent.scroll(window, {
-                target: {
-                    scrollY
-                }
-            });
-            expect(appNav.classList.contains("nav-shadow")).toBe(false);
-        });
-    });
-
-    it("should have nav-shadow as class if window scroll is more than or equal to 75", () => {
-        Array.from(Array(100).keys()).map(i => i + 75).forEach(scrollY => {
-            fireEvent.scroll(window, {
-                target: {
-                    scrollY
-                }
-            });
-            expect(appNav.classList.contains("nav-shadow")).toBe(true);
-        });
     });
 
     describe("NavBrandLink", () => {

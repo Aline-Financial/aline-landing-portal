@@ -9,6 +9,8 @@ import AppNavDropdown from "@components/AppNavDropdown";
 
 class AppNav extends Component<any, {scrolled: boolean}> {
 
+    mounted = false;
+
     constructor(props: any) {
         super(props);
         this.state = {
@@ -19,13 +21,22 @@ class AppNav extends Component<any, {scrolled: boolean}> {
 
     onScroll() {
         const scrollY = window.scrollY;
-        this.setState({
-            scrolled: scrollY >= 75
-        });
+        if (this.mounted)
+            this.setState({
+                scrolled: scrollY >= 75
+            });
     }
 
     componentDidMount() {
+        this.mounted = true;
+        this.setState({
+            scrolled: false
+        });
         window.addEventListener("scroll", this.onScroll);
+    }
+
+    componentWillUnmount() {
+        this.mounted = false;
     }
 
     render() {
