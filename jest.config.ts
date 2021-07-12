@@ -29,7 +29,8 @@ const config: Config.InitialOptions = {
         "^@config(.*)$": "<rootDir>/src/config$1",
         "^@interfaces$": "<rootDir>/src/interfaces",
         "^@pages(.*)$": "<rootDir>/src/pages$1",
-        "^@data(.*)$": "<rootDir>/src/data$1"
+        "^@data(.*)$": "<rootDir>/src/data$1",
+        "^@styles(.*)$": "<rootDir>/src/styles$1"
     },
     setupFilesAfterEnv: [
         "<rootDir>/src/setupTests.ts"
