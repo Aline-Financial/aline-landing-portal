@@ -1,5 +1,5 @@
 import React from "react";
-import "./AppNavDrawer.sass";
+import "@styles/AppNavDrawer.sass";
 import {Link} from "react-router-dom";
 import AppNavRoutes from "@src/app-nav-routes";
 import {FontAwesomeIcon as FaIcon} from "@fortawesome/react-fontawesome";
