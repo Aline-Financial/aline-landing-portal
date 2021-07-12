@@ -4,7 +4,6 @@ import LandingStart from "@components/LandingStart";
 import LandingCards from "@components/LandingCards";
 import LandingSection from "@components/LandingSection";
 import landingSectionsData from "@data/landing-sections.data";
-import Footer from "@components/Footer";
 
 /**
  * <strong>Page - Landing</strong>
