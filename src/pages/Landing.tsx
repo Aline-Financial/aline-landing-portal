@@ -3,7 +3,7 @@ import smoothstackImg from "@images/smoothstack-black.png";
 import LandingStart from "@components/LandingStart";
 import LandingCards from "@components/LandingCards";
 import LandingSection from "@components/LandingSection";
-import {signUpFormSchema} from "@schemas";
+import {SignUpFormValidationSchema} from "@schemas";
 import landingSectionsData from "@data/landing-sections.data";
 
 /**

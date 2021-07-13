@@ -28,3 +28,51 @@ export type LandingSectionProps = {
     align: "start" | "end";
     light?: boolean;
 };
+
+export type SignUpFormSchema = {
+    applicationType: number,
+    email: string,
+    firstName: string,
+    lastName: string,
+    middleName: string | null,
+    gender: "Male" | "Female" | "Other",
+    dateOfBirth: string | Date,
+    address: string,
+    city: string,
+    state: string,
+    zipcode: string,
+    sameAsBilling: boolean,
+    mailingAddress: string,
+    mailingCity: string,
+    mailingState: string,
+    mailingZipcode: string,
+    driversLicense: string,
+    socialSecurity: string,
+    incomeFrequency: string,
+    income: number,
+    initialDeposit: number
+};
+
+export type SignUpFormTestingSchema = {
+    applicationType: number | any,
+    email: string | any,
+    firstName: string | any,
+    lastName: string | any,
+    middleName: string | any,
+    gender: "Male" | "Female" | "Other" | any,
+    dateOfBirth: string | Date | any,
+    address: string | any,
+    city: string | any,
+    state: string | any,
+    zipcode: string | any,
+    sameAsBilling: boolean | any,
+    mailingAddress: string | any,
+    mailingCity: string | any,
+    mailingState: string | any,
+    mailingZipcode: string | any,
+    driversLicense: string | any,
+    socialSecurity: string | any,
+    incomeFrequency: string | any,
+    income: number | any,
+    initialDeposit: number | any
+};

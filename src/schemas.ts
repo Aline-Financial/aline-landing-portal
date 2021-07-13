@@ -3,7 +3,7 @@ import * as yup from "yup";
 const minAgeDate = new Date();
 minAgeDate.setFullYear(minAgeDate.getFullYear() - 18);
 
-export const signUpFormSchema = yup.object().shape({
+export const SignUpFormValidationSchema = yup.object().shape({
 
     applicationType: yup.number()
         .label("Application Type")
@@ -24,6 +24,7 @@ export const signUpFormSchema = yup.object().shape({
     middleName: yup.string()
         .label("Middle Name")
         .matches(/^[aA-zZ\s-]+$/, err => `${err.value} is not a valid name.`)
+        .nullable()
         .notRequired(),
 
     lastName: yup.string()
@@ -63,7 +64,7 @@ export const signUpFormSchema = yup.object().shape({
             err => `${err.value} is not a valid zipcode.`),
 
     sameAsBilling: yup.boolean()
-        .default(false)
+        .default(true)
         .required("Please select an option."),
 
     mailingAddress: yup.string()
@@ -116,6 +117,12 @@ export const signUpFormSchema = yup.object().shape({
 
     income: yup.number()
         .label("Income")
-        .required("Income is required.")
+        .positive("Cannot have negative income.")
+        .required("Income is required."),
+
+    initialDeposit: yup.number()
+        .positive("Cannot have a negative deposit.")
+        .label("Initial Deposit")
+        .required("An initial deposit is required.")
 
 });
