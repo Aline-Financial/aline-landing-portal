@@ -20,6 +20,9 @@
       "@interfaces": [
         "./interfaces"
       ],
+      "@props": [
+        "./props"
+      ],
       "@pages/*": [
         "./pages/*"
       ],

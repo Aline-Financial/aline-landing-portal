@@ -1,7 +1,13 @@
 import React, {Component} from "react";
-import {SignUpFormValidationSchema} from "@schemas";
+import {SignUpFormProps} from "@props";
 
-class SignUpForm extends Component<any, {step: number}> {
+
+class SignUpForm extends Component<SignUpFormProps, any> {
+
+    constructor(props: SignUpFormProps) {
+        super(props);
+
+    }
 
     render() {
         return (

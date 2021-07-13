@@ -3,7 +3,7 @@ import "@styles/AppNavDrawer.sass";
 import {Link} from "react-router-dom";
 import AppNavRoutes from "@src/app-nav-routes";
 import {FontAwesomeIcon as FaIcon} from "@fortawesome/react-fontawesome";
-import {AppNavDropdownProps} from "@interfaces";
+import {AppNavDropdownProps} from "@props";
 
 const AppNavDrawer = () => {
 

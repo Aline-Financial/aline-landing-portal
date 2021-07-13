@@ -1,6 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import {AppNavDropdownProps} from "@interfaces";
+import {AppNavDropdownProps} from "@props";
 
 const AppNavDropdown = (dropdown: AppNavDropdownProps) => {
 

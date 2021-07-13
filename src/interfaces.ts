@@ -6,10 +6,6 @@ export type AppNavRoute = {
     route: string;
 };
 
-export type AppNavDropdownProps = {
-    label: string;
-    routes: AppNavRoute[];
-};
 
 export type LandingCardData = {
     icon: IconProp;
@@ -19,24 +15,15 @@ export type LandingCardData = {
     buttonRoute: string;
 };
 
-export type LandingSectionProps = {
-    image: string;
-    title: ReactFragment;
-    body: ReactFragment;
-    buttonText: string;
-    buttonRoute: string;
-    align: "start" | "end";
-    light?: boolean;
-};
 
 export type SignUpFormSchema = {
     applicationType: number,
     email: string,
     firstName: string,
     lastName: string,
-    middleName: string | null,
-    gender: "Male" | "Female" | "Other",
-    dateOfBirth: string | Date,
+    middleName: string | undefined,
+    gender: "Male" | "Female" | "Other" | undefined,
+    dateOfBirth: string | Date | undefined,
     address: string,
     city: string,
     state: string,
