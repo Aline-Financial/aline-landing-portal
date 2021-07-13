@@ -1,7 +1,7 @@
 import {SignUpFormValidationSchema as schema} from "@schemas";
 import {SignUpFormSchema, SignUpFormTestingSchema} from "@interfaces";
 import {BaseSchema} from "yup";
-import {expectValid, expectInvalid} from "@test-utils";
+import {expectInvalid, expectValid} from "@test-utils";
 
 describe("Sign Up Form Validation Schema", () => {
 
@@ -318,5 +318,128 @@ describe("Sign Up Form Validation Schema", () => {
 
     });
 
+    describe("Address", () => {
+
+        let modifiedForm: SignUpFormTestingSchema;
+
+        beforeEach(() => {
+            modifiedForm = {...correctForm};
+        });
+
+        it("should be valid with a street address format", () => {
+            modifiedForm.address = "123 Address St.";
+            expectValid(modifiedForm);
+        });
+
+        it("should be valid with an apartment address", () => {
+            modifiedForm.address = "123 Address St. Apt. 25";
+            expectValid(modifiedForm);
+        });
+
+        it("should be valid with a PO Box", () => {
+            modifiedForm.address = "PO Box 1234";
+            expectValid(modifiedForm);
+        });
+
+        it("should be invalid with a street address without number", () => {
+            modifiedForm.address = "Address St.";
+            expectInvalid(modifiedForm);
+        });
+
+        it("should be invalid with an apartment address with no apartment number", () => {
+            modifiedForm.address = "123 Address Ave. Apt. ";
+            expectInvalid(modifiedForm);
+        });
+
+    });
+
+    describe("Zipcode", () => {
+
+        let modifiedForm: SignUpFormTestingSchema;
+
+        beforeEach(() => {
+            modifiedForm = {...correctForm};
+        });
+
+        it("should be valid if in 5 digit format", () => {
+            modifiedForm.zipcode = "12345";
+            expectValid(modifiedForm);
+        });
+
+        it("should be valid if in +4 format", () => {
+            modifiedForm.zipcode = "12345-1234";
+            expectValid(modifiedForm);
+        });
+
+        it("should be invalid if less than 5 digits", () => {
+            modifiedForm.zipcode = "1234";
+            expectInvalid(modifiedForm);
+        });
+
+        it("should be invalid if less than 4 digits in plus 4 section", () => {
+            modifiedForm.zipcode = "12345-123";
+            expectInvalid(modifiedForm);
+        });
+
+        it("should be invalid if there is no dash between +4 format", () => {
+            modifiedForm.zipcode = "12345 1234";
+            expectInvalid(modifiedForm);
+        });
+
+        it("should be invalid if more than 5 digits", () => {
+            modifiedForm.zipcode = "123456";
+            expectInvalid(modifiedForm);
+        });
+
+        it("should be invalid if there are no digits", () => {
+            modifiedForm.zipcode = "zipcode";
+            expectInvalid(modifiedForm);
+        });
+
+    });
+
+    describe("Income and Initial Deposit", () => {
+        let modifiedForm: SignUpFormTestingSchema;
+
+        beforeEach(() => {
+            modifiedForm = {...correctForm};
+        });
+
+        it("should be valid if Annually, Monthly, Bi-Weekly, Weekly, or Hourly", () => {
+            ["Annually", "Monthly", "Bi-Weekly", "Weekly", "Hourly"]
+                .forEach(frequency => {
+                    modifiedForm.incomeFrequency = frequency;
+                    expectValid(modifiedForm);
+                });
+        });
+
+        it("should be invalid if not Annually, Monthly, Bi-Weekly, Weekly, or Hourly", () => {
+            ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
+                .forEach(frequency => {
+                    modifiedForm.incomeFrequency = frequency;
+                    expectInvalid(modifiedForm);
+                });
+        });
+
+        it("should be invalid if initial deposit is negative", () => {
+            modifiedForm.initialDeposit = -500;
+            expectInvalid(modifiedForm);
+        });
+
+        it("should be valid if initial deposit is positive", () => {
+            modifiedForm.initialDeposit = 500;
+            expectValid(modifiedForm);
+        });
+
+        it("should be valid if income is positive", () => {
+            modifiedForm.income = 100000;
+            expectValid(modifiedForm);
+        });
+
+        it("should be invalid if income is negative", () => {
+            modifiedForm.income = -18000;
+            expectInvalid(modifiedForm);
+        });
+    });
 
 });

@@ -46,7 +46,7 @@ export const SignUpFormValidationSchema = yup.object().shape({
     address: yup.string()
         .label("Address")
         .required("Address is required.")
-        .matches(/(^(PO)|(P\.O\.)|(P\.O)|(PO.))\s(Box)\s[0-9]+$|(^[0-9]+[\s](([A-Za-z\s]+)|([0-9](th|rd|nd|st)))[\s](Ln|St|Ave|Blvd|Dr|Rd|Wy|Pl|Cir|Lane|Street|Avenue|Boulevard|Drive|Road|Way|Place|Circle)\.?)(\s(Apt|Apartment|Unit|Ste|Suite|Trl|Trailer|Lot)?\.?[\s][#]?[\s]?[\d]+)?/,
+        .matches(/(^(PO)|(P\.O\.)|(P\.O)|(PO.))\s(Box)\s[0-9]+$|(^[0-9]+[\s](([A-Za-z\s]+)|([0-9](th|rd|nd|st)))[\s](Ln|St|Ave|Blvd|Dr|Rd|Wy|Pl|Cir|Lane|Street|Avenue|Boulevard|Drive|Road|Way|Place|Circle)\.?)(\s(Apt|Apartment|Unit|Ste|Suite|Trl|Trailer|Lot)?\.?[\s][#]?[\s]?[\d]+$)?$/,
             err => `${err.value} is not a valid address.`),
 
     city: yup.string()
