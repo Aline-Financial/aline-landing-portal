@@ -1,0 +1,16 @@
+.app-navbar
+  &::after
+    z-index: -1
+    content: " "
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    opacity: 0
+    box-shadow: 0 -2px 5px 5px rgba(0, 0, 0, 0.5)
+    transition: opacity 0.3s
+
+  &.nav-shadow
+    &::after
+      opacity: 1
