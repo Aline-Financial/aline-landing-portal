@@ -19,9 +19,9 @@ const config: Config.InitialOptions = {
         "css"
     ],
     moduleNameMapper: {
-        "\\.(css|less|sass|scss)$": "<rootDir>/__mocks__/styleMock.js",
-        "\\.(ttf|eot)$": "<rootDir>/__mocks__/fileMock.js",
-        "\\.(png|jpeg|jpg|svg)$": "<rootDir>/__mocks__/imageMock.js",
+        "\\.(css|less|sass|scss)$": "<rootDir>/mocks/styleMock.js",
+        "\\.(ttf|eot)$": "<rootDir>/mocks/fileMock.js",
+        "\\.(png|jpeg|jpg|svg)$": "<rootDir>/mocks/imageMock.js",
         "^@src(.*)$": "<rootDir>/src$1",
         "^@test-utils$": "<rootDir>/src/utils/test.utils",
         "^@images(.*)$": "<rootDir>/src/assets/images$1",
