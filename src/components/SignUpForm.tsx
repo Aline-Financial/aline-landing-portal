@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import {SignUpFormProps} from "@props";
+import Brand from "@components/Brand";
 
 class SignUpForm extends Component<SignUpFormProps, {step: number}> {
 
@@ -23,10 +24,8 @@ class SignUpForm extends Component<SignUpFormProps, {step: number}> {
 
     render() {
         return (
-            <div>
-                <div>{this.state.step}</div>
-                <button onClick={this.prevStep}>Prev</button>
-                <button onClick={this.nextStep}>Next</button>
+            <div className="container bg-light">
+                <Brand light/>
             </div>
         );
     }
