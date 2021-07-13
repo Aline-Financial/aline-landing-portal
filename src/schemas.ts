@@ -1,7 +1,7 @@
 import * as yup from "yup";
 
 const minAgeDate = new Date();
-minAgeDate.setFullYear(minAgeDate.getFullYear() - 18);
+minAgeDate.setFullYear(minAgeDate.getFullYear() - 17);
 
 export const SignUpFormValidationSchema = yup.object().shape({
 

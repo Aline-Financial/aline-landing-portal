@@ -282,5 +282,41 @@ describe("Sign Up Form Validation Schema", () => {
 
     });
 
+    describe("Date of Birth", () => {
+
+        let modifiedForm: SignUpFormTestingSchema;
+
+        beforeEach(() => {
+            modifiedForm = {...correctForm};
+        });
+
+        it("should be invalid if age is below 18", () => {
+            Array.from(Array(17).keys())
+                .forEach(i => {
+                    const today = new Date();
+                    const birthdate = new Date();
+                    birthdate.setFullYear(birthdate.getFullYear() - i);
+                    modifiedForm.dateOfBirth = birthdate;
+                    const age = today.getFullYear() - birthdate.getFullYear();
+                    expect(age).toBeLessThan(18);
+                    expectInvalid(modifiedForm);
+                });
+        });
+
+        it("should be valid if age is 18 or over", () => {
+            Array.from(Array(25).keys())
+                .forEach(i => {
+                    const today = new Date();
+                    const birthdate = new Date();
+                    birthdate.setFullYear(birthdate.getFullYear() - (i + 18));
+                    modifiedForm.dateOfBirth = birthdate;
+                    const age = today.getFullYear() - birthdate.getFullYear();
+                    expect(age).toBeGreaterThanOrEqual(18);
+                    expectValid(modifiedForm);
+                });
+        });
+
+    });
+
 
 });
