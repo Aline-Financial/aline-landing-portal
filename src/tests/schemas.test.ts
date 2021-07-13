@@ -1,13 +1,7 @@
 import {SignUpFormValidationSchema as schema} from "@schemas";
 import {SignUpFormSchema, SignUpFormTestingSchema} from "@interfaces";
-
-const expectValid = (formSchema: SignUpFormTestingSchema) => {
-    expect(schema.isValidSync(formSchema)).toBe(true);
-};
-
-const expectInvalid = (formSchema: SignUpFormTestingSchema) => {
-    expect(schema.isValidSync(formSchema)).toBe(false);
-};
+import {BaseSchema} from "yup";
+import {expectValid, expectInvalid} from "@test-utils";
 
 describe("Sign Up Form Validation Schema", () => {
 
@@ -35,8 +29,19 @@ describe("Sign Up Form Validation Schema", () => {
         initialDeposit: 25
     };
 
-    test("correct form is valid", () => {
+    test("Correct form is valid", () => {
         expect(schema.isValidSync(correctForm)).toBe(true);
+    });
+
+    test("Form is invalid when at least one required field is null", () => {
+        Object.entries(schema.fields)
+            .filter(entry => (<BaseSchema>entry[1]).spec.presence === "required")
+            .map(entry => entry[0])
+            .forEach(field => {
+                const modifiedForm = <SignUpFormTestingSchema>Object.fromEntries(Object.entries(correctForm)
+                    .map(entry => entry[0] === field ? [field, null] : entry));
+                expectInvalid(modifiedForm);
+            });
     });
 
     describe("Application Type", () => {
@@ -247,36 +252,6 @@ describe("Sign Up Form Validation Schema", () => {
                 });
         });
 
-        it("should be invalid if first name is null", () => {
-            modifiedForm.firstName = null;
-            expectInvalid(modifiedForm);
-        });
-
-        it("should be invalid if first name is undefined", () => {
-            modifiedForm.firstName = undefined;
-            expectInvalid(modifiedForm);
-        });
-
-        it("should be invalid if last name is null", () => {
-            modifiedForm.lastName = null;
-            expectInvalid(modifiedForm);
-        });
-
-        it("should be invalid if last name is undefined", () => {
-            modifiedForm.lastName = undefined;
-            expectInvalid(modifiedForm);
-        });
-
-        it("should be valid if middle name is null", () => {
-            modifiedForm.middleName = null;
-            expectValid(modifiedForm);
-        });
-
-        it("should be valid if middle name is undefined", () => {
-            modifiedForm.middleName = undefined;
-            expectValid(modifiedForm);
-        });
-
     });
 
     describe("Gender", () => {
@@ -303,16 +278,6 @@ describe("Sign Up Form Validation Schema", () => {
                     modifiedForm.gender = item;
                     expectInvalid(modifiedForm);
                 });
-        });
-
-        it("should be invalid if it is null", () => {
-            modifiedForm.gender = null;
-            expectInvalid(modifiedForm);
-        });
-
-        it("should be invalid if it is undefined", () => {
-            modifiedForm.gender = undefined;
-            expectInvalid(modifiedForm);
         });
 
     });
