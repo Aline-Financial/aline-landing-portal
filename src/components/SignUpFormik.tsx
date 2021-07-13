@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import {Form, Formik, FormikValues} from "formik";
 import {SignUpFormSchema} from "@interfaces";
 import {SignUpFormValidationSchema} from "@schemas";
+import SignUpForm from "@components/SignUpForm";
 
 class SignUpFormik extends Component<{email: string}, any> {
 
@@ -42,7 +43,8 @@ class SignUpFormik extends Component<{email: string}, any> {
         return (
             <Formik initialValues={this.initialValues}
                     onSubmit={this.onSubmit}>
-
+                {({errors, touched}) =>
+                    <SignUpForm errors={errors} touched={touched}/>}
             </Formik>
         );
     }
