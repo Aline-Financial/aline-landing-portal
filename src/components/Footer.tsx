@@ -3,7 +3,7 @@ import {FontAwesomeIcon as FaIcon} from "@fortawesome/react-fontawesome";
 
 const Footer = () => {
     return (
-        <div className="container-fluid py-5 bg-light">
+        <div className="container-fluid py-5 bg-light mt-5">
             <div className="container">
                 <div className="row row-cols-1">
                     <div className="col">

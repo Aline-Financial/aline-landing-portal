@@ -32,6 +32,7 @@ const config: Config.InitialOptions = {
         "^@pages(.*)$": "<rootDir>/src/pages$1",
         "^@data(.*)$": "<rootDir>/src/data$1",
         "^@styles(.*)$": "<rootDir>/src/styles$1",
+        "^@modules(.*)$": "<rootDir>/src/modules$1",
         "^@schemas(.*)$": "<rootDir>/src/schemas"
     },
     setupFilesAfterEnv: [

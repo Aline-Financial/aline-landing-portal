@@ -3,12 +3,14 @@ import logo from "@images/logo.svg";
 import logoLight from "@images/logo-light.svg";
 import {Link} from "react-router-dom";
 
-const Brand = (props: {light?: boolean}) => {
+const Brand = ({light, scale}: {light?: boolean, scale?: number}) => {
     return (
-        <Link to="/" className="py-1 ms-1 fs-5 text-decoration-none text-nowrap align-items-center">
+        <Link to="/"
+              className="d-inline-block py-1 ms-1 fs-5 text-decoration-none text-nowrap align-items-center"
+              style={{transform: `scale(${scale})`}}>
             <span className="text-primary">Aline</span>
-            <img draggable={false} src={props.light ? logoLight : logo} className="mb-1" alt="$"/>
-            <span className={props.light ? "text-primary" : "text-light"}>Financial</span>
+            <img draggable={false} src={light ? logoLight : logo} className="mb-1" alt="$"/>
+            <span className={light ? "text-primary" : "text-light"}>Financial</span>
         </Link>
     );
 };

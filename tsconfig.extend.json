@@ -34,6 +34,12 @@
       ],
       "@schemas": [
         "./schemas"
+      ],
+      "@utils/*": [
+        "./utils/*"
+      ],
+      "@modules/*":[
+        "./modules/*"
       ]
     }
   }

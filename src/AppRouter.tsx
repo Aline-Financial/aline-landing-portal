@@ -17,7 +17,7 @@ const AppRouter = () => {
     return (
         <Router>
             <AppNav/>
-            <div className="min-vh-100 padding-past-nav">
+            <div className="container-fullscreen padding-past-nav">
                 <Switch>
                     <Route exact path="/" component={Landing}/>
                     <Route path="/signup" component={SignUp}/>
