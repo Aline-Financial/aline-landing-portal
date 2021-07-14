@@ -1,5 +1,4 @@
-import {FormikErrors, FormikTouched} from "formik";
-import {AppNavRoute, SignUpFormSchema} from "@interfaces";
+import {AppNavRoute} from "@interfaces";
 import {ReactFragment} from "react";
 
 export type AppNavDropdownProps = {
@@ -14,9 +13,4 @@ export type LandingSectionProps = {
     buttonRoute: string;
     align: "start" | "end";
     light?: boolean;
-};
-
-export type SignUpFormProps = {
-    errors: FormikErrors<SignUpFormSchema>,
-    touched: FormikTouched<SignUpFormSchema>
 };

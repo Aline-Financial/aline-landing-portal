@@ -8,28 +8,28 @@ export const SignUpFormValidationSchema = yup.object().shape({
     applicationType: yup.number()
         .label("Application Type")
         .required("Application type is required.")
-        .integer(err => `${err.value} is not valid application type ID.`)
-        .positive(err => `${err.value} is not valid application type ID.`),
+        .integer(err => `'${err.value}' is not valid application type ID.`)
+        .positive(err => `'${err.value}' is not valid application type ID.`),
 
     email: yup.string()
         .label("Email")
         .required("Email is a required.")
-        .email(err => `${err.value} is not a valid email address.`),
+        .email(err => `'${err.value}' is not a valid email address.`),
 
     firstName: yup.string()
         .label("First Name")
-        .matches(/^[aA-zZ\s-]+$/, err => `${err.value} is not a valid name.`)
+        .matches(/^[aA-zZ\s-]+$/, err => `'${err.value}' is not a valid name.`)
         .required("First name is required."),
 
     middleName: yup.string()
         .label("Middle Name")
-        .matches(/^[aA-zZ\s-]+$/, err => `${err.value} is not a valid name.`)
+        .matches(/^[aA-zZ\s-]+$/, err => `'${err.value}' is not a valid name.`)
         .nullable()
         .notRequired(),
 
     lastName: yup.string()
         .label("Last Name")
-        .matches(/^[aA-zZ\s-]+$/, err => `${err.value} is not a valid name.`)
+        .matches(/^[aA-zZ\s-]+$/, err => `'${err.value}' is not a valid name.`)
         .required("Last name is required."),
 
     gender: yup.string()
@@ -47,7 +47,7 @@ export const SignUpFormValidationSchema = yup.object().shape({
         .label("Address")
         .required("Address is required.")
         .matches(/(^(PO)|(P\.O\.)|(P\.O)|(PO.))\s(Box)\s[0-9]+$|(^[0-9]+[\s](([A-Za-z\s]+)|([0-9](th|rd|nd|st)))[\s](Ln|St|Ave|Blvd|Dr|Rd|Wy|Pl|Cir|Lane|Street|Avenue|Boulevard|Drive|Road|Way|Place|Circle)\.?)(\s(Apt|Apartment|Unit|Ste|Suite|Trl|Trailer|Lot)?\.?[\s][#]?[\s]?[\d]+$)?$/,
-            err => `${err.value} is not a valid address.`),
+            err => `'${err.value}' is not a valid address.`),
 
     city: yup.string()
         .label("City")
@@ -61,7 +61,7 @@ export const SignUpFormValidationSchema = yup.object().shape({
         .label("Zipcode")
         .required("Zipcode is required.")
         .matches(/^\d{5}(-\d{4})?$/,
-            err => `${err.value} is not a valid zipcode.`),
+            err => `'${err.value}' is not a valid zipcode.`),
 
     sameAsBilling: yup.boolean()
         .default(true)
@@ -69,8 +69,8 @@ export const SignUpFormValidationSchema = yup.object().shape({
 
     mailingAddress: yup.string()
         .label("Address")
-        .matches(/(^(PO)|(P\.O\.)|(P\.O)|(PO.))\s(Box)\s[0-9]+$|(^[0-9]+[\s](([A-Za-z\s]+)|([0-9](th|rd|nd|st)))[\s](Ln|St|Ave|Blvd|Dr|Rd|Wy|Pl|Cir|Lane|Street|Avenue|Boulevard|Drive|Road|Way|Place|Circle)\.?)(\s(Apt|Apartment|Unit|Ste|Suite|Trl|Trailer|Lot)?\.?[\s][#]?[\s]?[\d]+)?/,
-            err => `${err.value} is not a valid address.`)
+        .matches(/(^(PO)|(P\.O\.)|(P\.O)|(PO.))\s(Box)\s[0-9]+$|(^[0-9A-Za-z-]+[\s](([A-Za-z\s]+)|([0-9](th|rd|nd|st)))[\s](Ln|St|Ave|Blvd|Dr|Rd|Wy|Pl|Cir|Hwy|Fwy|Aly|Lane|Street|Avenue|Boulevard|Drive|Road|Way|Place|Circle|Highway|Freeway|Alley)\.?)(\s(Apt|Apartment|Unit|Ste|Suite|Trl|Trailer|Lot|Lt|U)?\.?[\s][#]?[\s]?[\d]+)?/i,
+            err => `'${err.value}' is not a valid address.`)
         .when("sameAsBilling", {
             is: true,
             then: yup.string().required("Address is required.")

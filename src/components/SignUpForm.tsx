@@ -1,29 +1,67 @@
 import React, {Component} from "react";
-import {SignUpFormProps} from "@props";
-import Brand from "@components/Brand";
-import {FormStep, MultiStepForm} from "@modules/multi-step-form";
+import {Field, Form, Formik, FormikErrors, FormikTouched} from "formik";
+import {SignUpFormSchema} from "@interfaces";
 import {SignUpFormValidationSchema} from "@schemas";
 
-class SignUpForm extends Component<SignUpFormProps, {currentStep: number}> {
+const fragementTest = (errors: FormikErrors<SignUpFormSchema>, touched: FormikTouched<SignUpFormSchema>) => (<>
+    <Field
+        type="email"
+        id="email"
+        name="email"
+        placeholder="Email"
+        className="form-control"/>
+    {errors.email && touched.email ? <div className="text-danger">{errors.email}</div> : ""}
+</>);
+const fragementTest2 = (errors: FormikErrors<SignUpFormSchema>, touched: FormikTouched<SignUpFormSchema>) => (<>
+    <Field
+        type="firstName"
+        id="firstName"
+        name="firstName"
+        placeholder="First Name"
+        className="form-control"/>
+    {errors.firstName && touched.firstName ? <div className="text-danger">{errors.firstName}</div> : ""}
+</>);
 
-    constructor(props: SignUpFormProps) {
+const fragments = [fragementTest, fragementTest2];
+
+class SignUpForm extends Component<{email: string}, {currentStep: number}> {
+
+    initialValues: SignUpFormSchema = {
+        address: "",
+        applicationType: 0,
+        city: "",
+        dateOfBirth: undefined,
+        driversLicense: "",
+        email: "",
+        firstName: "",
+        gender: "Male",
+        income: 0,
+        incomeFrequency: "",
+        initialDeposit: 0,
+        lastName: "",
+        mailingAddress: "",
+        mailingCity: "",
+        mailingState: "",
+        mailingZipcode: "",
+        middleName: "",
+        sameAsBilling: false,
+        socialSecurity: "",
+        state: "",
+        zipcode: ""
+    };
+
+    constructor(props: {email: string}) {
         super(props);
         this.state = {
             currentStep: 0
         };
-
-        const step1 = new FormStep({
-            email: "arjay.07.ly@gmail.com",
-            firstName: "Leandro",
-            lastName: "Yabut"
-        });
-
-        new MultiStepForm(SignUpFormValidationSchema, step1);
-
-        console.log(step1.validate());
-
+        this.initialValues.email = props.email ? props.email : "";
         this.nextStep = this.nextStep.bind(this);
         this.prevStep = this.prevStep.bind(this);
+    }
+
+    onSubmit(values: SignUpFormSchema) {
+        console.table(values);
     }
 
     nextStep() {
@@ -36,26 +74,18 @@ class SignUpForm extends Component<SignUpFormProps, {currentStep: number}> {
 
     render() {
         return (
-            <div className="container">
-                <div className="row">
-                    <div className="col-12 col-lg-8 mx-auto">
-                        <div className="bg-light rounded-3 p-4 shadow-sm">
-                            <div className="w-100 text-center">
-                                <Brand scale={1.5} light/>
-                            </div>
-                            <div className="display-4 text-center py-5">{this.state.currentStep}</div>
-                            <div className="row">
-                                <div className="d-flex justify-content-between col-lg-5 col-12 mx-auto">
-                                    <button className="btn btn-outline-secondary btn-lg"
-                                            onClick={this.prevStep}>Back</button>
-                                    <button className="btn btn-primary btn-lg"
-                                            onClick={this.nextStep}>Next</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <Formik initialValues={this.initialValues}
+                    validationSchema={SignUpFormValidationSchema}
+                    onSubmit={this.onSubmit}>
+                {({errors, touched}) => (
+                    <Form>
+                        {fragments[this.state.currentStep](errors, touched)}
+                        <button onClick={this.prevStep}>Prev</button>
+                        <button onClick={this.nextStep}>Next</button>
+                    </Form>
+                )}
+
+            </Formik>
         );
     }
 }
