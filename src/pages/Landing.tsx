@@ -27,7 +27,7 @@ export const Landing = () => {
     </div>;
 
     return (
-        <div className="container-fluid">
+        <div className="container-fluid bg-white">
             <LandingStart learnMoreHref="#learn-more"/>
             <a id="learn-more" className="d-inline-block pt-5"/>
             <LandingCards/>

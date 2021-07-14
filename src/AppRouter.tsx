@@ -1,10 +1,11 @@
-import React from "react";
+import React, {ReactElement} from "react";
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import Landing from "@pages/Landing";
 import NotFound from "@pages/NotFound";
 import AppNav from "@components/AppNav";
 import SignUp from "@pages/SignUp";
 import Footer from "@components/Footer";
+import {useLocation} from "react-router-dom";
 
 const AppRouter = () => {
 
@@ -14,9 +15,20 @@ const AppRouter = () => {
         return null;
     };
 
+    const noNavPaths = [
+        "/signup"
+    ];
+
+    const ExcludeInPath = ({children, exclude}: {children: ReactElement, exclude: string[]}) => {
+        const {pathname} = useLocation();
+        return exclude.includes(pathname) ? null : <>{children}</>;
+    };
+
     return (
         <Router>
-            <AppNav/>
+            <ExcludeInPath exclude={noNavPaths}>
+                <AppNav/>
+            </ExcludeInPath>
             <div className="container-fullscreen padding-past-nav">
                 <Switch>
                     <Route exact path="/" component={Landing}/>
@@ -25,7 +37,9 @@ const AppRouter = () => {
                     <Route component={NotFound}/>
                 </Switch>
             </div>
-            <Footer/>
+            <ExcludeInPath exclude={noNavPaths}>
+                <Footer/>
+            </ExcludeInPath>
         </Router>
     );
 };

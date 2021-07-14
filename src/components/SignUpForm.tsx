@@ -12,7 +12,7 @@ class SignUpForm extends Component<{email: string}, {currentStep: number}> {
         address: "",
         applicationType: 0,
         city: "",
-        dateOfBirth: undefined,
+        dateOfBirth: "",
         driversLicense: "",
         email: "",
         firstName: "",

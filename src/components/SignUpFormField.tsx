@@ -5,7 +5,7 @@ import SignUpFormError from "@components/SignUpFormError";
 
 const SignUpFormField = ({errors, touched, field, placeholder}: SignUpFormFieldProps) => {
     return (
-        <>
+        <div className="my-2">
             <div className="form-floating">
                 <Field id={field}
                        name={field}
@@ -16,7 +16,7 @@ const SignUpFormField = ({errors, touched, field, placeholder}: SignUpFormFieldP
             <SignUpFormError errors={errors}
                              touched={touched}
                              field={field}/>
-        </>
+        </div>
     );
 };
 
