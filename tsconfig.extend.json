@@ -38,8 +38,8 @@
       "@utils/*": [
         "./utils/*"
       ],
-      "@modules/*":[
-        "./modules/*"
+      "aline-signup-form":[
+        "./modules/SignUpForm"
       ]
     }
   }

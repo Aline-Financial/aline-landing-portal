@@ -18,9 +18,20 @@ const AppRouter = () => {
         "/signup"
     ];
 
-    const ExcludeInPath = ({children, exclude}: {children: ReactElement, exclude: string[]}) => {
+    const pathIsExcluded = (exclude: string[]) => {
         const {pathname} = useLocation();
-        return exclude.includes(pathname) ? null : <>{children}</>;
+        return exclude.includes(pathname);
+    };
+
+    const ExcludeInPath = ({children, exclude}: {children: ReactElement, exclude: string[]}) => {
+        return pathIsExcluded(exclude) ? null : <>{children}</>;
+    };
+
+    const Container = ({children, excludedClass, className, exclude}: {children: ReactElement, className: string, excludedClass: string, exclude: string[]}) => {
+        return pathIsExcluded(exclude) ?
+            <div className={excludedClass}>
+                {children}
+            </div> : <div className={className}>{children}</div> ;
     };
 
     return (
@@ -28,14 +39,16 @@ const AppRouter = () => {
             <ExcludeInPath exclude={noNavPaths}>
                 <AppNav/>
             </ExcludeInPath>
-            <div className="container-fullscreen padding-past-nav">
+            <Container exclude={noNavPaths}
+                       excludedClass="min-vh-100 pt-5 bg-gray"
+                       className="container-fullscreen padding-past-nav">
                 <Switch>
                     <Route exact path="/" component={Landing}/>
                     <Route path="/signup" component={SignUp}/>
                     <Route path="/login" component={RedirectToLogin}/>
                     <Route component={NotFound}/>
                 </Switch>
-            </div>
+            </Container>
             <ExcludeInPath exclude={noNavPaths}>
                 <Footer/>
             </ExcludeInPath>

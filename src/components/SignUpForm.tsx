@@ -2,9 +2,8 @@ import React, {Component} from "react";
 import {Form, Formik} from "formik";
 import {SignUpFormSchema} from "@interfaces";
 import {SignUpFormValidationSchema} from "@schemas";
-import SignUpFormButtons from "@components/SignUpFormButtons";
+import {SignUpFormStep, SignUpFormButtons} from "aline-signup-form";
 import SignupStepsData from "@data/signup-steps.data";
-import SignUpFormStep from "@components/SignUpFormStep";
 
 class SignUpForm extends Component<{email: string}, {currentStep: number}> {
 
@@ -16,7 +15,7 @@ class SignUpForm extends Component<{email: string}, {currentStep: number}> {
         driversLicense: "",
         email: "",
         firstName: "",
-        gender: "Male",
+        gender: undefined,
         income: 0,
         incomeFrequency: "",
         initialDeposit: 0,

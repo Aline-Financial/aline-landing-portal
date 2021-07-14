@@ -24,6 +24,7 @@ const config: Config.InitialOptions = {
         "\\.(png|jpeg|jpg|svg)$": "<rootDir>/mocks/imageMock.js",
         "^@src(.*)$": "<rootDir>/src$1",
         "^@test-utils$": "<rootDir>/src/utils/test.utils",
+        "^aline-signup-form$": "<rootDir>/src/modules/SignUpForm",
         "^@images(.*)$": "<rootDir>/src/assets/images$1",
         "^@components(.*)$": "<rootDir>/src/components$1",
         "^@config(.*)$": "<rootDir>/src/config$1",
@@ -32,7 +33,6 @@ const config: Config.InitialOptions = {
         "^@pages(.*)$": "<rootDir>/src/pages$1",
         "^@data(.*)$": "<rootDir>/src/data$1",
         "^@styles(.*)$": "<rootDir>/src/styles$1",
-        "^@modules(.*)$": "<rootDir>/src/modules$1",
         "^@schemas(.*)$": "<rootDir>/src/schemas"
     },
     setupFilesAfterEnv: [

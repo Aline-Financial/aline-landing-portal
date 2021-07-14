@@ -1,4 +1,10 @@
-import {string, date, number, object, boolean} from "yup";
+import {
+    string,
+    date,
+    number,
+    object,
+    boolean
+} from "yup";
 
 const minAgeDate = new Date();
 minAgeDate.setFullYear(minAgeDate.getFullYear() - 17);
@@ -35,10 +41,11 @@ export const SignUpFormValidationSchema = object().shape({
     gender: string()
         .label("Gender")
         .required("Please select a gender.")
-        .matches(/(Male|Female|Other)/i, "Please select a gender."),
+        .matches(/(Male|Female|Other|Unspecified)/i, "Please select a gender."),
 
     dateOfBirth: date()
         .label("Date of Birth")
+        .typeError("Not a valid date.")
         .transform((val: any) => new Date(val))
         .required("Date of birth is required.")
         .max(minAgeDate, "Must be at least 18 years of age."),

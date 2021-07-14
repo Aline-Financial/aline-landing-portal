@@ -9,7 +9,7 @@ const App = () => {
     IconsConfig.icons.forEach(icon => library.add(icon));
 
     return (
-        <div className="container-fluid p-0 m-0 min-vh-100 h-100 bg-gray">
+        <div className="container-fluid p-0 m-0 min-vh-100 h-100">
             <AppRouter/>
         </div>
     );

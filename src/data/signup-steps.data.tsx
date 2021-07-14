@@ -1,7 +1,6 @@
 import {SignUpFormStep} from "@interfaces";
 import React from "react";
-import SignUpFormField from "@components/SignUpFormField";
-import SignUpFormMaskedField from "@components/SignUpFormMaskedField";
+import {SignUpFormField, SignUpFormMaskedField} from "aline-signup-form";
 
 const StepText = ({message, header}: {message: string, header: string}) => {
     return (
@@ -34,10 +33,11 @@ const basicInfo: SignUpFormStep = [
     </>)
 ];
 
+
 const dateOfBirth: SignUpFormStep = [
-    "Date of Birth",
-    () => (<>
-            <StepText header="Date of Birth" message="You must be at least 18 years old to be a member."/>
+    "More About You",
+    (props) => (<>
+            <StepText header="More About You..." message="You must be at least 18 years old to be a member."/>
             <div className="row">
                 <div className="col">
                     <SignUpFormMaskedField mask="99/99/9999"
@@ -45,6 +45,11 @@ const dateOfBirth: SignUpFormStep = [
                                            placeholder="Date of Birth"/>
                 </div>
             </div>
+        <div className="row">
+            <div className="col">
+                <SignUpFormField {...props} field="gender" placeholder="Gender"/>
+            </div>
+        </div>
         </>)
 ];
 
@@ -61,6 +66,8 @@ const phoneNumber: SignUpFormStep = [
             </div>
         </>)
 ];
+
+
 
 const SignupStepsData: SignUpFormStep[] = [
     basicInfo,
