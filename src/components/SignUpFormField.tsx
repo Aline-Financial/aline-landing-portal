@@ -8,6 +8,7 @@ const SignUpFormField = ({errors, touched, field, placeholder}: SignUpFormFieldP
         <div className="my-2">
             <div className="form-floating">
                 <Field id={field}
+                       key={field}
                        name={field}
                        className="form-control"
                        placeholder={placeholder}/>

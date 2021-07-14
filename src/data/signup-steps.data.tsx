@@ -1,7 +1,6 @@
 import {SignUpFormStep} from "@interfaces";
 import React from "react";
 import SignUpFormField from "@components/SignUpFormField";
-import {Field, FieldProps} from "formik";
 import SignUpFormMaskedField from "@components/SignUpFormMaskedField";
 
 const StepText = ({message, header}: {message: string, header: string}) => {
@@ -15,8 +14,9 @@ const StepText = ({message, header}: {message: string, header: string}) => {
     );
 };
 
-const basicInfo: SignUpFormStep = (props) => (
-    <>
+const basicInfo: SignUpFormStep = [
+    "Basic Information",
+    (props) => (<>
         <StepText header="Hello!" message="Let's start with some basic information."/>
         <div className="row row-cols-1 row-cols-md-2">
             <div className="col">
@@ -31,51 +31,41 @@ const basicInfo: SignUpFormStep = (props) => (
                 <SignUpFormField {...props} field="email" placeholder="Email"/>
             </div>
         </div>
-    </>
-);
+    </>)
+];
 
-const dateOfBirth: SignUpFormStep = () => (
-    <>
-        <StepText header="Date of Birth" message="When were you born?"/>
-        <div className="row">
-            <div className="col">
-                <Field name="dateOfBirth">
-                    {
-                        (props: FieldProps) =>
-                        <SignUpFormMaskedField mask="99/99/9999"
-                                               placeholder="Date of Birth"
-                                               {...props}/>
-                    }
-                </Field>
+const dateOfBirth: SignUpFormStep = [
+    "Date of Birth",
+    () => (<>
+            <StepText header="Date of Birth" message="You must be at least 18 years old to be a member."/>
+            <div className="row">
+                <div className="col">
+                    <SignUpFormMaskedField mask="99/99/9999"
+                                           name="dateOfBirth"
+                                           placeholder="Date of Birth"/>
+                </div>
             </div>
-        </div>
-    </>
-);
+        </>)
+];
 
-const phoneNumber: SignUpFormStep = () => (
-    <>
-        <StepText header="Phone Number" message="If we need to reach you, what is your phone number?"/>
-        <div className="row">
-            <div className="col">
-                <Field name="phone">
-                    {
-                        (props: FieldProps) =>
-                            <SignUpFormMaskedField mask="(999) 999-9999"
-                                                   placeholder="Phone Number"
-                                                   {...props}/>
-                    }
-                </Field>
+const phoneNumber: SignUpFormStep = [
+    "Phone Number",
+    () => (<>
+            <StepText header="Phone Number" message="If we need to reach you, what is your phone number?"/>
+            <div className="row">
+                <div className="col">
+                    <SignUpFormMaskedField mask="(999) 999-9999"
+                                           name="phone"
+                                           placeholder="Phone Number"/>
+                </div>
             </div>
-        </div>
-    </>
-);
+        </>)
+];
 
 const SignupStepsData: SignUpFormStep[] = [
-
     basicInfo,
     dateOfBirth,
     phoneNumber
-
 ];
 
 export default SignupStepsData;

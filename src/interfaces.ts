@@ -64,7 +64,10 @@ export type SignUpFormTestingSchema = {
     incomeFrequency: string | any,
     income: number | any,
     initialDeposit: number | any,
-    phone: string
+    phone: string | any
 };
 
-export type SignUpFormStep = ({errors, touched}: {errors: FormikErrors<SignUpFormSchema>, touched: FormikTouched<SignUpFormSchema>}) => ReactFragment;
+export type SignUpFormStep = [
+    label: string,
+    fragment: ({errors, touched}: {errors: FormikErrors<SignUpFormSchema>, touched: FormikTouched<SignUpFormSchema>}) => ReactFragment
+];

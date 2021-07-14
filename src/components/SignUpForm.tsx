@@ -29,7 +29,8 @@ class SignUpForm extends Component<{email: string}, {currentStep: number}> {
         sameAsBilling: false,
         socialSecurity: "",
         state: "",
-        zipcode: ""
+        zipcode: "",
+        phone: ""
     };
 
     constructor(props: {email: string}) {
