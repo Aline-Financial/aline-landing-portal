@@ -24,7 +24,7 @@ const config: Config.InitialOptions = {
         "\\.(png|jpeg|jpg|svg)$": "<rootDir>/mocks/imageMock.js",
         "^@src(.*)$": "<rootDir>/src$1",
         "^@test-utils$": "<rootDir>/src/utils/test.utils",
-        "^aline-signup-form$": "<rootDir>/src/modules/SignUpForm",
+        "^aline-signup-form$": "<rootDir>/src/modules/aline-signup-form",
         "^@images(.*)$": "<rootDir>/src/assets/images$1",
         "^@components(.*)$": "<rootDir>/src/components$1",
         "^@config(.*)$": "<rootDir>/src/config$1",

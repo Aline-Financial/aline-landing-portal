@@ -29,15 +29,18 @@ export const SignUpFormError = ({errors, touched, field}: {errors: FormikErrors<
     );
 };
 
-export const SignUpFormField = ({errors, touched, field, placeholder}: SignUpFormFieldProps) => {
+export const SignUpFormField = ({errors, touched, field, placeholder, is, children}: SignUpFormFieldProps) => {
     return (
         <div className="my-2">
             <div className="form-floating">
                 <Field id={field}
                        key={field}
                        name={field}
-                       className="form-control"
-                       placeholder={placeholder}/>
+                       className={`form-control ${is === "select" ? "form-select" : ""}`}
+                       as={is}
+                       placeholder={placeholder}>
+                    {children}
+                </Field>
                 <label htmlFor={field}>{placeholder}</label>
             </div>
             <SignUpFormError errors={errors}

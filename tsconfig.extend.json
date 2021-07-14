@@ -39,7 +39,7 @@
         "./utils/*"
       ],
       "aline-signup-form":[
-        "./modules/SignUpForm"
+        "./modules/aline-signup-form"
       ]
     }
   }

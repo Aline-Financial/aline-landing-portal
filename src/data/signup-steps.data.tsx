@@ -47,7 +47,13 @@ const dateOfBirth: SignUpFormStep = [
             </div>
         <div className="row">
             <div className="col">
-                <SignUpFormField {...props} field="gender" placeholder="Gender"/>
+                <SignUpFormField {...props} field="gender" placeholder="Gender" is="select">
+                    <option value={undefined} className="text-muted">Select a gender...</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                    <option value="Unspecified">Prefer not to say...</option>
+                </SignUpFormField>
             </div>
         </div>
         </>)
