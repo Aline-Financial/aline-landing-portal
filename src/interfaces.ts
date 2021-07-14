@@ -1,5 +1,4 @@
 import {IconProp} from "@fortawesome/fontawesome-svg-core";
-import {ReactFragment} from "react";
 
 export type AppNavRoute = {
     label: string;

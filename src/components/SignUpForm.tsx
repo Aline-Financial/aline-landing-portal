@@ -1,6 +1,8 @@
 import React, {Component} from "react";
 import {SignUpFormProps} from "@props";
 import Brand from "@components/Brand";
+import {FormStep, MultiStepForm} from "@modules/multi-step-form";
+import {SignUpFormValidationSchema} from "@schemas";
 
 class SignUpForm extends Component<SignUpFormProps, {currentStep: number}> {
 
@@ -9,6 +11,16 @@ class SignUpForm extends Component<SignUpFormProps, {currentStep: number}> {
         this.state = {
             currentStep: 0
         };
+
+        const step1 = new FormStep({
+            email: "arjay.07.ly@gmail.com",
+            firstName: "Leandro",
+            lastName: "Yabut"
+        });
+
+        new MultiStepForm(SignUpFormValidationSchema, step1);
+
+        console.log(step1.validate());
 
         this.nextStep = this.nextStep.bind(this);
         this.prevStep = this.prevStep.bind(this);
