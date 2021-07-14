@@ -4,6 +4,7 @@ import {SignUpFormSchema} from "@interfaces";
 import {SignUpFormValidationSchema} from "@schemas";
 import {SignUpFormStep, SignUpFormButtons} from "aline-signup-form";
 import SignupStepsData from "@data/signup-steps.data";
+import {Prompt} from "react-router";
 
 class SignUpForm extends Component<{email: string}, {currentStep: number}> {
 
@@ -59,8 +60,9 @@ class SignUpForm extends Component<{email: string}, {currentStep: number}> {
             <Formik initialValues={this.initialValues}
                     validationSchema={SignUpFormValidationSchema}
                     onSubmit={this.onSubmit}>
-                {({errors, touched}) => (
+                {({errors, touched, dirty}) => (
                     <Form>
+                        <Prompt when={dirty} message="You've already started signing up. Are you sure you want to leave?"/>
                         <SignUpFormStep errors={errors}
                                         touched={touched}
                                         step={SignupStepsData[this.state.currentStep]}/>
