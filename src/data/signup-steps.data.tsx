@@ -15,6 +15,7 @@ const StepText = ({message, header}: {message: string, header: string}) => {
 
 const basicInfo: SignUpFormStep = [
     "Basic Information",
+    ["firstName", "lastName", "email"],
     (props) => (<>
         <StepText header="Hello!" message="Let's start with some basic information."/>
         <div className="row row-cols-1 row-cols-md-2">
@@ -36,6 +37,7 @@ const basicInfo: SignUpFormStep = [
 
 const dateOfBirth: SignUpFormStep = [
     "More About You",
+    ["dateOfBirth", "gender"],
     (props) => (<>
             <StepText header="More About You..." message="You must be at least 18 years old to be a member."/>
             <div className="row">
@@ -62,6 +64,7 @@ const dateOfBirth: SignUpFormStep = [
 
 const phoneNumber: SignUpFormStep = [
     "Phone Number",
+    ["phone"],
     () => (<>
             <StepText header="Phone Number" message="If we need to reach you, what is your phone number?"/>
             <div className="row">

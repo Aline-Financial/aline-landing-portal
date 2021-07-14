@@ -60,15 +60,18 @@ class SignUpForm extends Component<{email: string}, {currentStep: number}> {
             <Formik initialValues={this.initialValues}
                     validationSchema={SignUpFormValidationSchema}
                     onSubmit={this.onSubmit}>
-                {({errors, touched, dirty}) => (
+                {({errors, touched, dirty, values}) => (
                     <Form>
                         <Prompt when={dirty} message="You've already started signing up. Are you sure you want to leave?"/>
                         <SignUpFormStep errors={errors}
                                         touched={touched}
                                         step={SignupStepsData[this.state.currentStep]}/>
-                        <div className="col-md-8 col-12 mx-auto mt-4">
+                        <div className="col-md-8 col-12 mx-auto mt-4 bottom-0">
                             <SignUpFormButtons onNextStep={this.nextStep}
                                                onPrevStep={this.prevStep}
+                                               fields={SignupStepsData[this.state.currentStep][1]}
+                                               values={values}
+                                               schema={SignUpFormValidationSchema}
                                                steps={SignupStepsData.length}
                                                currentStep={this.state.currentStep}/>
                         </div>
