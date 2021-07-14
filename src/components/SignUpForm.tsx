@@ -1,28 +1,10 @@
 import React, {Component} from "react";
-import {Field, Form, Formik, FormikErrors, FormikTouched} from "formik";
+import {Form, Formik} from "formik";
 import {SignUpFormSchema} from "@interfaces";
 import {SignUpFormValidationSchema} from "@schemas";
-
-const fragementTest = (errors: FormikErrors<SignUpFormSchema>, touched: FormikTouched<SignUpFormSchema>) => (<>
-    <Field
-        type="email"
-        id="email"
-        name="email"
-        placeholder="Email"
-        className="form-control"/>
-    {errors.email && touched.email ? <div className="text-danger">{errors.email}</div> : ""}
-</>);
-const fragementTest2 = (errors: FormikErrors<SignUpFormSchema>, touched: FormikTouched<SignUpFormSchema>) => (<>
-    <Field
-        type="firstName"
-        id="firstName"
-        name="firstName"
-        placeholder="First Name"
-        className="form-control"/>
-    {errors.firstName && touched.firstName ? <div className="text-danger">{errors.firstName}</div> : ""}
-</>);
-
-const fragments = [fragementTest, fragementTest2];
+import SignUpFormButtons from "@components/SignUpFormButtons";
+import SignupStepsData from "@data/signup-steps.data";
+import SignUpFormStep from "@components/SignUpFormStep";
 
 class SignUpForm extends Component<{email: string}, {currentStep: number}> {
 
@@ -79,9 +61,15 @@ class SignUpForm extends Component<{email: string}, {currentStep: number}> {
                     onSubmit={this.onSubmit}>
                 {({errors, touched}) => (
                     <Form>
-                        {fragments[this.state.currentStep](errors, touched)}
-                        <button onClick={this.prevStep}>Prev</button>
-                        <button onClick={this.nextStep}>Next</button>
+                        <SignUpFormStep errors={errors}
+                                        touched={touched}
+                                        step={SignupStepsData[this.state.currentStep]}/>
+                        <div className="col-md-8 col-12 mx-auto mt-4">
+                            <SignUpFormButtons onNextStep={this.nextStep}
+                                               onPrevStep={this.prevStep}
+                                               steps={SignupStepsData.length}
+                                               currentStep={this.state.currentStep}/>
+                        </div>
                     </Form>
                 )}
 
