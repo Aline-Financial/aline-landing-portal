@@ -38,7 +38,8 @@ export type SignUpFormSchema = {
     socialSecurity: string,
     incomeFrequency: string,
     income: number,
-    initialDeposit: number
+    initialDeposit: number,
+    phone: string
 };
 
 export type SignUpFormTestingSchema = {
@@ -62,7 +63,8 @@ export type SignUpFormTestingSchema = {
     socialSecurity: string | any,
     incomeFrequency: string | any,
     income: number | any,
-    initialDeposit: number | any
+    initialDeposit: number | any,
+    phone: string
 };
 
 export type SignUpFormStep = ({errors, touched}: {errors: FormikErrors<SignUpFormSchema>, touched: FormikTouched<SignUpFormSchema>}) => ReactFragment;

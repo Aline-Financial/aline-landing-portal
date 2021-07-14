@@ -43,6 +43,11 @@ export const SignUpFormValidationSchema = yup.object().shape({
         .required("Date of birth is required.")
         .max(minAgeDate, "Must be at least 18 years of age."),
 
+    phone: yup.string()
+        .label("Phone Number")
+        .matches(/\(\d{3}\)[\s-.]\d{3}[\s-.]\d{4}/,
+                err => `'${err.value}' is not a valid phone number.`),
+
     address: yup.string()
         .label("Address")
         .required("Address is required.")

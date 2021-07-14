@@ -1,9 +1,8 @@
 import {SignUpFormStep} from "@interfaces";
 import React from "react";
 import SignUpFormField from "@components/SignUpFormField";
-import {Field} from "formik";
-import InputMask from "react-input-mask";
-import SignUpFormError from "@components/SignUpFormError";
+import {Field, FieldProps} from "formik";
+import SignUpFormMaskedField from "@components/SignUpFormMaskedField";
 
 const StepText = ({message, header}: {message: string, header: string}) => {
     return (
@@ -35,14 +34,37 @@ const basicInfo: SignUpFormStep = (props) => (
     </>
 );
 
-const dateOfBirth: SignUpFormStep = (props) => (
+const dateOfBirth: SignUpFormStep = () => (
     <>
         <StepText header="Date of Birth" message="When were you born?"/>
         <div className="row">
             <div className="col">
-                <InputMask mask={"99-99-9999"}  type="text" alwaysShowMask maskPlaceholder="MM/DD/YYYY">
-                    <SignUpFormField {...props} field="dateOfBirth" placeholder="Date of Birth"/>
-                </InputMask>
+                <Field name="dateOfBirth">
+                    {
+                        (props: FieldProps) =>
+                        <SignUpFormMaskedField mask="99/99/9999"
+                                               placeholder="Date of Birth"
+                                               {...props}/>
+                    }
+                </Field>
+            </div>
+        </div>
+    </>
+);
+
+const phoneNumber: SignUpFormStep = () => (
+    <>
+        <StepText header="Phone Number" message="If we need to reach you, what is your phone number?"/>
+        <div className="row">
+            <div className="col">
+                <Field name="phone">
+                    {
+                        (props: FieldProps) =>
+                            <SignUpFormMaskedField mask="(999) 999-9999"
+                                                   placeholder="Phone Number"
+                                                   {...props}/>
+                    }
+                </Field>
             </div>
         </div>
     </>
@@ -51,7 +73,8 @@ const dateOfBirth: SignUpFormStep = (props) => (
 const SignupStepsData: SignUpFormStep[] = [
 
     basicInfo,
-    dateOfBirth
+    dateOfBirth,
+    phoneNumber
 
 ];
 

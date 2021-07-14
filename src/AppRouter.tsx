@@ -1,11 +1,10 @@
 import React, {ReactElement} from "react";
-import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import {BrowserRouter as Router, Route, Switch, useLocation} from "react-router-dom";
 import Landing from "@pages/Landing";
 import NotFound from "@pages/NotFound";
 import AppNav from "@components/AppNav";
 import SignUp from "@pages/SignUp";
 import Footer from "@components/Footer";
-import {useLocation} from "react-router-dom";
 
 const AppRouter = () => {
 
