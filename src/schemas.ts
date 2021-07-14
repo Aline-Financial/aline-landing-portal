@@ -46,7 +46,7 @@ export const SignUpFormValidationSchema = yup.object().shape({
     address: yup.string()
         .label("Address")
         .required("Address is required.")
-        .matches(/(^(PO)|(P\.O\.)|(P\.O)|(PO.))\s(Box)\s[0-9]+$|(^[0-9]+[\s](([A-Za-z\s]+)|([0-9](th|rd|nd|st)))[\s](Ln|St|Ave|Blvd|Dr|Rd|Wy|Pl|Cir|Lane|Street|Avenue|Boulevard|Drive|Road|Way|Place|Circle)\.?)(\s(Apt|Apartment|Unit|Ste|Suite|Trl|Trailer|Lot)?\.?[\s][#]?[\s]?[\d]+$)?$/,
+        .matches(/^([0-9]+([a-zA-Z]+)?)\s(.*)(\s)([a-zA-Z]+)(\.)?(\s(#?(\w+))|([A-Za-z]+\.?(\w+)))?$/i,
             err => `'${err.value}' is not a valid address.`),
 
     city: yup.string()
@@ -69,7 +69,7 @@ export const SignUpFormValidationSchema = yup.object().shape({
 
     mailingAddress: yup.string()
         .label("Address")
-        .matches(/(^(PO)|(P\.O\.)|(P\.O)|(PO.))\s(Box)\s[0-9]+$|(^[0-9A-Za-z-]+[\s](([A-Za-z\s]+)|([0-9](th|rd|nd|st)))[\s](Ln|St|Ave|Blvd|Dr|Rd|Wy|Pl|Cir|Hwy|Fwy|Aly|Lane|Street|Avenue|Boulevard|Drive|Road|Way|Place|Circle|Highway|Freeway|Alley)\.?)(\s(Apt|Apartment|Unit|Ste|Suite|Trl|Trailer|Lot|Lt|U)?\.?[\s][#]?[\s]?[\d]+)?/i,
+        .matches(/^([0-9]+([a-zA-Z]+)?)\s(.*)(\s)([a-zA-Z]+)(\.)?(\s(#?(\w+))|([A-Za-z]+\.?(\w+)))?$/i,
             err => `'${err.value}' is not a valid address.`)
         .when("sameAsBilling", {
             is: true,
