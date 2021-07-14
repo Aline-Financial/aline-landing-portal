@@ -19,7 +19,7 @@ const basicInfo: SignUpFormStep = [
         <StepText header="Hello!" message="Let's start with some basic information."/>
         <div className="row row-cols-1 row-cols-md-2">
             <div className="col">
-                <SignUpFormField {...props} field="firstName" placeholder="First Name"/>
+                <SignUpFormField {...props} autoFocus field="firstName" placeholder="First Name"/>
             </div>
             <div className="col">
                 <SignUpFormField {...props} field="lastName" placeholder="Last Name"/>
@@ -41,6 +41,7 @@ const dateOfBirth: SignUpFormStep = [
             <div className="row">
                 <div className="col">
                     <SignUpFormMaskedField mask="99/99/9999"
+                                           autoFocus
                                            name="dateOfBirth"
                                            placeholder="Date of Birth"/>
                 </div>
@@ -66,6 +67,7 @@ const phoneNumber: SignUpFormStep = [
             <div className="row">
                 <div className="col">
                     <SignUpFormMaskedField mask="(999) 999-9999"
+                                           autoFocus
                                            name="phone"
                                            placeholder="Phone Number"/>
                 </div>

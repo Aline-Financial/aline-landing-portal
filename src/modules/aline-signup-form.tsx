@@ -29,7 +29,9 @@ export const SignUpFormError = ({errors, touched, field}: {errors: FormikErrors<
     );
 };
 
-export const SignUpFormField = ({errors, touched, field, placeholder, is, children}: SignUpFormFieldProps) => {
+export const SignUpFormField = ({errors, touched, field, placeholder, is, children, autoFocus}: SignUpFormFieldProps) => {
+
+    const t = touched as any;
     return (
         <div className="my-2">
             <div className="form-floating">
@@ -38,6 +40,7 @@ export const SignUpFormField = ({errors, touched, field, placeholder, is, childr
                        name={field}
                        className={`form-control ${is === "select" ? "form-select" : ""}`}
                        as={is}
+                       autoFocus={t[field] ? false : autoFocus}
                        placeholder={placeholder}>
                     {children}
                 </Field>
@@ -50,7 +53,7 @@ export const SignUpFormField = ({errors, touched, field, placeholder, is, childr
     );
 };
 
-export const SignUpFormMaskedField = ({name, placeholder, mask}: {name: string, mask: string, placeholder: string}) => {
+export const SignUpFormMaskedField = ({name, placeholder, mask, autoFocus}: {name: string, mask: string, placeholder: string, autoFocus?: boolean}) => {
     return (
         <>
             <div className="my-2">
@@ -60,6 +63,7 @@ export const SignUpFormMaskedField = ({name, placeholder, mask}: {name: string, 
                             <div className="form-floating">
                                 <InputMask mask={mask}
                                            {...field}
+                                           autoFocus={touched[name] ? false : autoFocus}
                                            placeholder={placeholder}
                                            className="form-control"/>
                                 <label htmlFor={field.name}>{placeholder}</label>

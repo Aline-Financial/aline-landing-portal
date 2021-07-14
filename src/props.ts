@@ -28,5 +28,6 @@ export type SignUpFormFieldProps = {
     field: string,
     placeholder: string,
     is?: string,
-    children?: ReactElement | ReactElement[]
+    children?: ReactElement | ReactElement[],
+    autoFocus?: boolean
 }
