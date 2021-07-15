@@ -1,9 +1,11 @@
-import React from "react";
+import React, {ReactChildren, ReactElement} from "react";
 import "@styles/SignUpFormStep.sass";
-import {Field, FieldProps, FormikErrors, FormikTouched} from "formik";
-import {SignUpFormFieldProps, SignUpFormStepProps} from "@props";
+import {ErrorMessage, Field, FieldHookConfig, FieldInputProps, FormikErrors, FormikTouched, useField} from "formik";
+import {SignUpFormStepProps} from "@props";
 import InputMask from "react-input-mask";
 import {ObjectSchema} from "yup";
+import SignUpForm from "@components/SignUpForm";
+import CurrencyInput from "react-currency-input-field";
 
 export const SignUpFormButtons = (
     {
@@ -29,7 +31,6 @@ export const SignUpFormButtons = (
 
     const currentStepIsInvalid = () => {
         const validList = fields.map(field => {
-            console.log(field, values[field]);
             try {
                 schema.validateSyncAt(field, values);
                 return true;
@@ -63,60 +64,102 @@ export const SignUpFormError = ({errors, touched, field}: {errors: FormikErrors<
     );
 };
 
-export const SignUpFormField = ({errors, touched, name, placeholder, is, children, autoFocus}: SignUpFormFieldProps) => {
+export const SignUpFormField = ({label, children, ...props}: {label: string, children?: ReactElement | ReactElement[] | ReactChildren} & FieldHookConfig<SignUpForm>) => {
 
-    const t = touched as any;
-    return (
-        <div className="my-2">
-            <div className="form-floating">
-                <Field id={name}
-                       key={name}
-                       name={name}
-                       className={`form-control ${is === "select" ? "form-select" : ""}`}
-                       as={is}
-                       autoFocus={t[name] ? false : autoFocus}
-                       placeholder={placeholder}>
-                    {children}
-                </Field>
-                <label className="form-label" htmlFor={name}>{placeholder}</label>
-            </div>
-            <SignUpFormError errors={errors}
-                             touched={touched}
-                             field={name}/>
-        </div>
-    );
-};
+    const [field, meta] = useField(props);
 
-export const SignUpFormMaskedField = ({name, placeholder, mask, autoFocus}: {name: string, mask: string, placeholder: string, autoFocus?: boolean}) => {
     return (
         <>
             <div className="my-2">
-                <Field name={name} key={name}>
-                    {({field, form: {errors, touched}}: FieldProps) => (
-                        <>
-                            <div className="form-floating">
-                                <InputMask mask={mask}
-                                           {...field}
-                                           autoFocus={touched[name] ? false : autoFocus}
-                                           placeholder={placeholder}
-                                           className="form-control"/>
-                                <label htmlFor={field.name}>{placeholder}</label>
-                            </div>
-                            <SignUpFormError errors={errors}
-                                             touched={touched}
-                                             field={field.name}/>
-                        </>
-                    )}
-                </Field>
+                <div className="form-floating">
+                    <Field id={field.name}
+                           key={field.name}
+                           className={
+                               props.as === "select" ? "form-select"
+                                   : "form-control"
+                           }
+                           placeholder={label}
+                           as={props.as}
+                           autoFocus={meta.touched ? false : props.autoFocus}
+                           {...field}>
+                        {children}
+                    </Field>
+                    <label className="form-label"
+                           htmlFor={field.name}>{label}</label>
+                </div>
+                <ErrorMessage name={field.name}
+                              className="my-1 text-danger"
+                              component="div"/>
             </div>
         </>
     );
+
 };
 
-export const SignUpFormStep = ({errors, touched, step: [, , fragment]}: SignUpFormStepProps) => {
+export const SignUpFormMaskedField = ({label, mask, maskPlaceholder, ...props}: {label: string, mask: string, maskPlaceholder?: string | null} & FieldHookConfig<SignUpForm>) => {
+
+    const [field, meta] = useField(props);
+    const {name} = field;
+    const fieldProps = field as FieldInputProps<any>;
+
+    return (
+        <>
+            <div className="my-2">
+                <div className="form-floating">
+                    <InputMask mask={mask}
+                               maskPlaceholder={maskPlaceholder}
+                               id={name}
+                               key={name}
+                               placeholder={label}
+                               className="form-control"
+                               autoFocus={meta.touched ? false : props.autoFocus}
+                               {...fieldProps}/>
+                    <label className="form-label"
+                           htmlFor={name}>{label}</label>
+                </div>
+                <ErrorMessage name={name}
+                              className="my-1 text-danger"
+                              component="div"/>
+            </div>
+        </>
+    );
+
+};
+
+export const SignUpFormCurrencyField = ({label, ...props}: {label: string} & FieldHookConfig<SignUpForm>) => {
+    const {name} = props;
+    const [field, , helper] = useField(name);
+    const fieldProps = field as FieldInputProps<any>;
+
+    return (
+        <>
+            <div className="my-2">
+                <div className="form-floating">
+                    <CurrencyInput id={name}
+                                   key={name}
+                                   prefix="$"
+                                   groupSeparator=","
+                                   onValueChange={value => {
+                                       helper.setValue(value);
+                                   }}
+                                   className="form-control"
+                                   onBlur={fieldProps.onBlur}/>
+                    <label className="form-label"
+                           htmlFor={name}>{label}</label>
+                </div>
+                <ErrorMessage name={name}
+                              className="my-1 text-danger"
+                              component="div"/>
+            </div>
+        </>
+    );
+
+};
+
+export const SignUpFormStep = ({step: [, , fragment]}: SignUpFormStepProps) => {
     return (
         <div className="animate__animated animate__fadeIn min-form-height">
-            {fragment({errors, touched})}
+            {fragment}
         </div>
     );
 };

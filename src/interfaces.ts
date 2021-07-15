@@ -1,6 +1,5 @@
 import {IconProp} from "@fortawesome/fontawesome-svg-core";
 import {ReactFragment} from "react";
-import {FormikErrors, FormikTouched} from "formik";
 
 export type AppNavRoute = {
     label: string;
@@ -70,5 +69,5 @@ export type SignUpFormTestingSchema = {
 export type SignUpFormStep = [
     label: string,
     fields: string[],
-    fragment: ({errors, touched}: {errors: FormikErrors<SignUpFormSchema>, touched: FormikTouched<SignUpFormSchema>}) => ReactFragment
+    fragment: ReactFragment
 ];

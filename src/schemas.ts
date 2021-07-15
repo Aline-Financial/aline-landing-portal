@@ -1,10 +1,4 @@
-import {
-    string,
-    date,
-    number,
-    object,
-    boolean
-} from "yup";
+import {boolean, date, number, object, string} from "yup";
 
 const minAgeDate = new Date();
 minAgeDate.setFullYear(minAgeDate.getFullYear() - 17);

@@ -1,8 +1,6 @@
 import {SignUpFormStep} from "@interfaces";
 import React from "react";
-import {SignUpFormField, SignUpFormMaskedField} from "aline-signup-form";
-import {Field} from "formik";
-import CurrencyInput from "react-currency-input-field";
+import {SignUpFormCurrencyField, SignUpFormField, SignUpFormMaskedField} from "aline-signup-form";
 
 const StepText = ({message, header}: {message: string, header: string}) => {
     return (
@@ -18,46 +16,48 @@ const StepText = ({message, header}: {message: string, header: string}) => {
 const basicInfo: SignUpFormStep = [
     "Basic Information",
     ["firstName", "lastName", "email"],
-    (props) => (<>
+    <>
         <StepText header="Hello!" message="Let's start with some basic information."/>
         <div className="row row-cols-1 row-cols-md-2">
             <div className="col">
-                <SignUpFormField {...props} autoFocus name="firstName" placeholder="First Name"/>
+                <SignUpFormField label="First Name" name="firstName" autoFocus/>
             </div>
             <div className="col">
-                <SignUpFormField {...props} name="lastName" placeholder="Last Name"/>
+                <SignUpFormField label="Last Name" name="lastName"/>
             </div>
         </div>
         <div className="row row-cols-1">
             <div className="col">
-                <SignUpFormField {...props} name="email" placeholder="Email"/>
+                <SignUpFormField label="Email" name="email"/>
             </div>
         </div>
-    </>)
+    </>
 ];
 
 
 const dateOfBirth: SignUpFormStep = [
     "More About You",
     ["dateOfBirth", "socialSecurity", "gender"],
-    (props) => (<>
+    <>
             <StepText header="More About You..." message="You must be at least 18 years old to be a member."/>
             <div className="row row-cols-1 row-cols-md-2">
                 <div className="col">
                     <SignUpFormMaskedField mask="99/99/9999"
+                                           maskPlaceholder={null}
                                            autoFocus
                                            name="dateOfBirth"
-                                           placeholder="Date of Birth"/>
+                                           label="Date of Birth"/>
                 </div>
                 <div className="col">
                     <SignUpFormMaskedField mask="999-99-9999"
+                                           maskPlaceholder={null}
                                            name="socialSecurity"
-                                           placeholder="Social Security #"/>
+                                           label="Social Security #"/>
                 </div>
             </div>
         <div className="row">
             <div className="col">
-                <SignUpFormField {...props} name="gender" placeholder="Gender" is="select">
+                <SignUpFormField name="gender" label="Gender" as="select">
                     <option value={undefined} className="text-muted">Select a gender...</option>
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>
@@ -66,45 +66,36 @@ const dateOfBirth: SignUpFormStep = [
                 </SignUpFormField>
             </div>
         </div>
-        </>)
+    </>
 ];
 
 const phoneNumber: SignUpFormStep = [
     "Phone Number",
     ["phone"],
-    () => (<>
-            <StepText header="Phone Number" message="If we need to reach you, what is your phone number?"/>
-            <div className="row row-cols-1">
-                <div className="col">
-                    <SignUpFormMaskedField mask="(999) 999-9999"
-                                           autoFocus
-                                           name="phone"
-                                           placeholder="Phone Number"/>
-                </div>
+    <>
+        <StepText header="Phone Number" message="If we need to reach you, what is your phone number?"/>
+        <div className="row row-cols-1">
+            <div className="col">
+                <SignUpFormMaskedField mask="(999) 999-9999"
+                                       autoFocus
+                                       name="phone"
+                                       label="Phone Number"/>
             </div>
-        </>)
+        </div>
+    </>
 ];
 
 const income: SignUpFormStep = [
     "Income",
-    ["income", "incomeFrequency"],
-    () => (<>
-        <StepText header="Phone Number" message="If we need to reach you, what is your phone number?"/>
+    ["income"],
+    <>
+        <StepText header="How much do you make?" message="We know this is personal. But we are a bank."/>
         <div className="row">
             <div className="col">
-                <Field name="income">
-                    {(props: any) => (
-                        <CurrencyInput {...props}
-                                       prefix="$"
-                                       allowNegativeValue={false}
-                                       fixedDecimalLength={2}
-                                       groupSeparator=","
-                                       decimalSeparator="."/>
-                    )}
-                </Field>
+                <SignUpFormCurrencyField label="Income" name="income"/>
             </div>
         </div>
-    </>)
+    </>
 ];
 
 
