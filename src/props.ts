@@ -25,7 +25,7 @@ export type SignUpFormStepProps = {
 export type SignUpFormFieldProps = {
     errors: FormikErrors<SignUpFormSchema>,
     touched: FormikTouched<SignUpFormSchema>,
-    field: string,
+    name: string,
     placeholder: string,
     is?: string,
     children?: ReactElement | ReactElement[],

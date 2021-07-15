@@ -4,7 +4,6 @@ import {Field, FieldProps, FormikErrors, FormikTouched} from "formik";
 import {SignUpFormFieldProps, SignUpFormStepProps} from "@props";
 import InputMask from "react-input-mask";
 import {ObjectSchema} from "yup";
-import {SignUpFormValidationSchema} from "@schemas";
 
 export const SignUpFormButtons = (
     {
@@ -64,26 +63,26 @@ export const SignUpFormError = ({errors, touched, field}: {errors: FormikErrors<
     );
 };
 
-export const SignUpFormField = ({errors, touched, field, placeholder, is, children, autoFocus}: SignUpFormFieldProps) => {
+export const SignUpFormField = ({errors, touched, name, placeholder, is, children, autoFocus}: SignUpFormFieldProps) => {
 
     const t = touched as any;
     return (
         <div className="my-2">
             <div className="form-floating">
-                <Field id={field}
-                       key={field}
-                       name={field}
+                <Field id={name}
+                       key={name}
+                       name={name}
                        className={`form-control ${is === "select" ? "form-select" : ""}`}
                        as={is}
-                       autoFocus={t[field] ? false : autoFocus}
+                       autoFocus={t[name] ? false : autoFocus}
                        placeholder={placeholder}>
                     {children}
                 </Field>
-                <label htmlFor={field}>{placeholder}</label>
+                <label className="form-label" htmlFor={name}>{placeholder}</label>
             </div>
             <SignUpFormError errors={errors}
                              touched={touched}
-                             field={field}/>
+                             field={name}/>
         </div>
     );
 };
