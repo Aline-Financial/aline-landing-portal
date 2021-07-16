@@ -1,4 +1,4 @@
-import React, {ReactChildren, ReactElement} from "react";
+import React, {ReactChildren, ReactElement, useState} from "react";
 import "@styles/SignUpFormStep.sass";
 import {ErrorMessage, Field, FieldHookConfig, FieldInputProps, FormikErrors, FormikTouched, useField} from "formik";
 import {SignUpFormStepProps} from "@props";
@@ -15,7 +15,8 @@ export const SignUpFormButtons = (
         steps,
         fields,
         schema,
-        values
+        values,
+        devMode
     }: {
             onNextStep: () => void,
             onPrevStep: () => void,
@@ -23,7 +24,8 @@ export const SignUpFormButtons = (
             steps: number,
             fields: string[],
             values: any,
-            schema: ObjectSchema<any>
+            schema: ObjectSchema<any>,
+            devMode?: boolean
         }) => {
 
     const canGoBack = () => currentStep > 0;
@@ -46,7 +48,7 @@ export const SignUpFormButtons = (
         <div className="d-flex justify-content-around">
             { canGoNext() ? <button className="btn btn-lg btn-primary order-1"
                                     type="button"
-                                    disabled={currentStepIsInvalid()}
+                                    disabled={devMode ? false : currentStepIsInvalid()}
                                     onClick={onNextStep}>Next</button> : null}
             { canGoBack() ? <button className="btn btn-lg btn-outline-secondary order-0"
                                     type="button"
@@ -74,10 +76,8 @@ export const SignUpFormField = ({label, children, ...props}: {label: string, chi
                 <div className="form-floating">
                     <Field id={field.name}
                            key={field.name}
-                           className={
-                               props.as === "select" ? "form-select"
-                                   : "form-control"
-                           }
+                           className={props.as === "select" ? "form-select"
+                                   : "form-control"}
                            placeholder={label}
                            as={props.as}
                            autoFocus={meta.touched ? false : props.autoFocus}
@@ -85,7 +85,7 @@ export const SignUpFormField = ({label, children, ...props}: {label: string, chi
                         {children}
                     </Field>
                     <label className="form-label"
-                           htmlFor={field.name}>{label}</label>
+                                    htmlFor={field.name}>{label}</label>
                 </div>
                 <ErrorMessage name={field.name}
                               className="my-1 text-danger"
@@ -129,7 +129,6 @@ export const SignUpFormMaskedField = ({label, mask, maskPlaceholder, ...props}: 
 export const SignUpFormCurrencyField = ({label, ...props}: {label: string} & FieldHookConfig<SignUpForm>) => {
     const {name} = props;
     const [field, , helper] = useField(name);
-    const fieldProps = field as FieldInputProps<any>;
 
     return (
         <>
@@ -138,12 +137,15 @@ export const SignUpFormCurrencyField = ({label, ...props}: {label: string} & Fie
                     <CurrencyInput id={name}
                                    key={name}
                                    prefix="$"
+                                   allowNegativeValue={false}
                                    groupSeparator=","
+                                   value={field.value}
                                    onValueChange={value => {
-                                       helper.setValue(value);
+                                       helper.setValue(value, true);
                                    }}
+                                   autoFocus={props.autoFocus}
                                    className="form-control"
-                                   onBlur={fieldProps.onBlur}/>
+                                   onBlur={field.onBlur}/>
                     <label className="form-label"
                            htmlFor={name}>{label}</label>
                 </div>
@@ -156,9 +158,10 @@ export const SignUpFormCurrencyField = ({label, ...props}: {label: string} & Fie
 
 };
 
-export const SignUpFormStep = ({step: [, , fragment]}: SignUpFormStepProps) => {
+export const SignUpFormStep = ({step: [, , fragment], stepNo}: {stepNo: number} & SignUpFormStepProps) => {
+
     return (
-        <div className="animate__animated animate__fadeIn min-form-height">
+        <div key={`step${stepNo}`} className="animate__animated animate__fadeIn min-form-height">
             {fragment}
         </div>
     );

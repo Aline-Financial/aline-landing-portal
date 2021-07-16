@@ -1,8 +1,8 @@
 import {SignUpFormStep} from "@interfaces";
-import React from "react";
+import React, {ReactFragment} from "react";
 import {SignUpFormCurrencyField, SignUpFormField, SignUpFormMaskedField} from "aline-signup-form";
 
-const StepText = ({message, header}: {message: string, header: string}) => {
+const StepText = ({message, header}: {message: string | ReactFragment, header: string | ReactFragment}) => {
     return (
         <div className="m-2">
             <div className="h2 fw-bold">{header}</div>
@@ -17,7 +17,7 @@ const basicInfo: SignUpFormStep = [
     "Basic Information",
     ["firstName", "lastName", "email"],
     <>
-        <StepText header="Hello!" message="Let's start with some basic information."/>
+        <StepText header={<><span className="text-primary">Hello</span> there!</>} message="Let's start with some basic information."/>
         <div className="row row-cols-1 row-cols-md-2">
             <div className="col">
                 <SignUpFormField label="First Name" name="firstName" autoFocus/>
@@ -39,7 +39,7 @@ const dateOfBirth: SignUpFormStep = [
     "More About You",
     ["dateOfBirth", "socialSecurity", "gender"],
     <>
-            <StepText header="More About You..." message="You must be at least 18 years old to be a member."/>
+        <StepText header={<>More <span className="text-primary">About You</span>...</>} message="You must be at least 18 years old to be a member."/>
             <div className="row row-cols-1 row-cols-md-2">
                 <div className="col">
                     <SignUpFormMaskedField mask="99/99/9999"
@@ -73,11 +73,12 @@ const phoneNumber: SignUpFormStep = [
     "Phone Number",
     ["phone"],
     <>
-        <StepText header="Phone Number" message="If we need to reach you, what is your phone number?"/>
+        <StepText header="Phone Number" message={<>If we need to reach you, what is your <span className="text-primary">phone number?</span></>}/>
         <div className="row row-cols-1">
             <div className="col">
                 <SignUpFormMaskedField mask="(999) 999-9999"
                                        autoFocus
+                                       maskPlaceholder={" "}
                                        name="phone"
                                        label="Phone Number"/>
             </div>
@@ -87,16 +88,30 @@ const phoneNumber: SignUpFormStep = [
 
 const income: SignUpFormStep = [
     "Income",
-    ["income"],
+    ["income", "incomeFrequency"],
     <>
-        <StepText header="How much do you make?" message="We know this is personal. But we are a bank."/>
-        <div className="row">
+        <StepText header={<>How much do you <span className="text-primary">make?</span></>} message={<>We know this is personal. But we are <span className="text-primary">a bank.</span></>}/>
+        <div className="row row-cols-1 row-cols-md-2">
             <div className="col">
-                <SignUpFormCurrencyField label="Income" name="income"/>
+                <SignUpFormCurrencyField label="Income" name="income" autoFocus/>
+            </div>
+            <div className="col">
+                <SignUpFormField label="Pay Frequency"
+                                 name="incomeFrequency"
+                                 as="select">
+                    <option value="Annually">Annually</option>
+                    <option value="Monthly">Monthly</option>
+                    <option value="Bi-Weekly">Bi-Weekly</option>
+                    <option value="Weekly">Weekly</option>
+                    <option value="Hourly">Hourly</option>
+                </SignUpFormField>
+
             </div>
         </div>
     </>
 ];
+
+
 
 
 

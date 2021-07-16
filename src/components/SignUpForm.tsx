@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Form, Formik} from "formik";
+import {Form, Formik, FormikErrors, FormikTouched} from "formik";
 import {SignUpFormSchema} from "@interfaces";
 import {SignUpFormValidationSchema} from "@schemas";
 import {SignUpFormStep, SignUpFormButtons} from "aline-signup-form";
@@ -63,12 +63,16 @@ class SignUpForm extends Component<{email: string}, {currentStep: number}> {
                 {({errors, touched, dirty, values}) => (
                     <Form>
                         <Prompt when={dirty} message="You've already started signing up. Are you sure you want to leave?"/>
+
                         <SignUpFormStep errors={errors}
                                         touched={touched}
+                                        stepNo={this.state.currentStep}
                                         step={SignupStepsData[this.state.currentStep]}/>
+
                         <div className="col-md-8 col-12 mx-auto mt-4 bottom-0">
                             <SignUpFormButtons onNextStep={this.nextStep}
                                                onPrevStep={this.prevStep}
+                                               devMode
                                                fields={SignupStepsData[this.state.currentStep][1]}
                                                values={values}
                                                schema={SignUpFormValidationSchema}

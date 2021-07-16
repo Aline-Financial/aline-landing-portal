@@ -36,7 +36,7 @@ export type SignUpFormSchema = {
     driversLicense: string,
     socialSecurity: string,
     incomeFrequency: string,
-    income: number,
+    income: number | undefined,
     initialDeposit: number,
     phone: string
 };
