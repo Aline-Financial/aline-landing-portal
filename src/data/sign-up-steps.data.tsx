@@ -28,7 +28,7 @@ const basicInfo: SignUpFormStep = [
         </div>
         <div className="row row-cols-1">
             <div className="col">
-                <SignUpFormField label="Email" name="email"/>
+                <SignUpFormField label="Email" name="email" inputMode="email"/>
             </div>
         </div>
     </>
@@ -39,7 +39,7 @@ const dateOfBirth: SignUpFormStep = [
     "More About You",
     ["dateOfBirth", "socialSecurity", "gender"],
     <>
-        <StepText header={<>More <span className="text-primary">About You</span>...</>} message="You must be at least 18 years old to be a member."/>
+        <StepText header={<>More <span className="text-primary">about you</span>...</>} message="You must be at least 18 years old to be a member."/>
             <div className="row row-cols-1 row-cols-md-2">
                 <div className="col">
                     <SignUpFormMaskedField mask="99/99/9999"
@@ -73,11 +73,12 @@ const phoneNumber: SignUpFormStep = [
     "Phone Number",
     ["phone"],
     <>
-        <StepText header="Phone Number" message={<>If we need to reach you, what is your <span className="text-primary">phone number?</span></>}/>
+        <StepText header={<>Phone <span className="text-primary">Number</span></>} message={<>If we need to reach you, what is your <span className="text-primary">phone number</span>?</>}/>
         <div className="row row-cols-1">
-            <div className="col">
+            <div className="col col-md-7 mx-auto">
                 <SignUpFormMaskedField mask="(999) 999-9999"
                                        autoFocus
+                                       className="form-control-lg pt-5 pb-4"
                                        maskPlaceholder={" "}
                                        name="phone"
                                        label="Phone Number"/>
@@ -98,6 +99,7 @@ const income: SignUpFormStep = [
             <div className="col">
                 <SignUpFormField label="Pay Frequency"
                                  name="incomeFrequency"
+                                 inputMode="numeric"
                                  as="select">
                     <option value="Annually">Annually</option>
                     <option value="Monthly">Monthly</option>
@@ -112,14 +114,11 @@ const income: SignUpFormStep = [
 ];
 
 
-
-
-
-const SignupStepsData: SignUpFormStep[] = [
+const SignUpStepsData: SignUpFormStep[] = [
     basicInfo,
     dateOfBirth,
     phoneNumber,
     income
 ];
 
-export default SignupStepsData;
+export default SignUpStepsData;

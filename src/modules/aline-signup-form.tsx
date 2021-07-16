@@ -1,11 +1,13 @@
-import React, {ReactChildren, ReactElement, useState} from "react";
+import React, {ReactChildren, ReactElement, ReactFragment, useEffect} from "react";
 import "@styles/SignUpFormStep.sass";
+import "@styles/SignUpFormProgress.sass";
 import {ErrorMessage, Field, FieldHookConfig, FieldInputProps, FormikErrors, FormikTouched, useField} from "formik";
 import {SignUpFormStepProps} from "@props";
 import InputMask from "react-input-mask";
 import {ObjectSchema} from "yup";
 import SignUpForm from "@components/SignUpForm";
 import CurrencyInput from "react-currency-input-field";
+import {Tooltip} from "bootstrap";
 
 export const SignUpFormButtons = (
     {
@@ -16,7 +18,8 @@ export const SignUpFormButtons = (
         fields,
         schema,
         values,
-        devMode
+        devMode,
+        isValid
     }: {
             onNextStep: () => void,
             onPrevStep: () => void,
@@ -25,7 +28,8 @@ export const SignUpFormButtons = (
             fields: string[],
             values: any,
             schema: ObjectSchema<any>,
-            devMode?: boolean
+            devMode?: boolean,
+            isValid: boolean
         }) => {
 
     const canGoBack = () => currentStep > 0;
@@ -49,7 +53,11 @@ export const SignUpFormButtons = (
             { canGoNext() ? <button className="btn btn-lg btn-primary order-1"
                                     type="button"
                                     disabled={devMode ? false : currentStepIsInvalid()}
-                                    onClick={onNextStep}>Next</button> : null}
+                                    onClick={onNextStep}>Next</button> :
+                <button className="btn btn-lg btn-primary order-1"
+                        type="submit"
+                        disabled={!isValid}
+                        >Submit</button>}
             { canGoBack() ? <button className="btn btn-lg btn-outline-secondary order-0"
                                     type="button"
                                     onClick={onPrevStep}>Back</button> : null}
@@ -75,7 +83,6 @@ export const SignUpFormField = ({label, children, ...props}: {label: string, chi
             <div className="my-2">
                 <div className="form-floating">
                     <Field id={field.name}
-                           key={field.name}
                            className={props.as === "select" ? "form-select"
                                    : "form-control"}
                            placeholder={label}
@@ -109,9 +116,8 @@ export const SignUpFormMaskedField = ({label, mask, maskPlaceholder, ...props}: 
                     <InputMask mask={mask}
                                maskPlaceholder={maskPlaceholder}
                                id={name}
-                               key={name}
                                placeholder={label}
-                               className="form-control"
+                               className={`form-control ${props.className}`}
                                autoFocus={meta.touched ? false : props.autoFocus}
                                {...fieldProps}/>
                     <label className="form-label"
@@ -135,7 +141,6 @@ export const SignUpFormCurrencyField = ({label, ...props}: {label: string} & Fie
             <div className="my-2">
                 <div className="form-floating">
                     <CurrencyInput id={name}
-                                   key={name}
                                    prefix="$"
                                    allowNegativeValue={false}
                                    groupSeparator=","
@@ -161,8 +166,72 @@ export const SignUpFormCurrencyField = ({label, ...props}: {label: string} & Fie
 export const SignUpFormStep = ({step: [, , fragment], stepNo}: {stepNo: number} & SignUpFormStepProps) => {
 
     return (
-        <div key={`step${stepNo}`} className="animate__animated animate__fadeIn min-form-height">
+        <div key={`step${stepNo}`} className="min-form-height revealInX px-3">
             {fragment}
+        </div>
+    );
+};
+
+export const SignUpFormProgress =
+    ({
+        currentStep,
+        steps,
+        setStep,
+        schema,
+        values
+    }:
+         {
+             currentStep: number,
+             setStep: (step: number) => void,
+             values: any,
+             schema: ObjectSchema<any>,
+             steps: [
+                 label: string,
+                 fields: string[],
+                 fragment: ReactFragment
+             ][]}) => {
+
+    const stepIsInvalid = (step: number) =>  {
+        const [, stepFields] = steps[step];
+
+        return stepFields.map(field => {
+            try {
+                schema.validateSyncAt(field, values);
+                return true;
+            } catch (e) {
+                return false;
+            }
+        }).includes(false);
+    };
+
+    const width = `${100*((currentStep + 1) / (steps.length + 1))}%`;
+
+    useEffect(() => {
+        document.querySelectorAll(".step-indicator")
+            .forEach(indicator => new Tooltip(indicator, {placement: "top"}));
+    }, [Tooltip]);
+
+
+    return (
+        <div className="mt-2 mb-5 col-10 mx-auto position-relative">
+            <div className="progress">
+                <div className="progress-bar" role="progressbar" style={{width}}/>
+            </div>
+            {steps.map(([label], index) => (
+                <button key={label}
+                        onClick={() => {
+                            setStep(index);
+                        }}
+                        type="button"
+                        className="btn btn-primary rounded-circle step-indicator fw-bold"
+                        disabled={index > 0 ? stepIsInvalid(index > 0 ? index - 1 : index) : false}
+                        title={label}
+                        style={{
+                            position: "absolute",
+                            left: `calc(${100*(index + 1)/(steps.length + 1)}% - 10px)`
+                        }}>
+                    {index + 1}
+                </button>))}
         </div>
     );
 };

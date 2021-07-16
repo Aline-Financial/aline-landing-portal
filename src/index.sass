@@ -1,11 +1,8 @@
 /** Global Styles **/
 
-$primary: #2d70ca
-$utilities: ("opacity": (property: opacity, values: (0: 0, 25: .25, 50: .5, 75: .75, 100: 1)))
+@import "styles/colors"
 
-// Global Bootstrap Styles
-@import "~bootstrap/scss/functions"
-@import "~bootstrap/scss/variables"
+$utilities: ("opacity": (property: opacity, values: (0: 0, 25: .25, 50: .5, 75: .75, 100: 1)))
 
 @import "~bootstrap/scss/bootstrap"
 
@@ -33,3 +30,20 @@ html, body
 
 .aline-bg
   background: repeating-linear-gradient(-75deg, transparentize(#e9ecef, 0.4), transparentize(#e9ecef, 0.4) 250px, #f8f9fa 120px, #f8f9fa 500px )
+
+.revealInX
+  position: relative
+  animation: revealInX 0.3s ease
+
+@keyframes revealInX
+
+  0%
+    opacity: 0
+    left: -3%
+
+  25%
+    opacity: 0.5
+
+  100%
+    opacity: 1
+    left: 0
