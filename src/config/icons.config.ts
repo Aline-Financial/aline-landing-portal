@@ -2,12 +2,12 @@ import {
     faBars,
     faChevronDown,
     faCogs,
-    faHome,
+    faHome, faIdBadge,
     faLock,
     faMapMarkedAlt,
-    faMoneyBillWave,
-    faPenAlt,
-    faSignInAlt
+    faMoneyBillWave, faMoneyCheckAlt,
+    faPenAlt, faPhone,
+    faSignInAlt, faUser
 } from "@fortawesome/free-solid-svg-icons";
 import {faGithub} from "@fortawesome/free-brands-svg-icons";
 
@@ -23,6 +23,10 @@ export const IconsConfig = {
         faLock,
         faMoneyBillWave,
         faCogs,
-        faGithub
+        faGithub,
+        faUser,
+        faIdBadge,
+        faPhone,
+        faMoneyCheckAlt
     ]
 };

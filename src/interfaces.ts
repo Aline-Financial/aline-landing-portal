@@ -69,5 +69,6 @@ export type SignUpFormTestingSchema = {
 export type SignUpFormStep = [
     label: string,
     fields: string[],
-    fragment: ReactFragment
+    fragment: ReactFragment,
+    icon?: IconProp,
 ];

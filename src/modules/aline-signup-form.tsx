@@ -8,6 +8,8 @@ import {ObjectSchema} from "yup";
 import SignUpForm from "@components/SignUpForm";
 import CurrencyInput from "react-currency-input-field";
 import {Tooltip} from "bootstrap";
+import {FontAwesomeIcon as FaIcon} from "@fortawesome/react-fontawesome";
+import {IconProp} from "@fortawesome/fontawesome-svg-core";
 
 export const SignUpFormButtons = (
     {
@@ -48,19 +50,29 @@ export const SignUpFormButtons = (
         return validList.includes(false);
     };
 
+
     return (
         <div className="d-flex justify-content-around">
-            { canGoNext() ? <button className="btn btn-lg btn-primary order-1"
+            { canGoNext() ?
+                <div className="order-1">
+                        <button className="btn btn-lg btn-primary order-1"
+                                type="button"
+                                disabled={devMode ? false : currentStepIsInvalid()}
+                                onClick={onNextStep}>Next
+                        </button>
+                </div>:
+                <div key="submitBtn" className="order-1">
+                    <button className="btn btn-lg btn-primary"
+                            type="submit"
+                            disabled={!isValid}
+                            >Submit</button>
+                </div>}
+            { canGoBack() ?
+                <div className="order-0">
+                    <button className="btn btn-lg btn-outline-secondary"
                                     type="button"
-                                    disabled={devMode ? false : currentStepIsInvalid()}
-                                    onClick={onNextStep}>Next</button> :
-                <button className="btn btn-lg btn-primary order-1"
-                        type="submit"
-                        disabled={!isValid}
-                        >Submit</button>}
-            { canGoBack() ? <button className="btn btn-lg btn-outline-secondary order-0"
-                                    type="button"
-                                    onClick={onPrevStep}>Back</button> : null}
+                            onClick={onPrevStep}>Back</button>
+                </div>: null}
         </div>
     );
 };
@@ -188,7 +200,8 @@ export const SignUpFormProgress =
              steps: [
                  label: string,
                  fields: string[],
-                 fragment: ReactFragment
+                 fragment: ReactFragment,
+                 icon?: IconProp
              ][]}) => {
 
     const stepIsInvalid = (step: number) =>  {
@@ -204,34 +217,48 @@ export const SignUpFormProgress =
         }).includes(false);
     };
 
+    const previousStepsInvalid = (step: number) => {
+        for (let i = 0; i <= step; i++) {
+            if (stepIsInvalid(i)) return true;
+        }
+        return false;
+    };
+
     const width = `${100*((currentStep + 1) / (steps.length + 1))}%`;
 
     useEffect(() => {
-        document.querySelectorAll(".step-indicator")
-            .forEach(indicator => new Tooltip(indicator, {placement: "top"}));
+        document.querySelectorAll(".tooltip-step-indicator")
+            .forEach(indicator => new Tooltip(indicator, {
+                placement: "top",
+                container: "div"
+            }));
     }, [Tooltip]);
 
 
     return (
-        <div className="mt-2 mb-5 col-10 mx-auto position-relative">
-            <div className="progress">
-                <div className="progress-bar" role="progressbar" style={{width}}/>
+        <div className="revealInY">
+            <div className="mt-2 mb-5 col-10 mx-auto position-relative revealInY">
+                <div className="progress">
+                    <div className="progress-bar" role="progressbar" style={{width}}/>
+                </div>
+                {steps.map(([label, , , icon], index) => (<div
+                    key={label}
+                    className="tooltip-step-indicator"
+                    title={label}
+                    style={{
+                        position: "absolute",
+                        left: `calc(${100*(index + 1)/(steps.length + 1)}% - 10px)`
+                    }}>
+                    <button onClick={() => {
+                                setStep(index);
+                            }}
+                            type="button"
+                            className="btn btn-primary shadow shadow-sm rounded-circle step-indicator fw-bold"
+                            disabled={index > 0 ? previousStepsInvalid(index >  0 ? index - 1 : index) : false}>
+                        {icon ? <FaIcon icon={icon}/> : index + 1}
+                    </button>
+                    </div>))}
             </div>
-            {steps.map(([label], index) => (
-                <button key={label}
-                        onClick={() => {
-                            setStep(index);
-                        }}
-                        type="button"
-                        className="btn btn-primary rounded-circle step-indicator fw-bold"
-                        disabled={index > 0 ? stepIsInvalid(index > 0 ? index - 1 : index) : false}
-                        title={label}
-                        style={{
-                            position: "absolute",
-                            left: `calc(${100*(index + 1)/(steps.length + 1)}% - 10px)`
-                        }}>
-                    {index + 1}
-                </button>))}
         </div>
     );
 };

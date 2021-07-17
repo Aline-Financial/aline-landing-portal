@@ -31,7 +31,8 @@ const basicInfo: SignUpFormStep = [
                 <SignUpFormField label="Email" name="email" inputMode="email"/>
             </div>
         </div>
-    </>
+    </>,
+    ["fas", "user"]
 ];
 
 
@@ -66,7 +67,8 @@ const dateOfBirth: SignUpFormStep = [
                 </SignUpFormField>
             </div>
         </div>
-    </>
+    </>,
+    ["fas", "id-badge"]
 ];
 
 const phoneNumber: SignUpFormStep = [
@@ -84,7 +86,8 @@ const phoneNumber: SignUpFormStep = [
                                        label="Phone Number"/>
             </div>
         </div>
-    </>
+    </>,
+    ["fas", "phone"]
 ];
 
 const income: SignUpFormStep = [
@@ -110,7 +113,8 @@ const income: SignUpFormStep = [
 
             </div>
         </div>
-    </>
+    </>,
+    ["fas", "money-check-alt"]
 ];
 
 
