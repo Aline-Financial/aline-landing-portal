@@ -122,7 +122,38 @@ const address: SignUpFormStep = [
     "Address",
     ["address", "city", "state", "zipcode"],
     <>
-        <StepText message={<>Please enter your current address. <div className="fs-6 text-muted fst-italic">This information will also help us find a local branch near you.</div></>}header={<>Where do <span className="text-primary">you live</span>?</>}/>
+        <StepText message={<>Please enter your current address. <div className="fs-6 text-muted fst-italic">This information will also help us find a local branch near you.</div></>} header={<>Where do <span className="text-primary">you live</span>?</>}/>
+        <div className="row row-cols-1 row-cols-lg-2">
+            <div className="col">
+                <SignUpFormField label="Address" name="address" autoFocus/>
+            </div>
+            <div className="col">
+                <SignUpFormField label="City" name="city"/>
+            </div>
+        </div>
+        <div className="row row-cols-1 row-cols-md-2">
+            <div className="col">
+                <SignUpFormField label="State" name="state" as="select">
+                    <option value={undefined}>Select</option>
+                    {<>
+                        {states.map(state => <option key={state} value={state}>{state}</option>)}
+                    </>}
+                </SignUpFormField>
+            </div>
+            <div className="col">
+                <SignUpFormMaskedField label="Zipcode" name="zipcode" mask="99999" maskPlaceholder={null}/>
+            </div>
+        </div>
+    </>,
+    ["fas", "house-user"]
+];
+
+const mailingAddress: SignUpFormStep = [
+    "Mailing Address",
+    ["mailingAddress", "mailingCity", "mailingState", "mailingZipcode"],
+    <>
+        <StepText header={<>Mailing <span className="text-primary">Address</span></>}
+                  message="Can we send you mail at that address?" />
         <div className="row row-cols-1 row-cols-lg-2">
             <div className="col">
                 <SignUpFormField label="Address" name="address" autoFocus/>
