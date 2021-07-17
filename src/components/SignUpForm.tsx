@@ -70,6 +70,7 @@ class SignUpForm extends Component<{email: string}, {currentStep: number}> {
 
                         <SignUpFormProgress currentStep={this.state.currentStep}
                                             values={values}
+                                            devMode
                                             schema={SignUpFormValidationSchema}
                                             steps={SignUpStepsData}
                                             setStep={this.setStep}/>
@@ -84,7 +85,7 @@ class SignUpForm extends Component<{email: string}, {currentStep: number}> {
                         <div className="col-md-8 col-12 mx-auto my-4 bottom-0">
                             <SignUpFormButtons onNextStep={this.nextStep}
                                                onPrevStep={this.prevStep}
-                                               // devMode
+                                               devMode
                                                fields={SignUpStepsData[this.state.currentStep][1]}
                                                values={values}
                                                schema={SignUpFormValidationSchema}

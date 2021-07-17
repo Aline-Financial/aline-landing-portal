@@ -2,7 +2,7 @@ import {
     faBars,
     faChevronDown,
     faCogs,
-    faHome, faIdBadge,
+    faHome, faHouseUser, faIdBadge,
     faLock,
     faMapMarkedAlt,
     faMoneyBillWave, faMoneyCheckAlt,
@@ -27,6 +27,7 @@ export const IconsConfig = {
         faUser,
         faIdBadge,
         faPhone,
-        faMoneyCheckAlt
+        faMoneyCheckAlt,
+        faHouseUser
     ]
 };

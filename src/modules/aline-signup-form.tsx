@@ -1,6 +1,5 @@
 import React, {ReactChildren, ReactElement, ReactFragment, useEffect} from "react";
-import "@styles/SignUpFormStep.sass";
-import "@styles/SignUpFormProgress.sass";
+import "@styles/SignUpForm.sass";
 import {ErrorMessage, Field, FieldHookConfig, FieldInputProps, FormikErrors, FormikTouched, useField} from "formik";
 import {SignUpFormStepProps} from "@props";
 import InputMask from "react-input-mask";
@@ -115,7 +114,7 @@ export const SignUpFormField = ({label, children, ...props}: {label: string, chi
 
 };
 
-export const SignUpFormMaskedField = ({label, mask, maskPlaceholder, ...props}: {label: string, mask: string, maskPlaceholder?: string | null} & FieldHookConfig<SignUpForm>) => {
+export const SignUpFormMaskedField = ({label, mask, maskPlaceholder, ...props}: {label: string, mask: string | (string | RegExp)[], maskPlaceholder?: string | null} & FieldHookConfig<SignUpForm>) => {
 
     const [field, meta] = useField(props);
     const {name} = field;
@@ -190,10 +189,12 @@ export const SignUpFormProgress =
         steps,
         setStep,
         schema,
-        values
+        values,
+        devMode
     }:
          {
              currentStep: number,
+             devMode?: boolean
              setStep: (step: number) => void,
              values: any,
              schema: ObjectSchema<any>,
@@ -236,7 +237,7 @@ export const SignUpFormProgress =
 
 
     return (
-        <div className="revealInY">
+        <div className="revealInY d-none d-lg-block">
             <div className="mt-2 mb-5 col-10 mx-auto position-relative revealInY">
                 <div className="progress">
                     <div className="progress-bar" role="progressbar" style={{width}}/>
@@ -247,14 +248,14 @@ export const SignUpFormProgress =
                     title={label}
                     style={{
                         position: "absolute",
-                        left: `calc(${100*(index + 1)/(steps.length + 1)}% - 10px)`
+                        left: `calc(${100*(index + 1)/(steps.length + 1)}% - 20px)`
                     }}>
                     <button onClick={() => {
                                 setStep(index);
                             }}
                             type="button"
                             className="btn btn-primary shadow shadow-sm rounded-circle step-indicator fw-bold"
-                            disabled={index > 0 ? previousStepsInvalid(index >  0 ? index - 1 : index) : false}>
+                            disabled={index > 0 && !devMode ? previousStepsInvalid(index >  0 ? index - 1 : index) : false}>
                         {icon ? <FaIcon icon={icon}/> : index + 1}
                     </button>
                     </div>))}
