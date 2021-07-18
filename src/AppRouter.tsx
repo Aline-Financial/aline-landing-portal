@@ -41,7 +41,7 @@ const AppRouter = () => {
                 <AppNav/>
             </ExcludeInPath>
             <Container exclude={noNavPaths}
-                       excludedClass="min-vh-100 pt-5 bg-gray aline-bg"
+                       excludedClass="min-vh-100 py-4 bg-gray aline-bg"
                        className="container-fullscreen padding-past-nav">
                 <Switch>
                     <Route exact path="/" component={Landing}/>

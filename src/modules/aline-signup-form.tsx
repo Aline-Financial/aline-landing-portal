@@ -314,31 +314,33 @@ export const SignUpFormProgress =
         };
 
         return (
-            <div className="revealInY d-none d-lg-block signup-progress">
+            <div className="revealInY signup-progress">
                 <div className="mt-2 mb-5 col-10 mx-auto position-relative revealInY">
                     <div className="progress">
                         <div className="progress-bar" role="progressbar" style={{width}}/>
                     </div>
-                    {steps.map(([label, , , icon], index) => (<div
-                        key={label}
-                        className="tooltip-step-indicator"
-                        title={label}
-                        style={{
-                            left: `calc(${100 * (index + 1) / (steps.length + 1)}% - 20px)`,
-                        }}>
-                        <button onClick={() => {
-                                    setStep(index);
-                                }}
-                                key={`stepIndicator${index}`}
-                                type="button"
-                                className={`btn btn-primary shadow shadow-sm rounded-circle step-indicator fw-bold ${isDisabled(index) ? "" : "hover-indicator"}`}
-                                style={{
-                                    transitionDelay: `${50 * index}ms`
-                                }}
-                                disabled={isDisabled(index)}>
-                            {icon ? <FaIcon icon={icon}/> : index + 1}
-                        </button>
-                    </div>))}
+                    <div className="step-indicator-group">
+                        {steps.map(([label, , , icon], index) => (<div
+                            key={label}
+                            className="tooltip-step-indicator"
+                            title={label}
+                            style={{
+                                left: `calc(${100 * (index + 1) / (steps.length + 1)}% - 20px)`,
+                            }}>
+                            <button onClick={() => {
+                                        setStep(index);
+                                    }}
+                                    key={`stepIndicator${index}`}
+                                    type="button"
+                                    className={`btn btn-primary shadow shadow-sm rounded-circle step-indicator fw-bold ${isDisabled(index) ? "" : "hover-indicator"}`}
+                                    style={{
+                                        transitionDelay: `${50 * index}ms`
+                                    }}
+                                    disabled={isDisabled(index)}>
+                                {icon ? <FaIcon icon={icon}/> : index + 1}
+                            </button>
+                        </div>))}
+                    </div>
                 </div>
             </div>
         );
@@ -351,20 +353,18 @@ export const SignUpFormSelect = ({options, name}: {name: string, options: SignUp
 
     return (
         <div>
-            <div className="card-group">
+            <div className="select-card-group select-card-group-sm">
                 {options.map(({title, description, icon, appType}) => (
 
-                    <div key={title} className={`select-card card ${field.value == appType ? "active" : ""}`}
+                    <div key={title} className={`select-card ${field.value == appType ? "active" : ""}`}
                          onClick={() => { helpers.setValue(appType); }}>
-                        <div className="card-body">
-                            <div className="card-body-header">
-                                <FaIcon icon={icon} className="text-primary fs-1 m-3"/>
-                                <h2 className="h5 fw-bold">{title}</h2>
-                            </div>
-                            <p className="card-text card-body-content">
-                                {description}
-                            </p>
+                        <div className="card-body-header">
+                            <FaIcon icon={icon} className="text-primary fs-1 m-3"/>
+                            <h2 className="h5 fw-bold">{title}</h2>
                         </div>
+                        <p className="card-text card-body-content">
+                            {description}
+                        </p>
                     </div>
 
                 ))}

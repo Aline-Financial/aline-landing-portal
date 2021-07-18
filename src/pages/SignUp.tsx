@@ -19,6 +19,11 @@ const SignUp = () => {
                     <SignUpForm email={email}/>
                 </div>
             </div>
+            <div className="text-center text-black-50 d-flex mx-auto justify-content-center align-items-center" style={{
+                height: "200px"
+            }}>
+                &copy; Aline Financial
+            </div>
         </div>
     );
 };
