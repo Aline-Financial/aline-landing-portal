@@ -1,4 +1,4 @@
-import "bootstrap/dist/js/bootstrap.bundle.min";
+import "bootstrap";
 import {library} from "@fortawesome/fontawesome-svg-core";
 import React from "react";
 import {IconsConfig} from "@config/icons.config";

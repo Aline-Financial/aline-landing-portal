@@ -309,6 +309,10 @@ export const SignUpFormProgress =
         }, [Tooltip]);
 
 
+        const isDisabled = (index: number) => {
+            return index > 0 && !devMode ? previousStepsInvalid(index > 0 ? index - 1 : index) : false;
+        };
+
         return (
             <div className="revealInY d-none d-lg-block signup-progress">
                 <div className="mt-2 mb-5 col-10 mx-auto position-relative revealInY">
@@ -320,15 +324,18 @@ export const SignUpFormProgress =
                         className="tooltip-step-indicator"
                         title={label}
                         style={{
-                            position: "absolute",
-                            left: `calc(${100 * (index + 1) / (steps.length + 1)}% - 20px)`
+                            left: `calc(${100 * (index + 1) / (steps.length + 1)}% - 20px)`,
                         }}>
                         <button onClick={() => {
-                            setStep(index);
-                        }}
+                                    setStep(index);
+                                }}
+                                key={`stepIndicator${index}`}
                                 type="button"
-                                className="btn btn-primary shadow shadow-sm rounded-circle step-indicator fw-bold"
-                                disabled={index > 0 && !devMode ? previousStepsInvalid(index > 0 ? index - 1 : index) : false}>
+                                className={`btn btn-primary shadow shadow-sm rounded-circle step-indicator fw-bold ${isDisabled(index) ? "" : "hover-indicator"}`}
+                                style={{
+                                    transitionDelay: `${50 * index}ms`
+                                }}
+                                disabled={isDisabled(index)}>
                             {icon ? <FaIcon icon={icon}/> : index + 1}
                         </button>
                     </div>))}

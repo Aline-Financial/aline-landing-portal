@@ -114,6 +114,7 @@ const income: SignUpFormStep = [
             <div className="col">
                 <SignUpFormField label="Pay Frequency"
                                  name="incomeFrequency"
+                                 defaultValue="Annually"
                                  inputMode="numeric"
                                  as="select">
                     <option value="Annually">Annually</option>
@@ -239,11 +240,11 @@ const applications: SignUpFormApplication[] = [
 
 const accounts: SignUpFormStep = [
     "Account",
-    [],
+    ["applicationType"],
     <>
         <StepText header={<>How will you use <span className="text-primary">your account?</span></>} message="Select the type of account that best fits your needs."/>
         <SignUpFormSelect name="applicationType" options={applications}/>
-        <p className="small mt-5 text-muted w-75 fst-italic"><FaIcon icon="info-circle"/> Please note, {"'Spending'"} and {"'Stashing'"} accounts respectively refer to standard Checking and Savings accounts.</p>
+        <p className="mx-auto small mt-5 text-muted w-75 fst-italic"><FaIcon icon="info-circle"/> Please note, {"'Spending'"} and {"'Stashing'"} accounts respectively refer to standard Checking and Savings accounts.</p>
     </>,
     ["fas", "piggy-bank"]
 ];
@@ -251,12 +252,12 @@ const accounts: SignUpFormStep = [
 
 const SignUpStepsData: SignUpFormStep[] = [
     basicInfo,
+    accounts,
     dateOfBirth,
     identification,
     income,
     address,
-    mailingAddress,
-    accounts
+    mailingAddress
 ];
 
 export default SignUpStepsData;

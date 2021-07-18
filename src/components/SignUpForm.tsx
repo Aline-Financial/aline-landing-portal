@@ -10,7 +10,7 @@ class SignUpForm extends Component<{email: string}, {currentStep: number}> {
 
     initialValues: SignUpFormSchema = {
         address: "",
-        applicationType: 1,
+        applicationType: 0,
         city: "",
         dateOfBirth: "",
         driversLicense: "",
@@ -18,7 +18,7 @@ class SignUpForm extends Component<{email: string}, {currentStep: number}> {
         firstName: "",
         gender: undefined,
         income: 0,
-        incomeFrequency: "",
+        incomeFrequency: "Annually",
         initialDeposit: 100,
         lastName: "",
         mailingAddress: "",

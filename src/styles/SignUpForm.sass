@@ -4,12 +4,13 @@
   display: flex
   align-items: center
   justify-content: center
-  width: 35px
-  height: 35px
+  width: 40px
+  height: 40px
   line-height: 30px
-  font-size: smaller
+  font-size: small
   text-align: center
   color: darken($light, 5)
+
 
 .step-indicator[disabled]
   opacity: 1
@@ -18,13 +19,14 @@
   pointer-events: none
 
 .tooltip-step-indicator
+  border-radius: 100%
   display: inline-block
-  top: -16px
+  top: -18px
+  position: absolute
 
 .select-card
   cursor: pointer
   &.active, &:active
-    z-index: $zindex-fixed
     box-shadow: $box-shadow-inset
     background-color: $gray-100
   .card-body-header
@@ -55,26 +57,28 @@
         opacity: 1
 
 
-
-
 .min-form-height
   min-height: 350px
 
 .signup-progress
+  opacity: 88%
   padding-top: 5px
   padding-bottom: 10px
-  transition: width 0.3s ease, margin-top 0.2s ease
+  transition: width 0.3s ease, margin-top 0.2s ease, opacity 0.3s ease
   width: 60%
   margin: -10px auto 0 auto
   .progress
     transition: height 0.2s ease
     height: 8px
   .step-indicator
-    transition: transform 0.3s ease, margin-top 0.3s ease, color 0.15s ease
-    transform: scale(0.6, 0.6)
+    transition: transform 0.2s ease, margin-top 0.3s ease, color 0.15s ease
+    transform: scale(0.5, 0.5)
     margin-top: 2px
     color: transparent
+    &.hover-indicator
+      animation: indicator-attention 0.55s ease-in-out
   &:hover
+    opacity: 100%
     width: 100%
     margin-top: -7px
     .progress
@@ -82,4 +86,21 @@
     .step-indicator
       transform: scale(1, 1)
       margin-top: 0
-      color: $light
+      color: darken($light, 5)
+
+@keyframes indicator-attention
+  0%
+    transform: scale(0.6, 0.6)
+    margin-top: 2px
+    color: transparent
+
+  50%
+    transform: scale(1, 1)
+    margin-top: 0
+    color: $light
+
+  100%
+    transform: scale(0.6, 0.6)
+    margin-top: 2px
+    color: transparent
+
