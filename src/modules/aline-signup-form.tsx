@@ -9,7 +9,20 @@ import CurrencyInput from "react-currency-input-field";
 import {Tooltip} from "bootstrap";
 import {FontAwesomeIcon as FaIcon} from "@fortawesome/react-fontawesome";
 import {IconProp} from "@fortawesome/fontawesome-svg-core";
+import {SignUpFormApplication} from "@interfaces";
 
+/**
+ * Button controls to update the currentStep of {@link SignUpForm}
+ * @param onNextStep function that runs when next is clicked
+ * @param onPrevStep function that runs when back is clicked
+ * @param currentStep the currentStep the controls are working with
+ * @param steps how many steps there are in a multi-step form. Used to limit the currentStep updating by disabling the button that would take the currentStep variable out of bounds
+ * @param fields a list of the current step fields
+ * @param schema the schema the fields are validated against
+ * @param values the current values of the form
+ * @param devMode if true, buttons will not be disabled
+ * @param isValid boolean that is passed from a form to tell the controller if the form as a whole is valid
+ */
 export const SignUpFormButtons = (
     {
         onNextStep,
@@ -22,16 +35,16 @@ export const SignUpFormButtons = (
         devMode,
         isValid
     }: {
-            onNextStep: () => void,
-            onPrevStep: () => void,
-            currentStep: number,
-            steps: number,
-            fields: string[],
-            values: any,
-            schema: ObjectSchema<any>,
-            devMode?: boolean,
-            isValid: boolean
-        }) => {
+        onNextStep: () => void,
+        onPrevStep: () => void,
+        currentStep: number,
+        steps: number,
+        fields: string[],
+        values: any,
+        schema: ObjectSchema<any>,
+        devMode?: boolean,
+        isValid: boolean
+    }) => {
 
     const canGoBack = () => currentStep > 0;
     const canGoNext = () => currentStep < steps - 1;
@@ -49,43 +62,64 @@ export const SignUpFormButtons = (
         return validList.includes(false);
     };
 
-
     return (
         <div className="d-flex justify-content-around">
-            { canGoNext() ?
+            {canGoNext() ?
                 <div className="order-1">
-                        <button className="btn btn-lg btn-primary order-1"
-                                type="button"
-                                disabled={devMode ? false : currentStepIsInvalid()}
-                                onClick={onNextStep}>Next
-                        </button>
-                </div>:
+                    <button className="btn btn-lg btn-primary order-1"
+                            type="button"
+                            disabled={devMode ? false : currentStepIsInvalid()}
+                            onClick={onNextStep}>Next
+                    </button>
+                </div> :
                 <div key="submitBtn" className="order-1">
                     <button className="btn btn-lg btn-primary"
                             type="submit"
                             disabled={!isValid}
-                            >Submit</button>
+                    >Submit
+                    </button>
                 </div>}
-            { canGoBack() ?
+            {canGoBack() ?
                 <div className="order-0">
                     <button className="btn btn-lg btn-outline-secondary"
-                                    type="button"
-                            onClick={onPrevStep}>Back</button>
-                </div>: null}
+                            type="button"
+                            onClick={onPrevStep}>Back
+                    </button>
+                </div> : null}
         </div>
     );
 };
 
-export const SignUpFormError = ({errors, touched, field}: {errors: FormikErrors<any>, touched: FormikTouched<any>, field: string}) => {
+/**
+ * Styled error message
+ * @param errors errors from formik props
+ * @param touched touched property from formik props
+ * @param field field that is being validated
+ */
+export const SignUpFormError = ({
+                                    errors,
+                                    touched,
+                                    field
+                                }: { errors: FormikErrors<any>, touched: FormikTouched<any>, field: string }) => {
     return (
         <>
-            { errors[field] && touched[field] ?
+            {errors[field] && touched[field] ?
                 <div className="text-danger m-1">{errors[field]}</div> : ""}
         </>
     );
 };
 
-export const SignUpFormField = ({label, children, ...props}: {label: string, children?: ReactElement | ReactElement[] | ReactChildren} & FieldHookConfig<SignUpForm>) => {
+/**
+ * Styled and configured field for the SignUpForm component
+ * @param label placeholder and label used for form-floating input
+ * @param children children can only exist if the field is a select
+ * @param props {@link FieldHookConfig} from formik
+ */
+export const SignUpFormField = ({
+                                    label,
+                                    children,
+                                    ...props
+                                }: { label: string, children?: ReactElement | ReactElement[] | ReactChildren } & FieldHookConfig<SignUpForm>) => {
 
     const [field, meta] = useField(props);
 
@@ -95,7 +129,7 @@ export const SignUpFormField = ({label, children, ...props}: {label: string, chi
                 <div className="form-floating">
                     <Field id={field.name}
                            className={props.as === "select" ? "form-select"
-                                   : "form-control"}
+                               : "form-control"}
                            placeholder={label}
                            as={props.as}
                            autoFocus={meta.touched ? false : props.autoFocus}
@@ -103,7 +137,7 @@ export const SignUpFormField = ({label, children, ...props}: {label: string, chi
                         {children}
                     </Field>
                     <label className="form-label"
-                                    htmlFor={field.name}>{label}</label>
+                           htmlFor={field.name}>{label}</label>
                 </div>
                 <ErrorMessage name={field.name}
                               className="my-1 text-danger"
@@ -114,7 +148,19 @@ export const SignUpFormField = ({label, children, ...props}: {label: string, chi
 
 };
 
-export const SignUpFormMaskedField = ({label, mask, maskPlaceholder, ...props}: {label: string, mask: string | (string | RegExp)[], maskPlaceholder?: string | null} & FieldHookConfig<SignUpForm>) => {
+/**
+ * Masked input field
+ * @param label placeholder or label for form-floating input
+ * @param mask mask to be used
+ * @param maskPlaceholder the character that will replace masked characters
+ * @param props {@link FieldHookConfig} from formik
+ */
+export const SignUpFormMaskedField = ({
+                                          label,
+                                          mask,
+                                          maskPlaceholder,
+                                          ...props
+                                      }: { label: string, mask: string | (string | RegExp)[], maskPlaceholder?: string | null } & FieldHookConfig<SignUpForm>) => {
 
     const [field, meta] = useField(props);
     const {name} = field;
@@ -143,9 +189,14 @@ export const SignUpFormMaskedField = ({label, mask, maskPlaceholder, ...props}: 
 
 };
 
-export const SignUpFormCurrencyField = ({label, ...props}: {label: string} & FieldHookConfig<SignUpForm>) => {
+/**
+ * Currency field. A regular input field with currency masking.
+ * @param label label and placeholder
+ * @param props {@link FieldHookConfig} from formik
+ */
+export const SignUpFormCurrencyField = ({label, ...props}: { label: string } & FieldHookConfig<SignUpForm>) => {
     const {name} = props;
-    const [field, , helper] = useField(name);
+    const [field, meta, helper] = useField(name);
 
     return (
         <>
@@ -159,7 +210,7 @@ export const SignUpFormCurrencyField = ({label, ...props}: {label: string} & Fie
                                    onValueChange={value => {
                                        helper.setValue(value, true);
                                    }}
-                                   autoFocus={props.autoFocus}
+                                   autoFocus={meta.touched ? false : props.autoFocus}
                                    className="form-control"
                                    onBlur={field.onBlur}/>
                     <label className="form-label"
@@ -174,24 +225,45 @@ export const SignUpFormCurrencyField = ({label, ...props}: {label: string} & Fie
 
 };
 
-export const SignUpFormStep = ({step: [, , fragment], stepNo}: {stepNo: number} & SignUpFormStepProps) => {
+/**
+ * The main component that is rendered in the {@link SignUpForm}
+ * @param fragment fragment of the fields in the step.
+ * @param stepNo currentStep passed in from a formik form
+ * @param values values that may be used to validate inside a step
+ */
+export const SignUpFormStep = ({
+                                   step: [, , fragment],
+                                   stepNo,
+                                   values
+                               }: { stepNo: number, values: any } & SignUpFormStepProps) => {
 
     return (
         <div key={`step${stepNo}`} className="min-form-height revealInX px-3">
-            {fragment}
+            {typeof fragment === "function" ? fragment(values) : fragment}
         </div>
     );
 };
 
+/**
+ * Progress bar and step indicator
+ *
+ * @param currentStep current step that the form is on.
+ * @param steps an array of {@link SignUpFormStep}s.
+ * @param setStep used to set the current step and render in the form the step that was selected.
+ * @param schema schema to validate values against.
+ * @param values values to validate against the schema.
+ * @param devMode if enabled, allows you to jump to a selected step.
+ *
+ */
 export const SignUpFormProgress =
     ({
-        currentStep,
-        steps,
-        setStep,
-        schema,
-        values,
-        devMode
-    }:
+         currentStep,
+         steps,
+         setStep,
+         schema,
+         values,
+         devMode
+     }:
          {
              currentStep: number,
              devMode?: boolean
@@ -203,63 +275,95 @@ export const SignUpFormProgress =
                  fields: string[],
                  fragment: ReactFragment,
                  icon?: IconProp
-             ][]}) => {
+             ][]
+         }) => {
 
-    const stepIsInvalid = (step: number) =>  {
-        const [, stepFields] = steps[step];
+        const stepIsInvalid = (step: number) => {
+            const [, stepFields] = steps[step];
 
-        return stepFields.map(field => {
-            try {
-                schema.validateSyncAt(field, values);
-                return true;
-            } catch (e) {
-                return false;
+            return stepFields.map(field => {
+                try {
+                    schema.validateSyncAt(field, values);
+                    return true;
+                } catch (e) {
+                    return false;
+                }
+            }).includes(false);
+        };
+
+        const previousStepsInvalid = (step: number) => {
+            for (let i = 0; i <= step; i++) {
+                if (stepIsInvalid(i)) return true;
             }
-        }).includes(false);
+            return false;
+        };
+
+        const width = `${100 * ((currentStep + 1) / (steps.length + 1))}%`;
+
+        useEffect(() => {
+            document.querySelectorAll(".tooltip-step-indicator")
+                .forEach(indicator => new Tooltip(indicator, {
+                    placement: "top",
+                    container: "div"
+                }));
+        }, [Tooltip]);
+
+
+        return (
+            <div className="revealInY d-none d-lg-block signup-progress">
+                <div className="mt-2 mb-5 col-10 mx-auto position-relative revealInY">
+                    <div className="progress">
+                        <div className="progress-bar" role="progressbar" style={{width}}/>
+                    </div>
+                    {steps.map(([label, , , icon], index) => (<div
+                        key={label}
+                        className="tooltip-step-indicator"
+                        title={label}
+                        style={{
+                            position: "absolute",
+                            left: `calc(${100 * (index + 1) / (steps.length + 1)}% - 20px)`
+                        }}>
+                        <button onClick={() => {
+                            setStep(index);
+                        }}
+                                type="button"
+                                className="btn btn-primary shadow shadow-sm rounded-circle step-indicator fw-bold"
+                                disabled={index > 0 && !devMode ? previousStepsInvalid(index > 0 ? index - 1 : index) : false}>
+                            {icon ? <FaIcon icon={icon}/> : index + 1}
+                        </button>
+                    </div>))}
+                </div>
+            </div>
+        );
     };
 
-    const previousStepsInvalid = (step: number) => {
-        for (let i = 0; i <= step; i++) {
-            if (stepIsInvalid(i)) return true;
-        }
-        return false;
-    };
 
-    const width = `${100*((currentStep + 1) / (steps.length + 1))}%`;
+export const SignUpFormSelect = ({options, name}: {name: string, options: SignUpFormApplication[]}) => {
 
-    useEffect(() => {
-        document.querySelectorAll(".tooltip-step-indicator")
-            .forEach(indicator => new Tooltip(indicator, {
-                placement: "top",
-                container: "div"
-            }));
-    }, [Tooltip]);
-
+    const [field, , helpers] = useField(name);
 
     return (
-        <div className="revealInY d-none d-lg-block">
-            <div className="mt-2 mb-5 col-10 mx-auto position-relative revealInY">
-                <div className="progress">
-                    <div className="progress-bar" role="progressbar" style={{width}}/>
-                </div>
-                {steps.map(([label, , , icon], index) => (<div
-                    key={label}
-                    className="tooltip-step-indicator"
-                    title={label}
-                    style={{
-                        position: "absolute",
-                        left: `calc(${100*(index + 1)/(steps.length + 1)}% - 20px)`
-                    }}>
-                    <button onClick={() => {
-                                setStep(index);
-                            }}
-                            type="button"
-                            className="btn btn-primary shadow shadow-sm rounded-circle step-indicator fw-bold"
-                            disabled={index > 0 && !devMode ? previousStepsInvalid(index >  0 ? index - 1 : index) : false}>
-                        {icon ? <FaIcon icon={icon}/> : index + 1}
-                    </button>
-                    </div>))}
+        <div>
+            <div className="card-group">
+                {options.map(({title, description, icon, appType}) => (
+
+                    <div key={title} className={`select-card card ${field.value == appType ? "active" : ""}`}
+                         onClick={() => { helpers.setValue(appType); }}>
+                        <div className="card-body">
+                            <div className="card-body-header">
+                                <FaIcon icon={icon} className="text-primary fs-1 m-3"/>
+                                <h2 className="h5 fw-bold">{title}</h2>
+                            </div>
+                            <p className="card-text card-body-content">
+                                {description}
+                            </p>
+                        </div>
+                    </div>
+
+                ))}
+
             </div>
         </div>
     );
+
 };

@@ -1,15 +1,16 @@
 import {
     faBars,
     faChevronDown,
-    faCogs,
-    faHome, faHouseUser, faIdBadge,
-    faLock,
+    faCogs, faDollarSign, faEllipsisH, faHandHoldingUsd,
+    faHome, faHouseUser, faIdBadge, faInfoCircle,
+    faLock, faMailBulk,
     faMapMarkedAlt,
     faMoneyBillWave, faMoneyCheckAlt,
-    faPenAlt, faPhone,
-    faSignInAlt, faUser
+    faPenAlt, faPhone, faPiggyBank, faShieldAlt,
+    faSignInAlt, faUser, faWallet
 } from "@fortawesome/free-solid-svg-icons";
 import {faGithub} from "@fortawesome/free-brands-svg-icons";
+import {faIdCard} from "@fortawesome/free-regular-svg-icons";
 
 
 export const IconsConfig = {
@@ -28,6 +29,15 @@ export const IconsConfig = {
         faIdBadge,
         faPhone,
         faMoneyCheckAlt,
-        faHouseUser
+        faHouseUser,
+        faMailBulk,
+        faDollarSign,
+        faIdCard,
+        faEllipsisH,
+        faShieldAlt,
+        faInfoCircle,
+        faPiggyBank,
+        faHandHoldingUsd,
+        faWallet
     ]
 };

@@ -10,7 +10,7 @@ class SignUpForm extends Component<{email: string}, {currentStep: number}> {
 
     initialValues: SignUpFormSchema = {
         address: "",
-        applicationType: 0,
+        applicationType: 1,
         city: "",
         dateOfBirth: "",
         driversLicense: "",
@@ -19,14 +19,14 @@ class SignUpForm extends Component<{email: string}, {currentStep: number}> {
         gender: undefined,
         income: 0,
         incomeFrequency: "",
-        initialDeposit: 0,
+        initialDeposit: 100,
         lastName: "",
         mailingAddress: "",
         mailingCity: "",
         mailingState: "",
         mailingZipcode: "",
-        middleName: "",
-        sameAsBilling: false,
+        middleName: undefined,
+        sameAsBilling: "true",
         socialSecurity: "",
         state: "",
         zipcode: "",
@@ -70,7 +70,7 @@ class SignUpForm extends Component<{email: string}, {currentStep: number}> {
 
                         <SignUpFormProgress currentStep={this.state.currentStep}
                                             values={values}
-                                            devMode
+                                            // devMode
                                             schema={SignUpFormValidationSchema}
                                             steps={SignUpStepsData}
                                             setStep={this.setStep}/>
@@ -79,13 +79,14 @@ class SignUpForm extends Component<{email: string}, {currentStep: number}> {
 
                         <SignUpFormStep errors={errors}
                                         touched={touched}
+                                        values={values}
                                         stepNo={this.state.currentStep}
                                         step={SignUpStepsData[this.state.currentStep]}/>
 
                         <div className="col-md-8 col-12 mx-auto my-4 bottom-0">
                             <SignUpFormButtons onNextStep={this.nextStep}
                                                onPrevStep={this.prevStep}
-                                               devMode
+                                               // devMode
                                                fields={SignUpStepsData[this.state.currentStep][1]}
                                                values={values}
                                                schema={SignUpFormValidationSchema}

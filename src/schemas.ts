@@ -1,9 +1,9 @@
-import {boolean, date, number, object, string} from "yup";
+import {date, number, object, string} from "yup";
 
 const minAgeDate = new Date();
 minAgeDate.setFullYear(minAgeDate.getFullYear() - 17);
 
-export const SignUpFormValidationSchema = object().shape({
+export const SignUpFormValidationSchema = object({
 
     applicationType: number()
         .label("Application Type")
@@ -23,7 +23,7 @@ export const SignUpFormValidationSchema = object().shape({
 
     middleName: string()
         .label("Middle Name")
-        .matches(/^[aA-zZ\s-]+$/, (err: any) => `'${err.value}' is not a valid name.`)
+        .matches(/^[aA-zZ\s-]+$/, (err: any) => `'${err.value}' is not a valid middle name.`)
         .nullable()
         .notRequired(),
 
@@ -69,43 +69,46 @@ export const SignUpFormValidationSchema = object().shape({
         .matches(/^\d{5}(-\d{4})?$/,
             (err: any) => `'${err.value}' is not a valid zipcode.`),
 
-    sameAsBilling: boolean()
-        .default(true)
+    sameAsBilling: string()
+        .matches(/(true|false)/i)
         .required("Please select an option."),
 
     mailingAddress: string()
-        .label("Address")
-        .matches(/^([0-9]+([a-zA-Z]+)?)\s(.*)(\s)([a-zA-Z]+)(\.)?(\s(#?(\w+))|([A-Za-z]+\.?(\w+)))?$/i,
-            (err: any) => `'${err.value}' is not a valid address.`)
+        .label("Mailing Address")
+        .transform((value: string) => (value.length <= 0 ? undefined : value))
         .when("sameAsBilling", {
-            is: true,
-            then: string().required("Address is required.")
+            is: "false",
+            then: string()
+                .matches(/^(((PO|P O|P.O)\.?\s(Box)\s([0-9]+))|(([0-9]+([a-zA-Z]+)?)\s(.*)(\s)([a-zA-Z]+)(\.)?(\s(#?(\w+))|([A-Za-z]+\.?(\w+)))?))$/i,
+                (err: any) => `'${err.value}' is not a valid address.`).required("Address is required."),
+            otherwise: string().notRequired()
         }),
 
     mailingCity: string()
-        .label("City")
+        .label("Mailing City")
+        .transform((value: string) => (value.length <= 0 ? undefined : value))
         .when("sameAsBilling", {
-            is: true,
+            is: "false",
             then: string().required("City is required.")
         }),
 
     mailingState: string()
-        .label("State")
+        .label("Mailing State")
+        .transform((value: string) => (value.length <= 0 ? undefined : value))
         .when("sameAsBilling", {
-            is: true,
+            is: "false",
             then: string().required("State is required.")
         }),
 
     mailingZipcode: string()
-        .label("Zipcode")
+        .label("Mailing Zipcode")
+        .transform((value: string) => (value.length <= 0 ? undefined : value))
         .matches(/^\d{5}(-\d{4})?$/,
             (err: any) => `${err.value} is not a valid zipcode.`)
         .when("sameAsBilling", {
-            is: true,
+            is: "false",
             then: string().required("Zipcode is required.")
         }),
-
-
     driversLicense: string()
         .label("Driver's License")
         .required("Driver's license is required."),

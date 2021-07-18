@@ -28,7 +28,7 @@ export type SignUpFormSchema = {
     city: string,
     state: string,
     zipcode: string,
-    sameAsBilling: boolean,
+    sameAsBilling: "true" | "false" | "",
     mailingAddress: string,
     mailingCity: string,
     mailingState: string,
@@ -69,6 +69,8 @@ export type SignUpFormTestingSchema = {
 export type SignUpFormStep = [
     label: string,
     fields: string[],
-    fragment: ReactFragment,
-    icon?: IconProp,
+    fragment: ReactFragment | ((values: any) => ReactFragment),
+    icon?: IconProp
 ];
+
+export type SignUpFormApplication = {title: string, description: string, appType: number, icon: IconProp};
