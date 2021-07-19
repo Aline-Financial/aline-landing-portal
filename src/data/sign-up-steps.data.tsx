@@ -177,7 +177,7 @@ const mailingAddress: SignUpFormStep = [
                     Yes
                 </label>
                 <label className="form-label fs-5">
-                    <Field autoFocus id="notSameAs" type="radio" name="sameAsBilling" className="d-inline-block mx-2"
+                    <Field id="notSameAs" type="radio" name="sameAsBilling" className="d-inline-block mx-2"
                            value="false"/>
                     No
                 </label>
