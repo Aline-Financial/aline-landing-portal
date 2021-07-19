@@ -18,10 +18,10 @@ import landingSectionsData from "@data/landing-sections.data";
 export const Landing = () => {
 
     const [creditCardData, safePocketData] = landingSectionsData;
-    const smoothstackSection = <div className="container-fluid bg-light">
+    const SmoothstackSection = () => <div className="container-fluid bg-light">
         <div className="container d-flex flex-row justify-content-center align-items-center">
             <div className="py-5 opacity-25">
-                <img draggable="false" src={smoothstackImg} alt="Smoothstack" className="img-fluid"/>
+                <img draggable="false" src={smoothstackImg} alt="Smoothstack" className="img-fluid" />
             </div>
         </div>
     </div>;
@@ -38,7 +38,7 @@ export const Landing = () => {
                             buttonRoute={creditCardData.buttonRoute}
                             align={creditCardData.align}
                             key={creditCardData.buttonText.replace(/\s/g, "")}/>
-            {smoothstackSection}
+            <SmoothstackSection/>
             <LandingSection image={safePocketData.image}
                             title={safePocketData.title}
                             body={safePocketData.body}

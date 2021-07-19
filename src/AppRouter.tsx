@@ -36,7 +36,6 @@ const AppRouter = () => {
 
     return (
         <Router>
-
             <ExcludeInPath exclude={noNavPaths}>
                 <AppNav/>
             </ExcludeInPath>

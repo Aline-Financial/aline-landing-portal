@@ -1,5 +1,5 @@
 import {AppNavRoute, SignUpFormSchema, SignUpFormStep} from "@interfaces";
-import {ReactChildren, ReactElement, ReactFragment} from "react";
+import {ReactElement, ReactFragment} from "react";
 import {FormikErrors, FormikTouched} from "formik";
 
 export type AppNavDropdownProps = {
