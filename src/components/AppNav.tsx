@@ -2,10 +2,10 @@ import React, {Component} from "react";
 import AppNavRoutes from "@src/app-nav-routes";
 import {Link} from "react-router-dom";
 import {FontAwesomeIcon as FaIcon} from "@fortawesome/react-fontawesome";
-import logo from "@images/logo.svg";
-import "./AppNav.sass";
+import "@styles/AppNav.sass";
 import AppNavDrawer from "@components/AppNavDrawer";
 import AppNavDropdown from "@components/AppNavDropdown";
+import Brand from "@components/Brand";
 
 class AppNav extends Component<any, {scrolled: boolean}> {
 
@@ -42,7 +42,7 @@ class AppNav extends Component<any, {scrolled: boolean}> {
     render() {
         return (
             <div className="fixed-top">
-                <div aria-label="navigation" className={`app-navbar navbar navbar-expand-lg navbar-dark bg-dark py-3 ${this.state.scrolled ? "nav-shadow" : ""}`}>
+                <div aria-label="navigation" className={`animate__animated animate__slideInDown animate__faster app-navbar navbar navbar-expand-lg navbar-dark bg-dark py-3 ${this.state.scrolled ? "nav-shadow" : ""}`}>
                     <div className="container">
                         <div className="navbar-nav d-inline-flex d-lg-none">
                             <button className="btn btn-outline-light"
@@ -51,9 +51,7 @@ class AppNav extends Component<any, {scrolled: boolean}> {
                                 <FaIcon icon={["fas", "bars"]}/>
                             </button>
                         </div>
-                        <Link to="/" className="navbar-brand align-items-center">Aline
-                            <img draggable={false} src={logo} className="mb-1" alt="$"/>
-                            Financial</Link>
+                        <Brand/>
                         <ul className="navbar-nav ms-auto d-none d-lg-inline-flex">
                             {AppNavRoutes.map((dropdown) => (
                                 <AppNavDropdown key={`dropdownMenu${dropdown.label.replace(/\s/g, "")}`} label={dropdown.label} routes={dropdown.routes}/>

@@ -3,10 +3,10 @@ import {FontAwesomeIcon as FaIcon} from "@fortawesome/react-fontawesome";
 
 const Footer = () => {
     return (
-        <div className="container-fluid py-5 bg-light">
-            <div className="container pb-5">
-                <div className="row row-cols-1 pb-5">
-                    <div className="col pb-5">
+        <div className="container-fluid py-5 bg-light mt-5">
+            <div className="container">
+                <div className="row row-cols-1">
+                    <div className="col">
                         <div className="row row-cols-1 row-cols-md-2">
                             <div className="col">
                                 <ul className="list-unstyled">

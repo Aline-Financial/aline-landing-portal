@@ -1,6 +1,6 @@
 import React from "react";
 import {renderWithRouter} from "@test-utils";
-import AppNavDrawer from "./AppNavDrawer";
+import AppNavDrawer from "@components/AppNavDrawer";
 import {RenderResult} from "@testing-library/react";
 
 describe("AppNavDrawer", () => {

@@ -1,5 +1,5 @@
 import React from "react";
-import AppNavDropdown from "./AppNavDropdown";
+import AppNavDropdown from "@components/AppNavDropdown";
 import {renderWithRouter} from "@test-utils";
 import {AppNavRoute} from "@interfaces";
 

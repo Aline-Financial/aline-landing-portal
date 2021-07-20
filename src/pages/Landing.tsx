@@ -4,7 +4,6 @@ import LandingStart from "@components/LandingStart";
 import LandingCards from "@components/LandingCards";
 import LandingSection from "@components/LandingSection";
 import landingSectionsData from "@data/landing-sections.data";
-import Footer from "@components/Footer";
 
 /**
  * <strong>Page - Landing</strong>
@@ -19,16 +18,16 @@ import Footer from "@components/Footer";
 export const Landing = () => {
 
     const [creditCardData, safePocketData] = landingSectionsData;
-    const smoothstackSection = <div className="container-fluid bg-light">
+    const SmoothstackSection = () => <div className="container-fluid bg-light">
         <div className="container d-flex flex-row justify-content-center align-items-center">
             <div className="py-5 opacity-25">
-                <img draggable="false" src={smoothstackImg} alt="Smoothstack" className="img-fluid"/>
+                <img draggable="false" src={smoothstackImg} alt="Smoothstack" className="img-fluid" />
             </div>
         </div>
     </div>;
 
     return (
-        <div className="container-fluid">
+        <div className="container-fluid bg-white">
             <LandingStart learnMoreHref="#learn-more"/>
             <a id="learn-more" className="d-inline-block pt-5"/>
             <LandingCards/>
@@ -39,7 +38,7 @@ export const Landing = () => {
                             buttonRoute={creditCardData.buttonRoute}
                             align={creditCardData.align}
                             key={creditCardData.buttonText.replace(/\s/g, "")}/>
-            {smoothstackSection}
+            <SmoothstackSection/>
             <LandingSection image={safePocketData.image}
                             title={safePocketData.title}
                             body={safePocketData.body}

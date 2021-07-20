@@ -1,6 +1,6 @@
 import React from "react";
 import {renderWithRouter} from "@test-utils";
-import AppNav from "./AppNav";
+import AppNav from "@components/AppNav";
 
 const {getByText, getAllByText, getByLabelText} = renderWithRouter(<AppNav/>);
 

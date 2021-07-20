@@ -2,7 +2,7 @@ import React from "react";
 
 import cardAndPhone from "@images/card_and_phone.png";
 import LandingStartForm from "@components/LandingStartForm";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 const LandingStart = (props: {learnMoreHref: string}) => {
 

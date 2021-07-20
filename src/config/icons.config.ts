@@ -2,14 +2,28 @@ import {
     faBars,
     faChevronDown,
     faCogs,
+    faDollarSign,
+    faEllipsisH,
+    faHandHoldingUsd,
     faHome,
+    faHouseUser,
+    faIdBadge,
+    faInfoCircle,
     faLock,
+    faMailBulk,
     faMapMarkedAlt,
     faMoneyBillWave,
+    faMoneyCheckAlt,
     faPenAlt,
-    faSignInAlt
+    faPhone,
+    faPiggyBank,
+    faShieldAlt,
+    faSignInAlt,
+    faUser,
+    faWallet
 } from "@fortawesome/free-solid-svg-icons";
-import {faConfluence, faGithub, faJira} from "@fortawesome/free-brands-svg-icons";
+import {faGithub} from "@fortawesome/free-brands-svg-icons";
+import {faIdCard} from "@fortawesome/free-regular-svg-icons";
 
 
 export const IconsConfig = {
@@ -24,7 +38,19 @@ export const IconsConfig = {
         faMoneyBillWave,
         faCogs,
         faGithub,
-        faConfluence,
-        faJira
+        faUser,
+        faIdBadge,
+        faPhone,
+        faMoneyCheckAlt,
+        faHouseUser,
+        faMailBulk,
+        faDollarSign,
+        faIdCard,
+        faEllipsisH,
+        faShieldAlt,
+        faInfoCircle,
+        faPiggyBank,
+        faHandHoldingUsd,
+        faWallet
     ]
 };

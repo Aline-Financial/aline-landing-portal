@@ -1,7 +1,7 @@
-import React, {ReactFragment} from "react";
-import "./LandingSection.sass";
+import React from "react";
+import "@styles/LandingSection.sass";
 import {Link} from "react-router-dom";
-import {LandingSectionProps} from "@interfaces";
+import {LandingSectionProps} from "@props";
 
 const LandingSection = (props: LandingSectionProps) => {
     const {image, title, body, buttonText, buttonRoute, align, light} = props;

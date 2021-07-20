@@ -19,17 +19,21 @@ const config: Config.InitialOptions = {
         "css"
     ],
     moduleNameMapper: {
-        "\\.(css|less|sass|scss)$": "<rootDir>/__mocks__/styleMock.js",
-        "\\.(ttf|eot)$": "<rootDir>/__mocks__/fileMock.js",
-        "\\.(png|jpeg|jpg|svg)$": "<rootDir>/__mocks__/imageMock.js",
+        "\\.(css|less|sass|scss)$": "<rootDir>/mocks/styleMock.js",
+        "\\.(ttf|eot)$": "<rootDir>/mocks/fileMock.js",
+        "\\.(png|jpeg|jpg|svg)$": "<rootDir>/mocks/imageMock.js",
         "^@src(.*)$": "<rootDir>/src$1",
         "^@test-utils$": "<rootDir>/src/utils/test.utils",
+        "^aline-signup-form$": "<rootDir>/src/modules/aline-signup-form",
         "^@images(.*)$": "<rootDir>/src/assets/images$1",
         "^@components(.*)$": "<rootDir>/src/components$1",
         "^@config(.*)$": "<rootDir>/src/config$1",
         "^@interfaces$": "<rootDir>/src/interfaces",
+        "^@props": "<rootDir>/src/props",
         "^@pages(.*)$": "<rootDir>/src/pages$1",
-        "^@data(.*)$": "<rootDir>/src/data$1"
+        "^@data(.*)$": "<rootDir>/src/data$1",
+        "^@styles(.*)$": "<rootDir>/src/styles$1",
+        "^@schemas(.*)$": "<rootDir>/src/schemas"
     },
     setupFilesAfterEnv: [
         "<rootDir>/src/setupTests.ts"

@@ -20,11 +20,26 @@
       "@interfaces": [
         "./interfaces"
       ],
+      "@props": [
+        "./props"
+      ],
       "@pages/*": [
         "./pages/*"
       ],
       "@data/*": [
         "./data/*"
+      ],
+      "@styles/*": [
+        "./styles/*"
+      ],
+      "@schemas": [
+        "./schemas"
+      ],
+      "@utils/*": [
+        "./utils/*"
+      ],
+      "aline-signup-form":[
+        "./modules/aline-signup-form"
       ]
     }
   }

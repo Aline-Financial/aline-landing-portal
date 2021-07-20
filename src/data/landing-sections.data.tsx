@@ -1,7 +1,7 @@
 import React from "react";
 import creditCard from "@images/credit_card.png";
 import safePocket from "@images/safe_pocket.png";
-import {LandingSectionProps} from "@interfaces";
+import {LandingSectionProps} from "@props";
 
 const landingSectionsData: LandingSectionProps[] = [
 

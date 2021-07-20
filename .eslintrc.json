@@ -35,12 +35,18 @@
         "camelcase": "warn",
         "comma-spacing": "warn",
         "arrow-spacing": "warn",
-        "no-unused-vars": "warn",
+        "no-unused-vars": "off",
         "no-unexpected-multiline": "error",
+        "array-bracket-spacing": "warn",
+        "object-curly-spacing": "warn",
+        "space-before-blocks": "warn",
+        "key-spacing": "warn",
+        "keyword-spacing": "warn",
         "@typescript-eslint/explicit-module-boundary-types": "off",
         "@typescript-eslint/no-explicit-any": "off",
         "@typescript-eslint/ban-tslint-comment": "error",
         "@typescript-eslint/consistent-type-definitions": ["error", "type"],
-        "@typescript-eslint/no-non-null-assertion": "off"
+        "@typescript-eslint/no-non-null-assertion": "off",
+        "@typescript-eslint/no-unused-vars": "warn"
     }
 }

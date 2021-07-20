@@ -1,11 +1,8 @@
 /** Global Styles **/
 
-$primary: #2d70ca
-$utilities: ("opacity": (property: opacity, values: (0: 0, 25: .25, 50: .5, 75: .75, 100: 1)))
+@import "styles/colors"
 
-// Global Bootstrap Styles
-@import "~bootstrap/scss/functions"
-@import "~bootstrap/scss/variables"
+$utilities: ("opacity": (property: opacity, values: (0: 0, 25: .25, 50: .5, 75: .75, 100: 1)))
 
 @import "~bootstrap/scss/bootstrap"
 
@@ -23,7 +20,44 @@ html, body
   --animate-duration: 8s
 
 .padding-past-nav
-  padding-top: 100px
+  padding-top: 75px
 
 .container-fullscreen
-  min-height: calc(100vh - 100px)
+  min-height: calc(100vh - 75px)
+
+.bg-gray
+  background-color: #f1f1f1
+
+.aline-bg
+  background: repeating-linear-gradient(-75deg, transparentize(#e9ecef, 0.4), transparentize(#e9ecef, 0.4) 250px, #f8f9fa 120px, #f8f9fa 500px )
+
+.revealInX
+  position: relative
+  animation: revealInX 0.3s ease
+
+.revealInY
+  animation: revealInY 0.3s ease
+
+@keyframes revealInX
+  0%
+    opacity: 0
+    left: -3%
+
+  25%
+    opacity: 0.5
+
+  100%
+    opacity: 1
+    left: 0
+
+@keyframes revealInY
+  0%
+    opacity: 0
+    top: -10px
+
+  25%
+    opacity: 0.5
+
+  100%
+    opacity: 1
+    top: 0

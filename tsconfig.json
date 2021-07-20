@@ -22,7 +22,9 @@
     "jsx": "react-jsx"
   },
   "include": [
-    "src"
+    "src",
+    ".babelrc",
+    "jest.config.ts"
   ],
   "exclude": [
     "node_modules",

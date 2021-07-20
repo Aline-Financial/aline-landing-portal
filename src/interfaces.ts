@@ -6,10 +6,6 @@ export type AppNavRoute = {
     route: string;
 };
 
-export type AppNavDropdownProps = {
-    label: string;
-    routes: AppNavRoute[];
-};
 
 export type LandingCardData = {
     icon: IconProp;
@@ -19,12 +15,62 @@ export type LandingCardData = {
     buttonRoute: string;
 };
 
-export type LandingSectionProps = {
-    image: string;
-    title: ReactFragment;
-    body: ReactFragment;
-    buttonText: string;
-    buttonRoute: string;
-    align: "start" | "end";
-    light?: boolean;
+
+export type SignUpFormSchema = {
+    applicationType: number,
+    email: string,
+    firstName: string,
+    lastName: string,
+    middleName: string | undefined,
+    gender: "Male" | "Female" | "Other" | "Unspecified" | undefined,
+    dateOfBirth: string | Date | undefined,
+    address: string,
+    city: string,
+    state: string,
+    zipcode: string,
+    sameAsBilling: "true" | "false" | "",
+    mailingAddress: string,
+    mailingCity: string,
+    mailingState: string,
+    mailingZipcode: string,
+    driversLicense: string,
+    socialSecurity: string,
+    incomeFrequency: string,
+    income: number | undefined,
+    initialDeposit: number,
+    phone: string
 };
+
+export type SignUpFormTestingSchema = {
+    applicationType: number | any,
+    email: string | any,
+    firstName: string | any,
+    lastName: string | any,
+    middleName: string | any,
+    gender: "Male" | "Female" | "Other" | any,
+    dateOfBirth: string | Date | any,
+    address: string | any,
+    city: string | any,
+    state: string | any,
+    zipcode: string | any,
+    sameAsBilling: boolean | any,
+    mailingAddress: string | any,
+    mailingCity: string | any,
+    mailingState: string | any,
+    mailingZipcode: string | any,
+    driversLicense: string | any,
+    socialSecurity: string | any,
+    incomeFrequency: string | any,
+    income: number | any,
+    initialDeposit: number | any,
+    phone: string | any
+};
+
+export type SignUpFormStep = [
+    label: string,
+    fields: string[],
+    fragment: ReactFragment | ((values: any) => ReactFragment),
+    icon?: IconProp
+];
+
+export type SignUpFormApplication = {title: string, description: string, appType: number, icon: IconProp};
