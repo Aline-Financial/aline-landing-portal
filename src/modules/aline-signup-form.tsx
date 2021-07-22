@@ -356,7 +356,7 @@ export const SignUpFormSelect = ({options, name}: {name: string, options: SignUp
             <div className="select-card-group select-card-group-sm">
                 {options.map(({title, description, icon, appType}) => (
 
-                    <div key={title} className={`select-card ${field.value == appType ? "active" : ""}`}
+                    <div key={title} tabIndex={-1} className={`select-card ${field.value == appType ? "active" : ""}`}
                          onClick={() => { helpers.setValue(appType); }}>
                         <div className="card-body-header">
                             <FaIcon icon={icon} className="text-primary fs-1 m-3"/>
