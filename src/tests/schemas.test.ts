@@ -12,12 +12,13 @@ describe("Sign Up Form Validation Schema", () => {
         lastName: "Boy",
         middleName: "Tickle",
         gender: "Male",
+        phone: "(555) 555-5555",
         dateOfBirth: "1999-08-07",
         address: "123 Address St.",
         city: "Townsville",
         state: "Maine",
         zipcode: "12345-1234",
-        sameAsBilling: false,
+        sameAsBilling: "false",
         mailingAddress: "PO Box 1234",
         mailingCity: "Townsville",
         mailingState: "Maine",
@@ -337,7 +338,7 @@ describe("Sign Up Form Validation Schema", () => {
         });
 
         it("should be valid with a PO Box", () => {
-            modifiedForm.address = "PO Box 1234";
+            modifiedForm.mailingAddress = "PO Box 1234";
             expectValid(modifiedForm);
         });
 
