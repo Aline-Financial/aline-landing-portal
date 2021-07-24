@@ -368,7 +368,6 @@ export const SignUpFormSelect = ({options, name}: {name: string, options: SignUp
                     </div>
 
                 ))}
-
             </div>
         </div>
     );
