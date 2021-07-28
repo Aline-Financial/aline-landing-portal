@@ -5,11 +5,10 @@ minAgeDate.setFullYear(minAgeDate.getFullYear() - 17);
 
 export const SignUpFormValidationSchema = object({
 
-    applicationType: number()
+    applicationType: string()
         .label("Application Type")
         .required("Application type is required.")
-        .integer((err: any) => `'${err.value}' is not valid application type ID.`)
-        .positive((err: any) => `'${err.value}' is not valid application type ID.`),
+        .matches(/(CHECKING|SAVINGS|CHECKING_AND_SAVINGS|CREDIT_CARD|LOAN)/, (err: any) => `'${err.value}' is not valid application type.`),
 
     email: string()
         .label("Email")
@@ -35,7 +34,7 @@ export const SignUpFormValidationSchema = object({
     gender: string()
         .label("Gender")
         .required("Please select a gender.")
-        .matches(/(Male|Female|Other|Unspecified)/i, "Please select a gender."),
+        .matches(/(MALE|FEMALE|OTHER|UNSPECIFIED)/, "Please select a gender."),
 
     dateOfBirth: date()
         .label("Date of Birth")

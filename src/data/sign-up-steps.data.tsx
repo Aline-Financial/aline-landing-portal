@@ -57,10 +57,10 @@ const dateOfBirth: SignUpFormStep = [
             <div className="col">
                 <SignUpFormField name="gender" label="Gender" as="select">
                     <option value={undefined} className="text-muted">Select a gender...</option>
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
-                    <option value="Other">Other</option>
-                    <option value="Unspecified">Prefer not to say...</option>
+                    <option value="MALE">Male</option>
+                    <option value="FEMALE">Female</option>
+                    <option value="OTHER">Other</option>
+                    <option value="UNSPECIFIED">Prefer not to say...</option>
                 </SignUpFormField>
             </div>
         </div>
@@ -219,21 +219,21 @@ const applications: SignUpFormApplication[] = [
         title: "Spending",
         description: "Start with a checking account and have access to your money today!",
         icon: "hand-holding-usd",
-        appType: 1
+        appType: "CHECKING"
     },
 
     {
         title: "Stashing",
         description: "Plan for the future. Stash your cash away into a secure savings account.",
         icon: "piggy-bank",
-        appType: 2
+        appType: "SAVINGS"
     },
 
     {
         title: "Both",
         description: "Bring your bank wherever you go with both a savings and checking account.",
         icon: "wallet",
-        appType: 3
+        appType: "CHECKING_AND_SAVINGS"
     }
 
 ];

@@ -73,4 +73,30 @@ export type SignUpFormStep = [
     icon?: IconProp
 ];
 
-export type SignUpFormApplication = {title: string, description: string, appType: number, icon: IconProp};
+export type SignUpFormApplication = {title: string, description: string, appType: string, icon: IconProp};
+
+
+export type CreateApplicant = {
+    firstName: string;
+    lastName: string;
+    dateOfBirth: Date;
+    gender: string;
+    email: string;
+    phone: string;
+    socialSecurity: string;
+    driversLicense: string;
+    income: number;
+    address: string;
+    city: string;
+    state: string;
+    zipcode: string;
+    mailingAddress: string;
+    mailingCity: string;
+    mailingState: string;
+    mailingZipcode: string;
+};
+
+export type ApplyRequest = {
+    applicationType: string;
+    applicants: CreateApplicant[];
+};
