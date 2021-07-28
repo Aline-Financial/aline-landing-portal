@@ -23,6 +23,7 @@
     "@types/react-router-dom": "^5.1.8",
     "@types/yup": "^0.29.13",
     "animate.css": "^4.1.1",
+    "axios": "^0.21.1",
     "bootstrap": "^5.0.2",
     "formik": "^2.2.9",
     "jest-css-modules-transform": "^4.3.0",

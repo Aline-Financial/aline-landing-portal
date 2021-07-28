@@ -1,16 +1,18 @@
 import React, {Component} from "react";
 import {Form, Formik} from "formik";
-import {SignUpFormSchema} from "@interfaces";
+import {ApplyRequest, CreateApplicant, SignUpFormSchema} from "@interfaces";
 import {SignUpFormValidationSchema} from "@schemas";
 import {SignUpFormButtons, SignUpFormProgress, SignUpFormStep} from "aline-signup-form";
 import SignUpStepsData from "@data/sign-up-steps.data";
 import {Prompt} from "react-router";
+import axios from "axios";
+import {api} from "@config/api.config";
 
 class SignUpForm extends Component<{email: string}, {currentStep: number}> {
 
     initialValues: SignUpFormSchema = {
         address: "",
-        applicationType: 0,
+        applicationType: "",
         city: "",
         dateOfBirth: "",
         driversLicense: "",
@@ -44,8 +46,41 @@ class SignUpForm extends Component<{email: string}, {currentStep: number}> {
         this.setStep = this.setStep.bind(this);
     }
 
-    onSubmit(values: SignUpFormSchema) {
-        console.table(values);
+    async onSubmit(values: SignUpFormSchema) {
+        const createApplicant: CreateApplicant = {
+            address: values.address,
+            city: values.city,
+            dateOfBirth: new Date(values.dateOfBirth!),
+            driversLicense: values.driversLicense,
+            email: values.email!,
+            firstName: values.firstName,
+            gender: values.gender!,
+            income: values.income!,
+            lastName: values.lastName,
+            mailingAddress: values.sameAsBilling ? values.address : values.mailingAddress,
+            mailingCity: values.sameAsBilling ? values.city : values.mailingCity,
+            mailingState: values.sameAsBilling ? values.state : values.mailingState,
+            mailingZipcode: values.sameAsBilling ? values.zipcode : values.mailingZipcode,
+            phone: values.phone,
+            socialSecurity: values.socialSecurity,
+            state: values.state,
+            zipcode: values.zipcode
+        };
+        const applyRequest: ApplyRequest = {
+            applicants: [createApplicant],
+            applicationType: values.applicationType
+        };
+        try {
+            const {data, status} = await axios.post(api("/applications"), applyRequest);
+
+            if (status === 201) {
+
+            }
+        }
+
+         catch (e) {
+            console.error(e);
+        }
     }
 
     nextStep() {
