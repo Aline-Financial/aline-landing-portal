@@ -2,7 +2,7 @@ import {SignUpFormApplication, SignUpFormSchema, SignUpFormStep} from "@interfac
 import React, {ReactFragment} from "react";
 import {Field} from "formik";
 import {FontAwesomeIcon as FaIcon} from "@fortawesome/react-fontawesome";
-import {SignUpFormCurrencyField, SignUpFormField, SignUpFormMaskedField, SignUpFormSelect} from "aline-signup-form";
+import {SignUpFormCurrencyField, SignUpFormField, SignUpFormMaskedField, SignUpFormSelect} from "@src/modules/SignUpFormComponents";
 import states from "./states.data.json";
 
 const StepText = ({message, header}: { message: string | ReactFragment, header: string | ReactFragment }) => {

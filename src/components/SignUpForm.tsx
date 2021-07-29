@@ -1,12 +1,15 @@
 import React, {Component} from "react";
 import {Form, Formik} from "formik";
-import {ApplyRequest, CreateApplicant, SignUpFormSchema} from "@interfaces";
+import {SignUpFormSchema} from "@interfaces";
 import {SignUpFormValidationSchema} from "@schemas";
-import {SignUpFormButtons, SignUpFormProgress, SignUpFormStep} from "aline-signup-form";
+import {SignUpFormButtons, SignUpFormProgress, SignUpFormStep} from "@src/modules/SignUpFormComponents";
 import SignUpStepsData from "@data/sign-up-steps.data";
 import {Prompt} from "react-router";
-import axios from "axios";
+import axios, {AxiosResponse} from "axios";
 import {api} from "@config/api.config";
+import ApplyResponse from "@api/model/ApplyResponse";
+import CreateApplicant from "@api/model/CreateApplicant";
+import ApplyRequest from "@api/model/ApplyRequest";
 
 class SignUpForm extends Component<{email: string}, {currentStep: number}> {
 
@@ -71,10 +74,10 @@ class SignUpForm extends Component<{email: string}, {currentStep: number}> {
             applicationType: values.applicationType
         };
         try {
-            const {data, status} = await axios.post(api("/applications"), applyRequest);
+            const {data, status} = await axios.post<ApplyRequest, AxiosResponse<ApplyResponse>>(api("/applications"), applyRequest);
 
             if (status === 201) {
-
+                console.table(data);
             }
         }
 
