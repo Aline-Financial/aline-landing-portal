@@ -104,7 +104,6 @@ class SignUpForm extends Component<{email: string}, {currentStep: number,
             applicants: [createApplicant],
             applicationType: values.applicationType
         };
-        console.log(applyRequest);
         try {
             const {data, status} = await axios.post<ApplyRequest, AxiosResponse<ApplyResponse>>(api("/applications"), applyRequest);
 
@@ -121,8 +120,11 @@ class SignUpForm extends Component<{email: string}, {currentStep: number,
                 const data = response.data;
                 if (response.status === 409) {
                     this.setState({errorMessage: data});
+                } else {
+                    this.setState({errorMessage: "Something went wrong. Please try again."});
                 }
             } else {
+                this.setState({errorMessage: "Something went wrong. Please try again."});
                 console.error(e);
             }
         }
