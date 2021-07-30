@@ -9,7 +9,7 @@ describe("AppNavDropdown", () => {
 
         const dropdown = getByText(/Label/i);
         expect(dropdown).toBeInTheDocument();
-        expect(dropdown.getAttribute("href")).toBe("/");
+        expect(dropdown.getAttribute("href")).toBe("#");
     });
 
     it("should create anchor element with data-bs-toggle of 'dropdown'", () => {
@@ -29,7 +29,7 @@ describe("AppNavDropdown", () => {
             }));
         renderWithRouter(<AppNavDropdown label={"Label"} routes={routes}/>);
 
-        const items = document.querySelectorAll("li.nav-item.dropdown>ul.dropdown-menu>li");
+        const items = document.querySelectorAll("li.nav-item>.dropdown>ul.dropdown-menu>li");
         expect(items.length).toBe(routes.length);
     });
 });

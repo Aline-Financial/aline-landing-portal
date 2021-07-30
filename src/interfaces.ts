@@ -17,13 +17,13 @@ export type LandingCardData = {
 
 
 export type SignUpFormSchema = {
-    applicationType: number,
+    applicationType: string,
     email: string,
     firstName: string,
     lastName: string,
     middleName: string | undefined,
-    gender: "Male" | "Female" | "Other" | "Unspecified" | undefined,
-    dateOfBirth: string | Date | undefined,
+    gender: "MALE" | "FEMALE" | "OTHER" | "UNSPECIFIED" | undefined,
+    dateOfBirth: string | undefined,
     address: string,
     city: string,
     state: string,
@@ -42,7 +42,7 @@ export type SignUpFormSchema = {
 };
 
 export type SignUpFormTestingSchema = {
-    applicationType: number | any,
+    applicationType: string | any,
     email: string | any,
     firstName: string | any,
     lastName: string | any,
@@ -73,4 +73,4 @@ export type SignUpFormStep = [
     icon?: IconProp
 ];
 
-export type SignUpFormApplication = {title: string, description: string, appType: number, icon: IconProp};
+export type SignUpFormApplication = {title: string, description: string, appType: string, icon: IconProp};

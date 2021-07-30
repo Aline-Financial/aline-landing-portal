@@ -2,7 +2,7 @@ import React from "react";
 import {renderWithRouter} from "@test-utils";
 import AppNav from "@components/AppNav";
 
-const {getByText, getAllByText, getByLabelText} = renderWithRouter(<AppNav/>);
+const {getAllByText, getByLabelText} = renderWithRouter(<AppNav/>);
 
 describe("AppNav", () => {
 
@@ -10,32 +10,6 @@ describe("AppNav", () => {
 
     it("should be in the document", () => {
         expect(appNav).toBeInTheDocument();
-    });
-
-    describe("NavBrandLink", () => {
-        const appLink = getByText((content) => {
-            return content.includes("Aline") && content.includes("Financial");
-        });
-
-        it("should contain class name 'navbar-brand'", () => {
-            expect(appLink.classList.contains("navbar-brand")).toBe(true);
-        });
-
-        it("should contain the 'AlineFinancial' as text", () => {
-            expect(appLink.textContent).toContain("AlineFinancial");
-        });
-
-        it("should have an href of '/'", () => {
-            expect(appLink.getAttribute("href")).toBe("/");
-        });
-
-        it("should contain a non-draggable image that represents the logo", () => {
-            const logo = appLink.querySelector("img");
-            expect(logo).toBeTruthy();
-            expect(logo?.getAttribute("draggable")).toBe("false");
-            expect(logo?.getAttribute("src")).toBe("image test stub");
-        });
-
     });
 
     describe("Buttons", () => {
