@@ -6,12 +6,12 @@ import {expectInvalid, expectValid} from "@test-utils";
 describe("Sign Up Form Validation Schema", () => {
 
     const correctForm: SignUpFormSchema = {
-        applicationType: 1,
+        applicationType: "CHECKING",
         email: "testboy@test.com",
         firstName: "Test",
         lastName: "Boy",
         middleName: "Tickle",
-        gender: "Male",
+        gender: "MALE",
         phone: "(555) 555-5555",
         dateOfBirth: "1999-08-07",
         address: "123 Address St.",
@@ -53,15 +53,6 @@ describe("Sign Up Form Validation Schema", () => {
             modifiedForm = {...correctForm};
         });
 
-        it("should be valid when it is a positive integer", () => {
-            Array.from(Array(9).keys())
-                .map(i => i + 1)
-                .forEach(i => {
-                    modifiedForm.applicationType = i;
-                    expectValid(modifiedForm);
-                });
-        });
-
         it("should be invalid if it is null", () => {
             modifiedForm.applicationType = null;
             expectInvalid(modifiedForm);
@@ -69,22 +60,6 @@ describe("Sign Up Form Validation Schema", () => {
 
         it("should be invalid if it is undefined", () => {
             modifiedForm.applicationType = undefined;
-            expectInvalid(modifiedForm);
-        });
-
-        it("should be invalid when it is a negative number", () => {
-            Array.from(Array(10).keys())
-                .map(i => i*-1)
-                .forEach(i => {
-                    modifiedForm.applicationType = i;
-                    expectInvalid(modifiedForm);
-                });
-        });
-
-        it("should be invalid when it is not a number", () => {
-            modifiedForm.applicationType = NaN;
-            expectInvalid(modifiedForm);
-            modifiedForm.applicationType = "Not a number";
             expectInvalid(modifiedForm);
         });
     });
@@ -263,17 +238,15 @@ describe("Sign Up Form Validation Schema", () => {
             modifiedForm = {...correctForm};
         });
 
-        it("should be valid if it is either Male, Female, or Other", () => {
-            const genders = ["Male", "Female", "Other"];
-            [...genders.map(gender => gender.toLowerCase()),
-             ...genders.map(gender => gender.toUpperCase()),
-             ...genders].forEach(gender => {
+        it("should be valid if it is either Male, Female, Other, or Unspecified", () => {
+            const genders = ["MALE", "FEMALE", "OTHER"];
+            [...genders].forEach(gender => {
                  modifiedForm.gender = gender;
                  expectValid(modifiedForm);
             });
         });
 
-        it("should be invalid if it is not either Male, Female, or Other", () => {
+        it("should be invalid if it is not either Male, Female, Other, or Unspecified", () => {
             ["Blue", "Red", "Green", "Apple", "Pineapple"]
                 .forEach(item => {
                     modifiedForm.gender = item;
