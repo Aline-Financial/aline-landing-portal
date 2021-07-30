@@ -22,7 +22,7 @@ export type SignUpFormSchema = {
     firstName: string,
     lastName: string,
     middleName: string | undefined,
-    gender: "Male" | "Female" | "Other" | "Unspecified" | undefined,
+    gender: "MALE" | "FEMALE" | "OTHER" | "UNSPECIFIED" | undefined,
     dateOfBirth: string | undefined,
     address: string,
     city: string,

@@ -1,4 +1,4 @@
-import React, {ReactChildren, ReactElement, ReactFragment, useEffect} from "react";
+import React, {ReactChildren, ReactElement, ReactFragment, useLayoutEffect} from "react";
 import "@styles/SignUpForm.sass";
 import {ErrorMessage, Field, FieldHookConfig, FieldInputProps, FormikErrors, FormikTouched, useField} from "formik";
 import {SignUpFormStepProps} from "@props";
@@ -22,6 +22,7 @@ import {SignUpFormApplication} from "@interfaces";
  * @param values the current values of the form
  * @param devMode if true, buttons will not be disabled
  * @param isValid boolean that is passed from a form to tell the controller if the form as a whole is valid
+ * @param isSubmitting
  */
 export const SignUpFormButtons = (
     {
@@ -33,7 +34,8 @@ export const SignUpFormButtons = (
         schema,
         values,
         devMode,
-        isValid
+        isValid,
+        isSubmitting
     }: {
         onNextStep: () => void,
         onPrevStep: () => void,
@@ -43,7 +45,8 @@ export const SignUpFormButtons = (
         values: any,
         schema: ObjectSchema<any>,
         devMode?: boolean,
-        isValid: boolean
+        isValid: boolean,
+        isSubmitting: boolean
     }) => {
 
     const canGoBack = () => currentStep > 0;
@@ -75,7 +78,7 @@ export const SignUpFormButtons = (
                 <div key="submitBtn" className="order-1">
                     <button className="btn btn-lg btn-primary"
                             type="submit"
-                            disabled={!isValid}
+                            disabled={(!isValid || isSubmitting) && !devMode}
                     >Submit
                     </button>
                 </div>}
@@ -254,6 +257,7 @@ export const SignUpFormStep = ({
  * @param values values to validate against the schema.
  * @param devMode if enabled, allows you to jump to a selected step.
  *
+ * @param isSubmitting
  */
 export const SignUpFormProgress =
     ({
@@ -262,7 +266,8 @@ export const SignUpFormProgress =
          setStep,
          schema,
          values,
-         devMode
+         devMode,
+         isSubmitting
      }:
          {
              currentStep: number,
@@ -270,6 +275,7 @@ export const SignUpFormProgress =
              setStep: (step: number) => void,
              values: any,
              schema: ObjectSchema<any>,
+             isSubmitting: boolean,
              steps: [
                  label: string,
                  fields: string[],
@@ -300,7 +306,7 @@ export const SignUpFormProgress =
 
         const width = `${100 * ((currentStep + 1) / (steps.length + 1))}%`;
 
-        useEffect(() => {
+        useLayoutEffect(() => {
             document.querySelectorAll(".tooltip-step-indicator")
                 .forEach(indicator => new Tooltip(indicator, {
                     placement: "top",
@@ -336,7 +342,7 @@ export const SignUpFormProgress =
                                     style={{
                                         transitionDelay: `${50 * index}ms`
                                     }}
-                                    disabled={isDisabled(index)}>
+                                    disabled={isDisabled(index) || isSubmitting}>
                                 {icon ? <FaIcon icon={icon}/> : index + 1}
                             </button>
                         </div>))}

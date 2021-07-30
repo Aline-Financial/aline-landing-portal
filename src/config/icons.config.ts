@@ -3,7 +3,7 @@ import {
     faChevronDown,
     faCogs,
     faDollarSign,
-    faEllipsisH,
+    faEllipsisH, faFileInvoiceDollar,
     faHandHoldingUsd,
     faHome,
     faHouseUser,
@@ -19,7 +19,7 @@ import {
     faPiggyBank,
     faShieldAlt,
     faSignInAlt,
-    faUser,
+    faUser, faUserCheck,
     faWallet
 } from "@fortawesome/free-solid-svg-icons";
 import {faGithub} from "@fortawesome/free-brands-svg-icons";
@@ -51,6 +51,8 @@ export const IconsConfig = {
         faInfoCircle,
         faPiggyBank,
         faHandHoldingUsd,
-        faWallet
+        faWallet,
+        faUserCheck,
+        faFileInvoiceDollar
     ]
 };
