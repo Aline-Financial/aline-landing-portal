@@ -86,6 +86,7 @@ export const SignUpFormButtons = (
                 <div className="order-0">
                     <button className="btn btn-lg btn-outline-secondary"
                             type="button"
+                            disabled={isSubmitting}
                             onClick={onPrevStep}>Back
                     </button>
                 </div> : null}
