@@ -69,14 +69,14 @@ export const SignUpFormButtons = (
         <div className="d-flex justify-content-around">
             {canGoNext() ?
                 <div className="order-1">
-                    <button className="btn btn-lg btn-primary order-1"
+                    <button className="btn btn-lg btn-primary order-1 rounded-pill"
                             type="button"
                             disabled={devMode ? false : currentStepIsInvalid()}
                             onClick={onNextStep}>Next
                     </button>
                 </div> :
                 <div key="submitBtn" className="order-1">
-                    <button className="btn btn-lg btn-primary"
+                    <button className="btn btn-lg btn-primary rounded-pill"
                             type="submit"
                             disabled={(!isValid || isSubmitting) && !devMode}
                     >Submit
@@ -84,7 +84,7 @@ export const SignUpFormButtons = (
                 </div>}
             {canGoBack() ?
                 <div className="order-0">
-                    <button className="btn btn-lg btn-outline-secondary"
+                    <button className="btn btn-lg btn-outline-secondary rounded-pill"
                             type="button"
                             disabled={isSubmitting}
                             onClick={onPrevStep}>Back
