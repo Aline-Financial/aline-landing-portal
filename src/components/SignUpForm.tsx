@@ -5,12 +5,12 @@ import {SignUpFormValidationSchema} from "@schemas";
 import {SignUpFormButtons, SignUpFormProgress, SignUpFormStep} from "@src/modules/SignUpFormComponents";
 import SignUpStepsData from "@data/sign-up-steps.data";
 import {Prompt} from "react-router";
-import axios, {AxiosResponse} from "axios";
-import {api} from "@config/api.config";
+import {AxiosResponse} from "axios";
 import ApplyResponse from "@api/model/ApplyResponse";
 import CreateApplicant from "@api/model/CreateApplicant";
 import ApplyRequest from "@api/model/ApplyRequest";
 import SignUpResults from "@components/SignUpResults";
+import ApplicationApiService from "@api/service/ApplicationApiService";
 
 class SignUpForm extends Component<{email: string}, {currentStep: number,
                                                      submitted: boolean,
@@ -42,8 +42,11 @@ class SignUpForm extends Component<{email: string}, {currentStep: number,
         phone: ""
     };
 
+    apiService: ApplicationApiService;
+
     constructor(props: {email: string}) {
         super(props);
+        this.apiService = new ApplicationApiService();
         this.state = {
             currentStep: 0,
             submitted: false
@@ -105,7 +108,7 @@ class SignUpForm extends Component<{email: string}, {currentStep: number,
             applicationType: values.applicationType
         };
         try {
-            const {data, status} = await axios.post<ApplyRequest, AxiosResponse<ApplyResponse>>(api("/applications"), applyRequest);
+            const {data, status} = await this.apiService.postApplication(applyRequest);
 
             if (status === 201) {
                 helpers.setSubmitting(false);

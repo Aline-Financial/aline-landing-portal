@@ -41,7 +41,7 @@
       padding: $card-cap-padding-x
       transition: box-shadow 0.3s ease
       &.active, &:active
-        box-shadow: $btn-focus-box-shadow
+        box-shadow: $btn-focus-box-shadow, $btn-active-box-shadow
         background-color: $gray-200
       .card-body-header
         width: 100%
@@ -78,10 +78,11 @@
     border-radius: $border-radius
     .select-card
       padding-block: $card-cap-padding-y
+      transition: box-shadow 0.3s ease
       h2.h5
         font-size: 1.05rem
       &.active, &:active
-        box-shadow: inset 0 1px 5px rgba($black, .075)
+        box-shadow: $btn-focus-box-shadow, $btn-active-box-shadow
         background-color: $gray-200
       .card-body-header
         display: flex
