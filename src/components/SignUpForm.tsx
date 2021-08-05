@@ -10,7 +10,7 @@ import ApplyResponse from "@api/model/ApplyResponse";
 import CreateApplicant from "@api/model/CreateApplicant";
 import ApplyRequest from "@api/model/ApplyRequest";
 import SignUpResults from "@components/SignUpResults";
-import ApplicationApiService from '@api/service/ApplicationApiService';
+import ApplicationApiService from "@api/service/ApplicationApiService";
 
 class SignUpForm extends Component<{email: string}, {currentStep: number,
                                                      submitted: boolean,
