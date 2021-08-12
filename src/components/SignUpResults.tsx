@@ -48,7 +48,7 @@ const SignUpResults = ({data}: {data: ApplyResponse}) => {
                 <Result data={data}/>
                 <div className="py-3">
                     <Link to="/">
-                        <button className="btn btn-outline-primary">
+                        <button className="btn btn-outline-primary rounded-pill">
                             Go back home
                         </button>
                     </Link>
