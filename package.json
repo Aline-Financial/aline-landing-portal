@@ -29,6 +29,7 @@
     "crypto-js": "^4.1.1",
     "formik": "^2.2.9",
     "jest-css-modules-transform": "^4.3.0",
+    "jest-sonar-reporter": "^2.0.0",
     "node-sass": "^6.0.1",
     "postcss": "^8.3.5",
     "react": "^17.0.2",
@@ -39,6 +40,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "react-transition-group": "^4.4.2",
+    "sonarqube-scanner": "^2.8.1",
     "ts-node": "^10.0.0",
     "tsconfig-paths-webpack-plugin": "^3.5.1",
     "typescript": "^4.3.5",
@@ -50,9 +52,11 @@
     "build": "craco build",
     "lint": "eslint src/",
     "lint:fix": "eslint src/ --fix",
+    "sonar": "node sonar-project.js",
     "test": "jest",
     "test:lint": "eslint src/ && jest",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "jest --coverage",
+    "test:report": "jest --env=jsdom --watchAll=false --coverage --testResultsProcessor jest-sonar-reporter"
   },
   "eslintConfig": {
     "extends": [
@@ -79,5 +83,10 @@
     "craco-alias": "^3.0.1",
     "eslint": "^7.30.0",
     "eslint-plugin-react": "^7.24.0"
+  },
+  "jestSonar": {
+    "reportPath": "reports",
+    "reportFile": "ut_report.xml",
+    "indent": 4
   }
 }

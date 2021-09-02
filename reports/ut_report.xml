@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testExecutions version="1">
+    <file path="C:\Users\luanf\OneDrive\Desktop\Smoothstack\aline\repo\aline-landing-portal\src\tests\NotFound.test.tsx">
+        <testCase name="should contain &apos;404&apos; or &apos;Not Found&apos;" duration="95"/>
+    </file>
+    <file path="C:\Users\luanf\OneDrive\Desktop\Smoothstack\aline\repo\aline-landing-portal\src\tests\AppNavDropdown.test.tsx">
+        <testCase name="AppNavDropdown should create anchor element with href of &apos;/&apos;" duration="68"/>
+        <testCase name="AppNavDropdown should create anchor element with data-bs-toggle of &apos;dropdown&apos;" duration="12"/>
+        <testCase name="AppNavDropdown should generate a ul with x amount of list items" duration="36"/>
+    </file>
+    <file path="C:\Users\luanf\OneDrive\Desktop\Smoothstack\aline\repo\aline-landing-portal\src\tests\LandingCard.test.tsx">
+        <testCase name="LandingCard should contain correct title" duration="148"/>
+        <testCase name="LandingCard should contain correct description" duration="18"/>
+        <testCase name="LandingCard should contain correct button text" duration="16"/>
+        <testCase name="LandingCard should contain an a tag with correct href" duration="12"/>
+    </file>
+    <file path="C:\Users\luanf\OneDrive\Desktop\Smoothstack\aline\repo\aline-landing-portal\src\tests\schemas.test.ts">
+        <testCase name="Sign Up Form Validation Schema Correct form is valid" duration="19"/>
+        <testCase name="Sign Up Form Validation Schema Form is invalid when at least one required field is null" duration="45"/>
+        <testCase name="Sign Up Form Validation Schema Application Type should be invalid if it is null" duration="4"/>
+        <testCase name="Sign Up Form Validation Schema Application Type should be invalid if it is undefined" duration="10"/>
+        <testCase name="Sign Up Form Validation Schema Email should be valid with correct email patterns" duration="15"/>
+        <testCase name="Sign Up Form Validation Schema Email should be invalid with incorrect email patterns" duration="8"/>
+        <testCase name="Sign Up Form Validation Schema Email should be invalid if the email is null" duration="4"/>
+        <testCase name="Sign Up Form Validation Schema Email should be invalid if the email is undefined" duration="3"/>
+        <testCase name="Sign Up Form Validation Schema Name should be valid if name only contains alphabetical characters" duration="48"/>
+        <testCase name="Sign Up Form Validation Schema Name should be valid if name only contains a hyphen" duration="31"/>
+        <testCase name="Sign Up Form Validation Schema Name should be valid if name only contains a space" duration="30"/>
+        <testCase name="Sign Up Form Validation Schema Name should be invalid if names contain numbers" duration="37"/>
+        <testCase name="Sign Up Form Validation Schema Name should be invalid if names contain symbols" duration="30"/>
+        <testCase name="Sign Up Form Validation Schema Gender should be valid if it is either Male, Female, Other, or Unspecified" duration="6"/>
+        <testCase name="Sign Up Form Validation Schema Gender should be invalid if it is not either Male, Female, Other, or Unspecified" duration="10"/>
+        <testCase name="Sign Up Form Validation Schema Date of Birth should be invalid if age is below 18" duration="37"/>
+        <testCase name="Sign Up Form Validation Schema Date of Birth should be valid if age is 18 or over" duration="54"/>
+        <testCase name="Sign Up Form Validation Schema Address should be valid with a street address format" duration="2"/>
+        <testCase name="Sign Up Form Validation Schema Address should be valid with an apartment address" duration="2"/>
+        <testCase name="Sign Up Form Validation Schema Address should be valid with a PO Box" duration="3"/>
+        <testCase name="Sign Up Form Validation Schema Address should be invalid with a street address without number" duration="2"/>
+        <testCase name="Sign Up Form Validation Schema Address should be invalid with an apartment address with no apartment number" duration="3"/>
+        <testCase name="Sign Up Form Validation Schema Zipcode should be valid if in 5 digit format" duration="2"/>
+        <testCase name="Sign Up Form Validation Schema Zipcode should be valid if in +4 format" duration="2"/>
+        <testCase name="Sign Up Form Validation Schema Zipcode should be invalid if less than 5 digits" duration="3"/>
+        <testCase name="Sign Up Form Validation Schema Zipcode should be invalid if less than 4 digits in plus 4 section" duration="2"/>
+        <testCase name="Sign Up Form Validation Schema Zipcode should be invalid if there is no dash between +4 format" duration="4"/>
+        <testCase name="Sign Up Form Validation Schema Zipcode should be invalid if more than 5 digits" duration="2"/>
+        <testCase name="Sign Up Form Validation Schema Zipcode should be invalid if there are no digits" duration="1"/>
+        <testCase name="Sign Up Form Validation Schema Income and Initial Deposit should be valid if Annually, Monthly, Bi-Weekly, Weekly, or Hourly" duration="5"/>
+        <testCase name="Sign Up Form Validation Schema Income and Initial Deposit should be invalid if not Annually, Monthly, Bi-Weekly, Weekly, or Hourly" duration="4"/>
+        <testCase name="Sign Up Form Validation Schema Income and Initial Deposit should be invalid if initial deposit is negative" duration="1"/>
+        <testCase name="Sign Up Form Validation Schema Income and Initial Deposit should be valid if initial deposit is positive" duration="1"/>
+        <testCase name="Sign Up Form Validation Schema Income and Initial Deposit should be valid if income is positive" duration="2"/>
+        <testCase name="Sign Up Form Validation Schema Income and Initial Deposit should be invalid if income is negative" duration="2"/>
+    </file>
+    <file path="C:\Users\luanf\OneDrive\Desktop\Smoothstack\aline\repo\aline-landing-portal\src\tests\AppNavDrawer.test.tsx">
+        <testCase name="AppNavDrawer should contain class &apos;offcanvas&apos;" duration="14"/>
+        <testCase name="AppNavDrawer should contain a Home link with href of &apos;/&apos;" duration="53"/>
+    </file>
+    <file path="C:\Users\luanf\OneDrive\Desktop\Smoothstack\aline\repo\aline-landing-portal\src\tests\AppNav.test.tsx">
+        <testCase name="AppNav should be in the document" duration="21"/>
+        <testCase name="AppNav Buttons should contain &apos;Login&apos; buttons that links to external member dashboard &apos;/login&apos;" duration="4"/>
+        <testCase name="AppNav Buttons should contain &apos;Sign Up&apos; buttons that links to external member dashboard &apos;/login&apos;" duration="2"/>
+    </file>
+    <file path="C:\Users\luanf\OneDrive\Desktop\Smoothstack\aline\repo\aline-landing-portal\src\tests\Landing.test.tsx">
+        <testCase name="Landing should contain an input field for an email" duration="219"/>
+        <testCase name="Landing should contain a submit button" duration="55"/>
+        <testCase name="Landing should contain an image" duration="37"/>
+    </file>
+</testExecutions>
