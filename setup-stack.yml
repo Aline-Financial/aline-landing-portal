@@ -15,9 +15,10 @@ Parameters:
     Type: String
     Description: 'The root domain name.'
     Default: 'alinefinancial.com'
-  AppHo
+  AppHostedZoneId:
+    Type: String
+    Description: 'App Hosted Zone ID'
 Resources:
-
   # Main portal bucket
   PortalBucket:
     Type: AWS::S3::Bucket

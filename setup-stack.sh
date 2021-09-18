@@ -5,5 +5,6 @@ aws cloudformation deploy \
         AppEnv=dev \
         AppName=alinefinancial \
         PortalName=landing \
+        AppHostedZoneId=Z09924743TGGGCZV3CFW1 \
     --capabilities CAPABILITY_NAMED_IAM \
     --no-fail-on-empty-changeset
