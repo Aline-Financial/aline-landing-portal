@@ -1,0 +1,74 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: 'Landing portal deployment stack'
+Parameters:
+  AppName:
+    Type: String
+    Description: 'The name of the application'
+    Default: 'alinefinancial'
+  AppEnv:
+    Type: String
+    Description: 'The application environment'
+  PortalName:
+    Type: String
+    Description: 'The name of the portal'
+  RootDomain:
+    Type: String
+    Description: 'The root domain name.'
+    Default: 'alinefinancial.com'
+  AppHo
+Resources:
+
+  # Main portal bucket
+  PortalBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub '${RootDomain}-${AppEnv}'
+      AccessControl: 'PublicRead'
+      WebsiteConfiguration:
+        IndexDocument: 'index.html'
+        ErrorDocument: 'index.html'
+
+  # Main portal CloudFront distribution
+  PortalDistribution:
+    Type: AWS::CloudFront::Distribution
+    Properties:
+      DistributionConfig:
+        DefaultRootObject: 'index.html'
+        Comment: !Sub 'Public ${AppName} ${PortalName} portal distribution for ${AppEnv} environment.'
+        Enabled: true
+        DefaultCacheBehavior:
+          TargetOriginId: !Sub '${AppName}-${AppEnv}-${PortalName}'
+          ViewerProtocolPolicy: allow-all
+          AllowedMethods:
+            - GET
+            - HEAD
+          ForwardedValues:
+            QueryString: 'false'
+            Cookies:
+              Forward: none
+        PriceClass: PriceClass_200
+        CNAMEs:
+          - !Ref RootDomain
+        ViewerCertificate:
+          AcmCertificateArn: !Sub '{{resolve:secretsmanager:${AppName}/${AppEnv}/secrets/resources:SecretString:RootSSLCertificate}}'
+          SslSupportMethod: sni-only
+          MinimumProtocolVersion: TLSv1.2_2021
+        Origins:
+          - DomainName: !Sub ${PortalBucket.RegionalDomainName}
+            Id: !Sub '${AppName}-${AppEnv}-${PortalName}'
+            S3OriginConfig:
+              OriginAccessIdentity: ''
+  
+  # Portal DNS
+  PortalDNS:
+    Type: AWS::Route53::RecordSetGroup
+    Properties:
+      HostedZoneId: !Ref AppHostedZoneId
+      Comment: !Sub 'Public ${PortalName} portal DNS for ${AppName} in ${AppEnv} environment.'
+      RecordSets:
+        - Name: !Sub ${RootDomain}
+          Type: A
+          AliasTarget:
+            DNSName: !GetAtt PortalDistribution.DomainName
+            HostedZoneId: Z2FDTNDATAQYW2
+        
