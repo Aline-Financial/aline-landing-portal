@@ -48,11 +48,8 @@ Resources:
             Cookies:
               Forward: none
         PriceClass: PriceClass_200
-        CNAMEs:
-          - !Ref RootDomain
         ViewerCertificate:
           AcmCertificateArn: !Sub '{{resolve:secretsmanager:${AppName}/${AppEnv}/secrets/resources:SecretString:RootSSLCertificate}}'
-          SslSupportMethod: sni-only
           MinimumProtocolVersion: TLSv1.2_2021
         Origins:
           - DomainName: !Sub ${PortalBucket.RegionalDomainName}
