@@ -15,9 +15,6 @@ Parameters:
     Type: String
     Description: 'The root domain name.'
     Default: 'alinefinancial.com'
-  AppHostedZoneId:
-    Type: String
-    Description: 'App Hosted Zone ID'
 Resources:
   # Main portal bucket
   PortalBucket:
@@ -82,7 +79,7 @@ Resources:
   PortalDNS:
     Type: AWS::Route53::RecordSetGroup
     Properties:
-      HostedZoneId: !Ref AppHostedZoneId
+      HostedZoneId: !Sub '{{resolve:secretsmanager:${AppName}/${AppEnv}/secrets/resources:SecretString:AppHostedZoneId}}'
       Comment: !Sub 'Public ${PortalName} portal DNS for ${AppName} in ${AppEnv} environment.'
       RecordSets:
         - Name: !Sub ${RootDomain}

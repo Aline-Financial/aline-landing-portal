@@ -43,7 +43,6 @@ pipeline {
                         AppEnv=${APP_ENV} \
                         AppName=${APP_NAME} \
                         PortalName=${PORTAL_NAME} \
-                        AppHostedZoneId=${APP_HOSTED_ZONE_ID}
                     --capabilities CAPABILITY_NAMED_IAM \
                     --no-fail-on-empty-changeset
                 '''
