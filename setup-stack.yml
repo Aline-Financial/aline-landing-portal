@@ -24,10 +24,28 @@ Resources:
     Type: AWS::S3::Bucket
     Properties:
       BucketName: !Sub '${RootDomain}-${AppEnv}'
-      AccessControl: 'PublicRead'
       WebsiteConfiguration:
         IndexDocument: 'index.html'
         ErrorDocument: 'index.html'
+  
+  # Main portal bucket policy
+  PortalPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref PortalBucket
+      PolicyDocument:
+        Id: !Sub '${AppName}-${AppEnv}-${PortalName}-policy'
+        Version: 2012-10-17
+        Statement:
+          - Sid: PublicReadForGetBuckObjects
+            Effect: Allow
+            Principal: '*'
+            Action: 's3:GetObject'
+            Resource: !Join
+              - ''
+              - - 'arn:aws:s3:::'
+                - !Ref PortalBucket
+                - /*
 
   # Main portal CloudFront distribution
   PortalDistribution:
@@ -39,7 +57,7 @@ Resources:
         Enabled: true
         DefaultCacheBehavior:
           TargetOriginId: !Sub '${AppName}-${AppEnv}-${PortalName}'
-          ViewerProtocolPolicy: allow-all
+          ViewerProtocolPolicy: redirect-to-https
           AllowedMethods:
             - GET
             - HEAD
@@ -48,6 +66,8 @@ Resources:
             Cookies:
               Forward: none
         PriceClass: PriceClass_200
+        Aliases:
+          - !Ref RootDomain
         ViewerCertificate:
           AcmCertificateArn: !Sub '{{resolve:secretsmanager:${AppName}/${AppEnv}/secrets/resources:SecretString:RootSSLCertificate}}'
           SslSupportMethod: sni-only
