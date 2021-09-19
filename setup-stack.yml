@@ -64,9 +64,7 @@ Resources:
               Forward: none
         CustomErrorResponses:
           - ErrorCode: 403
-            ResponsePagePath: '/index.html'
-            ErrorCachingMinTTL: 300
-          - ErrorCode: 404
+            ResponseCode: 200
             ResponsePagePath: '/index.html'
             ErrorCachingMinTTL: 300
         PriceClass: PriceClass_200
