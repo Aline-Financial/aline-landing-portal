@@ -14,6 +14,7 @@ pipeline {
         ORGANIZATION = 'Aline-Financial'
         PROJECT_NAME = 'aline-landing-portal'
         APP_DOMAIN = 'alinefinancial.com'
+        CI='true'
     }
 
     stages {
