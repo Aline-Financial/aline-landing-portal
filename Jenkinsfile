@@ -3,6 +3,7 @@
 pipeline {
 
     agent any
+
     environment {
         COMMIT_HASH = "${sh(script: 'git rev-parse --short HEAD', returnStdout: true).trim()}"
         AWS_ID = credentials('AWS_ID')
@@ -13,19 +14,20 @@ pipeline {
         ORGANIZATION = 'Aline-Financial'
         PROJECT_NAME = 'aline-landing-portal'
         APP_DOMAIN = 'alinefinancial.com'
+        CI='true'
     }
 
     stages {
 
         stage("Install Node Modules") {
             steps {
-                sh "npm i"
+                npm install
             }
         }
 
         stage("Test") {
             steps {
-                sh "npm test"
+                npm test
             }
         }
 
