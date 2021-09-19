@@ -12,6 +12,7 @@ pipeline {
         APP_ENV = 'dev'
         ORGANIZATION = 'Aline-Financial'
         PROJECT_NAME = 'aline-landing-portal'
+        APP_DOMAIN = 'alinefinancial.com'
     }
 
     stages {
@@ -49,13 +50,18 @@ pipeline {
 
         stage("Build Portal") {
             steps {
+                echo "Building React app: '${PORTAL_NAME} portal'..."
                 sh "npm run build"
             }
         }
 
-        stage("Upload to S3 Bucket") {
-
+        stage("Deploy to S3 Bucket") {
+            steps {
+                echo "Deploying '${PORTAL_NAME} portal' to S3 bucket..."
+                sh "aws s3 sync build/ s3://${APP_DOMAIN}-${APP_ENV}"
+            }
         }
+        
     }
 
     post {
