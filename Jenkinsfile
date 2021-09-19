@@ -14,7 +14,6 @@ pipeline {
         ORGANIZATION = 'Aline-Financial'
         PROJECT_NAME = 'aline-landing-portal'
         APP_DOMAIN = 'alinefinancial.com'
-        CI='true'
     }
 
     stages {
@@ -44,6 +43,7 @@ pipeline {
                         AppEnv=${APP_ENV} \
                         AppName=${APP_NAME} \
                         PortalName=${PORTAL_NAME} \
+                        AppHostedZoneId=${APP_HOSTED_ZONE_ID}
                     --capabilities CAPABILITY_NAMED_IAM \
                     --no-fail-on-empty-changeset
                 '''
