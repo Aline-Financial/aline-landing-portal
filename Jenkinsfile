@@ -14,6 +14,9 @@ pipeline {
         ORGANIZATION = 'Aline-Financial'
         PROJECT_NAME = 'aline-landing-portal'
         APP_DOMAIN = 'alinefinancial.com'
+        REACT_APP_MEMBER_DASHBOARD_URL="http://dashboard.alinefinancial.com"
+        REACT_APP_API="http://api.alinefinancial.com/api"
+        PORT=3007
     }
 
     stages {
@@ -37,7 +40,7 @@ pipeline {
                 echo "Setting up ${PORTAL_NAME} portal stack..."
                 sh '''
                     aws cloudformation deploy \
-                    --stack-name landing-portal-stack \
+                    --stack-name ${PORTAL_NAME}-portal-stack \
                     --template-file setup-stack.yml \
                     --parameter-overrides \
                         AppEnv=${APP_ENV} \
