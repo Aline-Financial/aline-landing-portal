@@ -37,7 +37,7 @@ pipeline {
                 echo "Setting up ${PORTAL_NAME} portal stack..."
                 sh '''
                     aws cloudformation deploy \
-                    --stack-name landing-portal-stack \
+                    --stack-name ${PORTAL_NAME}-portal-stack \
                     --template-file setup-stack.yml \
                     --parameter-overrides \
                         AppEnv=${APP_ENV} \
