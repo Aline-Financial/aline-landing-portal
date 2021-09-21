@@ -15,7 +15,7 @@ pipeline {
         PROJECT_NAME = 'aline-landing-portal'
         APP_DOMAIN = 'alinefinancial.com'
         REACT_APP_MEMBER_DASHBOARD_URL="http://dashboard.alinefinancial.com"
-        REACT_APP_API="http://api.alinefinancial.com/api"
+        REACT_APP_API="https://api.alinefinancial.com/api"
         PORT=3007
     }
 
