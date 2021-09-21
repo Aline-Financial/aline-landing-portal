@@ -71,7 +71,7 @@ Resources:
         Aliases:
           - !Ref RootDomain
         ViewerCertificate:
-          AcmCertificateArn: !Sub '{{resolve:secretsmanager:${AppName}/${AppEnv}/secrets/resources:SecretString:SSLCertificate}}'
+          AcmCertificateArn: !Sub '{{resolve:secretsmanager:${AppName}/${AppEnv}/secrets/resources:SecretString:RootSSLCertificate}}'
           SslSupportMethod: sni-only
           MinimumProtocolVersion: TLSv1.2_2021
         Origins:
