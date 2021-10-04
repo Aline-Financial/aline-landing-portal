@@ -16,7 +16,12 @@ const SignUpResults = ({data}: {data: ApplyResponse}) => {
     const Denied = ({data}: {data: ApplyResponse}) =>  (
         <div className="my-5">
             <p>However, we were not able to approve your application at this time.</p>
-            <p><strong>Reason: </strong><span className="text-muted">{data.reason}</span></p>
+            <p><strong>Reason(s): </strong></p>
+            <ul>
+                {
+                    data.reasons.map((reason, index) => <span key={`reason${index}`} className="text-muted">{reason}</span>)
+                }
+            </ul>
         </div>
     );
 
@@ -24,7 +29,12 @@ const SignUpResults = ({data}: {data: ApplyResponse}) => {
         <div>
             <p>We were not able to approve your application at this time.</p>
             <p>However, you were not denied. Please call customer support for further assistance.</p>
-            <p><strong>Reason: </strong><span className="text-muted">{data.reason}</span></p>
+            <p><strong>Reason(s): </strong></p>
+            <ul>
+                {
+                    data.reasons.map((reason, index) => <span key={`reason${index}`} className="text-muted">{reason}</span>)
+                }
+            </ul>
         </div>
     );
 
