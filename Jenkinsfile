@@ -55,7 +55,7 @@ pipeline {
         stage("Build Portal") {
             steps {
                 echo "Building React app: '${PORTAL_NAME} portal'..."
-                sh "npm run build"
+                sh "npm run build:${APP_ENV}"
             }
         }
 
