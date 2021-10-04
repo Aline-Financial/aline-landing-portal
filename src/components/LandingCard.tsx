@@ -15,7 +15,7 @@ const LandingCard = (props: {cardData: LandingCardData}) => {
             </div>
             <div className="card-body pb-5">
                 <p className="card-text my-2 px-2">{description}</p>
-                <Link to={buttonRoute}><button className="btn btn-primary mt-3">{buttonText}</button></Link>
+                <Link to={buttonRoute}><button className="btn btn-primary mt-3 rounded-pill">{buttonText}</button></Link>
             </div>
         </div>
     );
