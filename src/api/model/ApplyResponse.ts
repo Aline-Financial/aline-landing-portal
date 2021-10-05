@@ -8,7 +8,7 @@ type ApplyResponse = {
     type: ApplicationType;
     applicants: ApplicantResponse[];
     status: ApplicationStatus;
-    reason: string;
+    reasons: string[];
     accountsCreated: boolean;
     membersCreated: boolean;
 };

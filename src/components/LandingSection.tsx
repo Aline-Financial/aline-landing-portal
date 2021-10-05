@@ -16,7 +16,7 @@ const LandingSection = (props: LandingSectionProps) => {
                         <h2 className="display-6 fw-bold">{title}</h2>
                         <p className="lead">{body}</p>
                         <Link to={buttonRoute}>
-                            <button className="btn btn-lg btn-primary my-md-5">{buttonText}</button>
+                            <button className="btn btn-lg btn-primary my-md-5 rounded-pill">{buttonText}</button>
                         </Link>
                     </div>
                 </div>

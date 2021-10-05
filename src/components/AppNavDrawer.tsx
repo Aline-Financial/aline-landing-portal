@@ -45,12 +45,12 @@ const AppNavDrawer = () => {
             <div className="row row-cols-2 p-4">
                 <div className="col">
                     <Link to="/login">
-                        <button className="btn btn-outline-light w-100">Log In</button>
+                        <button className="btn btn-outline-light w-100 rounded-pill">Log In</button>
                     </Link>
                 </div>
                 <div className="col">
                     <Link to={"/signup"}>
-                        <button className="btn btn-primary w-100" data-bs-dismiss="offcanvas">Sign Up</button>
+                        <button className="btn btn-primary w-100 rounded-pill" data-bs-dismiss="offcanvas">Sign Up</button>
                     </Link>
                 </div>
             </div>
